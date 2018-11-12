@@ -1,0 +1,126 @@
+<view id="complaint_detail_root" style="visibility: visible;">
+	<view id="ripInfo_root">
+		<view id="ripInfo_title">
+			<view id="ripInfo_logo"></view>
+			<view style="display:inline-block">
+      {{order_refund.state}}		
+			</view>
+		</view>
+		<view id="ripInfo_comment">
+			<view></view>
+			<view>
+				<view class="li">
+					<view clas="b">你可修改申请：</view>商家将重新处理你的退款申请。
+				</view>
+				<view class="li">
+					<b>你可申请平台介入：</b>平台将介入处理，加速协商与结果反馈
+				</view>
+				<view class="li">
+					<view class="b">如果你未处理：</view>超过
+					<view class="span">
+						<view class="time">7</view>天
+					</view>
+					则此次退款申请关闭。
+				</view>
+			</view>
+		</view>
+	</view>
+	
+	
+	 <view id="detailConversation_root">
+		<view id="detailInfo_title">
+			<view class="span">查看协商详情</view>
+		</view>
+		<view class="expand_arrow_icon " id="ssuo"></view>
+		
+		<view class="detailInfo_info_all" >	
+
+      <view wx:for="{{order_refund_historylist}}" class="detailFlow_item_root {{item.type >1 ?'detailFlow_item_root_mall':''}}">
+        <view class="detailInfo_title">
+          <view  class=" span detailInfo_operator_role {{item.type > 1 ? 'detailInfo_operator_role_mall':'detailInfo_operator_role_user'}}"></view>
+          <view class="detailInfo_title_text span">
+            <text wx:if="{{item.type ==1}}">用户申请</text>
+            <text wx:if="{{item.type ==2}}">商家反馈</text>
+            <text wx:if="{{item.type ==3}}">平台反馈</text>
+          </view>
+        </view>
+        <view class="detailInfo_text">
+          <view class="li">备注: {{item.message}}</view>
+        </view>
+        
+        <view class="detailInfo_image_all">
+          <view class="detailInfo_image" wx:for="{{item.history}}" wx:item="img">
+            <image src="{{img.thumb_image}}"></image>
+          </view>
+        </view>
+        <view class="detailInfo_createdTime">{{item.addtime}}</view>
+      </view>
+
+			<view class="detailFlow_item_root">
+				<view class="detailInfo_title">
+					<view class="detailInfo_operator_role detailInfo_operator_role_user span"></view>
+					<view class="detailInfo_title_text span">用户申请退款
+          </view>
+				</view>
+				<view class="detailInfo_text">
+					<view class="li">退款金额: ￥{{order_refund.ref_money}}</view>
+					<view class="li">退款原因: {{order_refund.ref_name}}</view>
+					<view class="li">联系方式: {{order_refund.ref_mobile}}</view>
+					<view class="li">问题描述: {{order_refund.ref_description}}</view>
+				</view>
+				<view class="detailInfo_image_all">
+					<view class="detailInfo_image" wx:for="{{refund_images}}">
+						<image src="{{item.thumb_image}}"> </image>
+					</view>
+				</view>
+				<view class="detailInfo_createdTime">{{order_refund.addtime}}</view>
+			</view>
+    </view>
+
+	</view>
+
+	<view id="detailInfo_root">
+		<view class="li">
+			<view class="span">订单编号:</view>{{order_info.order_num_alias}}
+		</view>
+		<view class="li">
+			<view class="span" id="detailInfo_goodsName">商品名称:</view>
+			{{order_goods.name}}
+		</view>
+		<view class="li">
+			<view class="span">售后类型:</view>{{order_refund.ref_type}}
+		</view>
+
+		<view class="li">
+			<view class="span">退款金额:</view>{{order_refund.ref_money}}
+		</view> 
+		<view class="li">
+			<view class="span">退款原因:</view>{{order_refund.ref_name}}
+		</view>
+	</view>
+
+
+
+	<view id="button_root">
+		<view id="button_reapply" style="display:none;">修改申请</view>
+		
+		<view id="button_judgement" bindtap='pingtai_deal' style="{{pingtai_deal == 1 ? 'display:none;': ''}}" >申请平台介入</view>
+		<view id="button_cancel" bindtap='cancle_shen'>撤销申请</view>
+	</view>
+	<view id="button_root_space" style="height:69px"></view>
+
+</view>
+
+
+<view id="complaint_detail_cancel_box" hidden="{{hide_cancle}}">
+    <view id="complaint_detail_cancel_mask"></view>
+    <view id="complaint_detail_cancel_root">
+        <view id="complaint_detail_cancel_text">
+            退款申诉一旦撤销就<view class="price">不可恢复</view>，并且<view class="price">不可以再次申请</view>，确定要撤销本次申诉吗？
+        </view>
+        <view id="complaint_detail_cancel_button">
+            <view id="complaint_detail_cancel_button_ok" bindtap='hide_cancle'>暂不撤销</view>
+            <view id="complaint_detail_cancel_button_cancel" bindtap='sub_cancle'>我要撤销</view>
+        </view>
+    </view>
+</view>

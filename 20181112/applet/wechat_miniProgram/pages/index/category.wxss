@@ -1,0 +1,322 @@
+/**index.wxss**/
+.nav{
+  white-space: nowrap;
+  background: #fff;
+  line-height: 1rem;
+  padding: 0.5rem 0;
+  font-size: 0.75rem;
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:999;
+}
+.hide{display:none;}
+.nav_item{
+  display: inline-block;
+  padding: 0 10px;
+  margin: 0 5px;
+  font-size: 28rpx;
+  line-height: 1.4rem;
+}
+.nav .cur{
+  background: #ff5777;
+  border-radius: 10px;
+  color: #fff;
+}
+.banner{
+  background: #fff;
+  margin-top:2rem;
+}
+.swiper {
+  height: 8.8rem;
+  width: 100%;
+}
+.swiper image {
+  height: 100%;
+  width: 100%;
+}
+.ad{
+  overflow: hidden;
+  padding: 8px;
+  padding-top:0px;
+  background: #fff;
+}
+.ad .ad_nav{
+  float: left;
+  width: 49%;
+  height: 5.5rem;
+}
+.ad .ad_l{
+  margin-right: 1%;
+}
+.ad .ad_r{
+  margin-left: 1%;
+}
+.ad .ad_nav image{
+  width: 100%;
+  height: 100%;
+}
+.goods{
+  margin-top:88rpx; 
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+
+
+#quick-entrance-new-2 {
+    width: 100%;
+    display: block;
+    position: relative;
+    background-color: #fff;
+    padding: 9rpx 9rpx 0rpx;
+}
+.qe-wrapper-2 {
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    padding: 7px 0 4px;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
+}
+.qe-wrapper-2 .li {
+    width: 20%;
+    float: left;
+    display: block;
+    margin-bottom: 10rpx;
+}
+.qe-wrapper-2 .li:nth-child(1) {
+    margin-left: 0;
+}
+.qe-wrapper-2 .li .quick-entrance-cube {
+    display: block;
+    padding: 0;
+    width: 100%;
+    height: inherit;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+.qe-wrapper-2 .li .quick-entrance-cube image {
+    width: 78rpx;
+    height: 78rpx;
+}
+.qe-wrapper-2 .li .quick-entrance-cube .cube-text {
+    position: relative;
+    width: 100%;
+    height: 32rpx;
+    line-height: 32rpx;
+    color: #777;
+    margin-top: 5rpx;
+    font-size: 24rpx;
+}
+
+.span{display: inline;}
+
+/*voucher begin */
+.promotion {
+    padding: 20rpx 7rpx 0rpx 7rpx;
+    background-color:#fff;
+}
+.head {
+    font-size: 24rpx;
+    color: #999;
+    margin-bottom: 16rpx;
+}
+.slider {
+    position: relative;
+    overflow: hidden;
+}
+.slider-wraper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition-property: -webkit-transform;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform,-webkit-transform;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+.jg_16{
+ padding:8rpx 0px;
+ color:#999;
+ text-align: center;
+  clear:both;
+}
+.p_price {
+  color:#ff5777;
+}
+.p_feed {
+  background:none;
+  padding-right:0px;
+}
+.guess_goods{
+  float:left;
+  width:100%;
+}
+.iwf{
+  margin: 0 0 4% 0;
+  width:100%;
+}
+.list {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-flow: row nowrap;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    position: absolute;
+}
+.list-item {
+    margin-right: 8rpx;
+}
+.list-item:last-child {
+  margin-right:0px;
+}
+.card-content {
+    height: 106rpx;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+	background-image: url(https://mall.shiziyu888.com/Common/image/117603130_6i5767h706g683dj35febbc2c37a4_176x116.png);
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-flow: column nowrap;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    -ms-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    border-radius: 4rpx;
+    height: 88rpx;
+    width: 180rpx;
+    padding: 8rpx;
+}
+.card-price {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-flow: row nowrap;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -moz-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+.card-price--unit, .card-price {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.card-price--unit, .card-price {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.card-price--unit {
+    font-size: 18rpx;
+}
+
+.card-price--num {
+    font-size: 48rpx;
+    line-height: 48rpx;
+}
+.card-desc, .card-price--num {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.card-desc {
+    font-size: 20rpx;
+}
+.card-tag {
+    display: none;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 64rpx;
+    height: 64rpx;
+    position: absolute;
+    bottom: -16rpx;
+    right: -10rpx;
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg);
+    border: 1px solid #666;
+    border-radius: 50%;
+}
+
+.card-tag--text {
+    font-size: 20rpx;
+    color: #666;
+    margin-bottom: 10rpx;
+    text-align: center;
+}
+
+
+
+.card-tag--get {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.card-content.get{
+background-image: url(  https://mall.shiziyu888.com/Common/image/117603130_4a8d76d1e2l7b854b0hk76lg97g3a_176x116.png);
+}
+
+/* voucher end  */

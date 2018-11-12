@@ -1,0 +1,19 @@
+<view class="wx-body">
+      <view>
+        <view>
+          <textarea></textarea>
+        </view>
+        <view>
+           <input type="file"></input>
+        </view>
+     </view>
+     <view>
+         <view>
+             
+             <input type="text"></input>
+         </view>
+         <view>
+            
+         </view>
+     </view>
+</view>

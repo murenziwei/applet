@@ -1,0 +1,35 @@
+<template name="nav">
+  <view id="navigation" class="left-navigation-container {{navState == 1 ? 'active' : 'active'}}">
+    <view class="menus-box">
+      <view class="menus">
+        <view class="menu-item" bindtap='goLink' data-link="/pages/index/index">
+          <text></text>
+          <view class="icon-menu">
+            <view class="icon m-icon m-icon-index"></view>
+          </view>
+        </view>
+        <view class="menu-item" bindtap='goLink' data-link="/pages/order/car">
+          <text></text>
+          <view class="icon-menu">
+            <view class="icon m-icon m-icon-shopping-cart"></view>
+          </view>
+        </view>
+        <view class="menu-item" bindtap='goLink' data-link="/pages/dan/me">
+          <text></text>
+          <view class="icon-menu">
+            <view class="icon m-icon m-icon-my" ></view>
+          </view>
+        </view>
+        <view class="menu-item"  bindtap='gotop'>
+         <view class="icon-menu">
+            <text>TOP</text>
+          </view>
+        </view>
+      </view>
+      <view class="icon-plus-nav menu-btn" style="display:none">
+        <view bindtap="navShow" class="menu-title">快捷导航</view>
+      </view>
+    </view>
+  </view>
+  <div class="ui-mask" style="display: {{navState == 1 ? 'none' : 'none'}};"></div>
+</template>

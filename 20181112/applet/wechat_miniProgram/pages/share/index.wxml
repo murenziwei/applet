@@ -1,0 +1,201 @@
+<view>
+  <view class="page-detail clearfix">
+    <view class="page-detail-good">
+      <view class="meili-all-vue-base-image">
+        <image src="{{goods.image}}" class="fadeIn" style="" />
+      </view>
+    </view>
+    <view class="page-detail-right">
+      <view class="page-detail-right-name">{{goods.name}}</view>
+      <view class="page-detail-right-bottom clearfix">
+        <view class="cut">
+          <text class="yahei">¥</text>{{goods.price}}</view>
+        <view class="cut-num">
+          <view class="cut-num-normal">
+            <text class="yahei">¥</text>
+            <text>{{goods_info.price}}</text>
+          </view>
+          <view class="clearfix">
+            <view class='tag'>{{pin_info.need_count}}人团</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{pin_info.state==1 && pin_info.is_lottery == 0}}" class="page-detail-success"></view>
+    <view wx:if="{{pin_info.state==2 && pin_info.is_lottery == 0}}" class="page-detail-fail"></view>
+
+    <view wx:if="{{pin_info.state==1 && pin_info.is_lottery==1 && pin_info.lottery_state == 0 }}" class="page-detail-unopen"></view>
+    <view wx:if="{{pin_info.state==1 && pin_info.is_lottery==1 && pin_info.lottery_state != 0}}" class="page-detail-open"></view>
+  </view>
+  <view class="page-top">
+    <view class="page-top-wrapper">
+      <view class="rule-label-wrap">
+        <view class="rule-label">规则详情</view>
+      </view>
+      <view wx:if="{{pin_info.state==0}}">
+        <view class="join-num">已有{{pin_order_arr.length}}人参与，还差
+          <text class="warmPink num-pad">{{pin_info.need_count-pin_order_arr.length}}</text>人拼团成功
+        </view>
+        <view class="count-down">
+          剩余
+          <view class="warmPink">
+            <view class="meili-all-base-countdown countdown">
+              {{clock}}
+            </view>
+          </view>
+          失效
+        </view>
+      </view>
+      <view wx:if="{{pin_info.state==1}}">
+        <view class="join-num">已有{{pin_order_arr.length}}人参与
+          <text style='color: #3aba2f;'>拼团成功</text>
+        </view>
+      </view>
+      <view wx:if="{{pin_info.state==2}}">
+        <view class="join-num">已有{{pin_order_arr.length}}人参与
+          <text style='color: #cecece;'>拼团失败</text>
+        </view>
+      </view>
+      <view class="user-con clearfix">
+        <view wx:for="{{pin_order_arr}}" wx:key="key" class="user-wrap {{index==0?'userCaptain':''}}">
+          <view class="user-logo">
+            <image src="{{item.avatar}}" />
+          </view>
+          <view wx:if="{{index==0}}" class="is-captain">团长</view>
+        </view>
+        <view wx:for="{{pin_info.need_count-pin_order_arr.length}}" wx:key="key" class="user-wrap">
+          <view class="user-logo">
+            <image src="../../images/170913_50750l4c63flgj2bghf7ijh99j87i_140x140.png" />
+          </view>
+        </view>
+        
+        <view wx:if="{{pin_info.state==0}}">
+         
+          <view wx:if="{{me_take_in==0 && is_login}}" bindtap="goBuy" class="operate-btn">我要参团</view>
+          <button wx:if="{{me_take_in==0 && !is_login}}" bindgetuserinfo="bindGetUserInfo" open-type="getUserInfo" class="operate-btn">我要参团</button>
+          <button wx:elif="{{me_take_in==1}}" open-type="share" class="operate-btn">邀请好友参团</button>
+        </view>
+        <view wx:if="{{pin_info.state==1 && is_me ==1}}">
+          <view  bindtap="goOrders" class="operate-btn">查看订单详情</view>
+        </view>
+         <view wx:if="{{pin_info.state==1 && is_me ==0}}">
+          <view bindtap="goGoods" class="operate-btn" >继续开团</view>
+        </view>
+        <view wx:if="{{pin_info.state==2}}">
+          <view bindtap="goGoods" class="operate-btn" >继续开团</view>
+        </view>
+        
+      </view>
+    </view>
+  </view>
+  <view class="dialog is-bottom" width="100%" style="z-index: 10005;display:{{skustate==1?' ':'none'}};">
+    <view class="dialog-mask"></view>
+    <view class="dialog-core">
+      <view class="sku sku m-fixed" position="bottom">
+        <view class="sku-content">
+          <view class="goods">
+            <view class="goods-img">
+              <view class="goods-img--inner">
+                <image mode="widthFix" src="{{goods.image}}" class="basedetailskugoodsimage" style="" />
+              </view>
+            </view>
+            <view class="goods-cont">
+              <view class="goods-cont--price">
+                <text class="goods-cont--price-unit">¥</text>
+                <text class="goods-cont--price-text">{{skupin_price}}</text>
+              </view>
+              <text class="goods-cont--stock">库存{{goods.quantity}}件</text>
+              <view class="goods-cont--addon">已选择：
+                <text wx:for-items="{{sku}}" wx:key="key" class="goods-choose">{{item.name}}，</text>
+              </view>
+            </view>
+            <view bindtap="openSku" class="goods-close">
+              <text class="goods-close--icon m-icon m-icon-close"></text>
+            </view>
+          </view>
+          <view class="sku-content--scroll">
+            <view class="scroll">
+              <view class="prop">
+                <view wx:for-items="{{options.list}}" wx:key="key" data-id="{{item.goods_option_id}}" class="prop-rows">
+                  <view class="prop-rows--title">{{item.name}}：</view>
+                  <view class="prop-rows--content">
+                    <view class="prop-list">
+                      <view wx:for="{{item.option_value}}" wx:key="key" wx:for-item="value" data-type="{{index}}_{{idx}}_{{value.option_value_id}}_{{value.name}}" wx:for-index="idx" bindtap="selectSku" class="prop-item {{idx==sku[index]['idx']?'is-selected':''}}">{{value.name}}</view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <view class="number">
+              <view class="number-title">数量：</view>
+              <view class="number-calculator">
+                <text  bindtap="setNum" data-type="decrease" class="number-calculator--reduce">-</text>
+                <text class="number-calculator--value">{{order.quantity}}</text>
+                <text  bindtap="setNum" data-type="add"  class="number-calculator--increase">+</text>
+              </view>
+            </view>
+          </view>
+          <view class="foot">
+            <text bindtap="goOrder" class="foot-okbtn">确定</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="meili-all-vue-pintuan-base-recommend">
+    <view class="more-bar" bindtap="goIndex">
+      大家都在拼
+      <text class="icon icon-arrow-right m-icon m-icon-arrow-right"></text>
+      <text class="pre-text">更多</text>
+    </view>
+    <view class="meili-all-vue-pintuan-base-recommend-card">
+      <view wx:for-items="{{list}}" wx:key="key" bindtap="goGoods2" data-type="{{item.goods_id}}" class="pin_goods_item pin_goods_single fl">
+        <view style="background-image:url({{item.image}});" class="pin_good_img loading_bg_120  fl">
+          <view class="pin_top_icon">{{item.pin_count}}人团</view>
+        </view>
+        <view class="pin_good_info fr pin_good_info_sellout">
+          <view class="pin_good_title">{{item.name}}</view>
+          <view class="pin_good_tags">
+            <view class="pin_good_tag fl">{{item.summary}}</view>
+          </view>
+          <view class="pin_good_price_info">
+            <view class="pin_goods_price fl">¥{{item.pin_price}}</view>
+            <del class="pin_goods_origin_price fl">¥{{item.danprice}}</del>
+          </view>
+          <view class="pin_info">
+            <text class="pin_info_number fl">已团{{item.seller_count}}件</text>
+          </view>
+          <view class="pin_info_gotuan">
+            <view class="pin_info_go fl">去开团</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+<view class="confirm-popup j-confirm" id="j-confirm-newer" hidden='{{hide_new}}'> 
+    <view class="confirm-content"> 
+     <view class="confirm-title">
+       这个商品仅限新用户参团哦
+     </view> 
+     <view class="confirm-text"> 
+      <view>你是老用户了，可以去开个团哦</view> 
+     </view> 
+     <view class="confirm-btn"> 
+      <view class="confirm-btn-cancel j-confirm-cancel" bindtap='cancle_tip'>取消</view> 
+      <view class="confirm-btn-confirm j-confirm-ok" bindtap='goLink' data-link="/pages/goods/index?id={{order.goods_id}}" >我来开个团</view> 
+     </view> 
+    </view> 
+</view>
+
+  <view bindtap="noticego" data-orderid ="{{notice_orderid}}" hidden="{{isHidenotice}}" class="pin_tips_container {{isHidenotice ? 'pin_tips_fadeOut' : 'pin_tips_fadeIn'}}" > 
+    <image class="pin_tips_user_pic fl" src="{{notice_avatar}}"> </image>
+    <view class="pin_tips_info fl">  
+      <view class="fl span">最新拼团来自</view>  
+      <view class="pin_tips_info_name fl span" >{{notice_name}}</view>  
+      <view class="fl span">,{{notice_miao}}秒前</view> 
+    </view>
+  </view>
+</view>
+<import src="../../nav.wxml" />
+<template is="nav" data="{{navState}}" />

@@ -1,0 +1,151 @@
+<view class="store_all">
+  <view class="shop-header">
+    <view class="meili-shoph5-module-header shop-header">
+      <view class="shop-bg" style="background-image:url({{seller.s_banner}})">
+      </view>
+      <view class='content'>
+        <view class="logo J_dynamic_imagebox  J_loading_success">
+          <image src="{{seller.s_logo}}"></image>
+        </view>
+        <view class='shop-info'>
+          <view class="name-wrap">
+            <view class="name">{{seller.s_true_name}}</view>
+          </view>
+          <view class="shop-num">
+            <view class="sale-cnt">销量 {{seller.seller_count}}</view>
+            <view class="collected-cnt">收藏 {{seller.fans_count}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='shop-search' style="display:none;">
+    <view class='search-bar'>
+      <view class='back-btn' bindtap='goback'></view>
+      <view class='form'>
+        <input class="input" bindconfirm="searchbtn" class='search-input' placeholder="搜索本店商品"/>
+      </view>
+      <view class='cart' style="display:none;"></view>
+
+    </view>
+  </view>
+
+  <view class='shop-topNav'>
+    <view class="meili-shoph5-module-topnav componentName">
+      <view class="tab-nav">
+        <view class='tab-nav-item'>
+          <view data-cur_nav="1" bindtap="navClick" class='item item-all {{cur_nav == 1 ? "on" : ""}}'>
+            全部
+          </view>
+        </view>
+        <view class="tab-nav-item">
+          <view data-cur_nav="2" bindtap="navClick" class="item item-hot {{cur_nav == 2 ? 'on' : ''}}">
+            最热
+          </view>
+        </view>
+        <view class="tab-nav-item">
+          <view data-cur_nav="3" bindtap="navClick" class='item item-new {{cur_nav == 3 ? "on" : ""}}'>
+            上新
+          </view>
+        </view>
+        <view class='tab-nav-item'>
+          <view data-cur_nav="4" bindtap="navClick" class='item item-cate {{cur_nav == 4 ? "on" : ""}}'>
+            分类
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+<view wx:if="{{quan}}" style="{{show_quan?'':' display:none;'}}" class="meili-all-vue-detail-base-promotion promotion">
+	<view class="meili-all-vue-base-slider slider" style="height: 58px;">
+		<view class="slider-wraper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
+			<view class="list" style="position: absolute;">
+				
+        <view bindtap='get_quan' data-quan_id="{{item.id}}" class="card-content list-item {{item.is_get == 1? 'get':''}}" wx:for="{{quan}}">
+					<view class="card">
+						<view class="card-price span">
+							<view class="card-price--unit span">¥</view> 
+							<view class="card-price--num span">{{item.credit}}</view>
+						</view> 
+						<view class="card-desc span" wx:if="{{item.limit_money >0}}">
+            满{{item.limit_money}}元立减</view> 
+            <view class="card-desc span" wx:else>
+            全店通用</view> 
+						<view class="card-tag span {{item.is_get == 1? 'card-tag--get':''}}">
+							<view class="card-tag--text span">已领</view>
+						</view>
+					</view>  
+				</view>
+
+				
+
+			</view>
+		</view>
+	</view>
+</view>
+
+
+  <view class="shop-body">
+    <view>
+      <view class='meili-shoph5-module-allgoods'>
+        <view class='cate-scroll' hidden="{{isHidecate}}">
+          <view class='cate-list' >
+            <view wx:for="{{seller.category_list}}" wx:key="key" data-gid="{{item.id}}" bindtap="cateClick" class='li {{gid == item.id ? "on" : ""}}' data-cateid="{{item.id}}">{{item.name}}</view>
+          </view>
+        </view>
+            
+        <view class='list-wrapper'>
+          <view class='item-good'>
+            
+            <view class='meili-shoph5-module-itemwall' wx:key="" wx:for-item="good" wx:for="{{goods}}">
+              <navigator url="/pages/goods/index?id={{good.goods_id}}" redirect>
+                <view class='a'>
+                  <view class='img-container J_dynamic_imagebox  J_loading_success'>
+                  <image mode='widthFix' src="{{good.image}}"></image>
+                  </view>
+                  <view class='name-box'>
+                    <view class='title-info'>
+                      <view class='name'>
+                      {{good.name}}
+                      </view>
+                    </view>
+                  </view>
+                  <view class='price-info'>
+                    <view class='price yahei span'>
+                      ¥{{good.danprice}}
+                    </view>
+                    <view class='span'>
+                      <view class='star'></view>
+                      <view class='collect-num'>{{good.fav_count}}</view>
+                    </view>
+                  </view>
+                </view>
+              </navigator>
+
+            </view>
+
+          </view>
+        </view>
+
+      </view>
+    </view>
+    <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+  </view>
+
+  <view bindtap="noticego" data-orderid ="{{notice_orderid}}" hidden="{{isHidenotice}}" class="pin_tips_container {{isHidenotice ? 'pin_tips_fadeOut' : 'pin_tips_fadeIn'}}" > 
+    <image class="pin_tips_user_pic fl" src="{{notice_avatar}}"> </image>
+    <view class="pin_tips_info fl">  
+      <view class="fl span">最新拼团来自</view>  
+      <view class="pin_tips_info_name fl span" >{{notice_name}}</view>  
+      <view class="fl span">,{{notice_miao}}秒前</view> 
+    </view>
+  </view>
+</view>
+
+<import src="../../footer.wxml" />
+<template is="footer" />

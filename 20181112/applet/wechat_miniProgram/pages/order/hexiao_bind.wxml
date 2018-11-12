@@ -1,0 +1,12 @@
+<!--pages/order/hexiao_bind.wxml-->
+
+
+<view class="section">
+  <view class="weui_cells_tips"  style="margin-top:50%;">您当前选择绑定门店：<text class='red'>{{store_name}}</text></view>
+  
+</view>
+
+<view class="weui_btn_area">
+	<view class="weui_btn weui_btn_primary" bindtap='sub_bind_store' id="submit-btn">确定</view>
+</view>
+

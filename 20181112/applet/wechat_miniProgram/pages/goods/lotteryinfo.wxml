@@ -1,0 +1,42 @@
+<view class="container no-footer">
+	<view class="goods-detail">
+        <view class="goods-image">
+            <image src="{{goods_info.image}}"></image>
+        </view>
+        <view class="goods-info">
+            <view class="goods-name">{{goods_info.name}}</view>
+            <view class="sale-price">￥{{pin_goods.pin_price}}</view>
+            <view class="market-price">￥{{goods_info.price}}</view>
+            <view class="status">
+                <view class="span">已开奖</view>
+            </view>
+        </view>
+    </view>
+    <view class="gap-container"></view>
+    <view class="result-title">
+        <image src="https://mall.shiziyu888.com/Common/pinduoduo/assets/img/lottery_reward_pic-f14bedd9bc.png"></image>
+        <view class="sub-title">一等奖名单</view>
+        <view class="forward-coupons" style="display:none;">点击查看代金券</view>
+    </view>
+    <view class="tab-title">
+        <view class="tab-name">幸运儿</view>
+        <view class="tab-order">订单编号</view>
+        <view class="tab-tel">电话</view>
+    </view>
+    <view class="user-list ul">
+      <view class="list-item li" wx:for="{{list}}">
+        <image class="avatar" src="{{item.avatar}}"></image>
+        <view class="item-info">
+          <view class="nickname">
+            <view class="b">{{item.uname}}</view>
+          </view>
+          <view class="order-label">{{item.order_num_alias}}</view>
+          <view class="mobile">{{item.shipping_tel}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="pullUp" id="center_pullup" status="loading" style="{{isHideLoadMore ? 'display: none;' : ''}} "> 
+     <view></view>
+     <view></view>
+    </view>
+</view>

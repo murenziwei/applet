@@ -1,0 +1,46 @@
+<!--index.wxml-->
+
+<view class="banner">
+  <swiper class="swiper" style="height: {{imageheight}}px;">
+       <block wx:for="{{slide_lottery_ad}}" wx:key="key">
+      <swiper-item>
+        <image bindtap='goBannlinc' data-url="{{item.url}}" style="width: {{imagewidth}}px; height: {{imageheight}}px;"  bindload="imageLoad" src="{{item.image}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class="goods">
+  <view wx:for-items="{{list}}" wx:key="key"  bindtap="goGoods" data-type="{{item.goods_id}}" class="pin_goods_item pin_goods_single fl">
+    <view style="background-image:url({{item.image}});" class="pin_good_img loading_bg_120  fl">
+      <view class="pin_top_icon">抽奖团</view>
+    </view>
+    <view class="pin_good_info fr pin_good_info_sellout">
+      <view class="pin_good_title">{{item.name}}</view>
+      <view class="pin_good_tags">
+        <view class="pin_good_tag fl">{{item.summary}}</view>
+      </view>
+      <view class="pin_good_price_info">
+        <view class="pin_goods_price fl">¥{{item.pin_price}}</view>
+        <del class="pin_goods_origin_price fl">¥{{item.price}}</del>
+      </view>
+      <view class="pin_info">
+        <text class="pin_info_number fl">已团{{item.seller_count}}件</text>
+      </view>
+       
+      <view class="pin_info_gotuan" wx:if="{{item.is_open == -1}}">
+        <view class="pin_info_go fl">去开团</view>
+      </view>
+      <view class="pin_info_gotuan" wx:if="{{item.is_open == 2}}">
+        <view class="pin_info_go fl">等待开奖</view>
+      </view>
+      <view class="pin_info_gotuan" wx:if="{{item.is_open == 1}}">
+        <view class="pin_info_go fl">已开奖</view>
+      </view>
+    </view>
+  </view>
+  <view  wx:if="{{LoadingComplete}}" class="tips fl {{hidetip?'hide':''}}">正在加载...</view>
+  <view  wx:else class="tips fl">^_^已经到底了</view>
+</view>
+<view class="foot_div"></view>
+<import src="../../footer.wxml" />
+<template is="footer"  data="{{tablebar}}"/>

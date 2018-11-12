@@ -1,0 +1,92 @@
+<view class='body groupLeaderIndex section'>
+  <view class="header">
+    <view class='info'>
+      <view class='img'>
+        <image src='{{user_info.member_info.avatar}}'></image>
+      </view>
+      <view class='nickname'>
+        <text>{{user_info.member_info.name}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='section-body'>
+    <view class='message'>
+      <view class='bottom2' bindtap='goindex'>
+        <view class='bonus jump'>
+          <view class='total2'>
+            <view>
+              <text>累计奖金（元）</text>
+            </view>
+            <view> 
+              <text>{{user_info.member_commiss.getmoney}}</text>
+            </view>
+          </view>
+          <view class='cashout'>
+            <view class='p  gray'>
+              可提现奖金<text>{{user_info.member_commiss.money}}</text>元
+              <view class='label'></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='bottom' bindtap='goqrcode' style="display:none;">
+        <view class='myqcode jump' >
+          <view class='font'>
+            我的二维码
+          </view>
+          <view class='gray'>
+            <view class='span'>
+              <image src='https://mall.shiziyu888.com/Common/images/qcode-675ff2114d.png'></image>
+            </view>
+            <view class='label'></view>
+          </view>
+        </view>
+      </view>
+      <view class='myfans jump' bindtap='gotuanyuan' data-type="1" wx:if="{{user_info.commiss_level_num>=1}}">  
+        <view class='font'>我的一级团员</view>
+        <view class='gray'>
+          <text>{{user_info.tuanyuan_count}}</text>人
+          <view class='label'></view>
+        </view>
+      </view>
+      <view class='myfans jump'  bindtap='gotuanyuan' data-type="2" wx:if="{{user_info.commiss_level_num>=2}}">
+        <view class='font'>我的二级团员</view>
+        <view class='gray'>
+          <text>{{user_info.second_tuanyuan_count}}</text>人  
+          <view class='label'></view>
+        </view>
+      </view>
+      <view class='myfans jump' bindtap='gotuanyuan' data-type="3" wx:if="{{user_info.commiss_level_num>=3}}">
+        <view class='font'>我的三级团员</view> 
+        <view class='gray'>
+          <text>{{user_info.three_tuanyuan_count}}</text>人
+          <view class='label'></view>
+        </view>
+      </view>
+      <view class='cs' bindtap='go_wingoods'>
+        <view class='font'>
+          马上赚钱
+        </view>
+        <view class='gray'>
+          <view class='label'></view>
+        </view>
+      </view>
+      <view class='leader' style="display:none;">
+        <view class='font'>
+          我是团长
+        </view>
+        <view class='gray'>
+          <view class='label'></view>
+        </view>
+      </view>
+
+      <view class='recommend'>
+        <view class='gray'>
+          我是由【 <text>平台</text> 】推荐
+        </view>
+      </view>
+
+
+    </view>
+  </view>
+</view>

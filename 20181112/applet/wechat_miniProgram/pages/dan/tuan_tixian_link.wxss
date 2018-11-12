@@ -1,0 +1,182 @@
+.container {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    padding: 0 0 92rpx;
+    overflow-x: hidden;
+    background-color: #f8f8f8;
+}
+.fixed {
+    width: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+}
+.strongs{
+  color:red;
+}
+.tab-bar {
+    -webkit-backface-visibility: hidden;
+    background: #333333;
+    color: white;
+    height: 56.25rpx;
+    line-height: 56.25rpx;
+    position: relative;
+}
+.tab-bar {
+    background: url(https://mall.shiziyu888.com/Common/images/topbar_bg1.png) center bottom;
+    height: 45px;
+    line-height: 45px;
+}
+.left-small {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.left-small {
+    border-right: 0;
+    height: 80rpx;
+    width: 80rpx;
+}
+.tab-bar-section {
+    padding: 0 125rpx;
+    position: absolute;
+    text-align: center;
+    height: 90rpx;
+    top: 0;
+}
+.tab-bar-section {
+    height: 90rpx;
+    margin-left: 40rpx;
+}
+.tab-bar-section.middle {
+    left: 80rpx;
+    right: 80rpx;
+}
+.tab-bar h1, .tab-bar .h2, .tab-bar .h3, .tab-bar .h4 {
+    font-size: 32rpx;
+    font-weight: normal;
+    line-height: 90rpx;
+}
+.extract {
+    margin: 120rpx 30rpx 0 30rpx;
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+.commision-total .span-title {
+    color: #999;
+    font-size: 32rpx;
+}
+.span{
+  display:inline;
+}
+.commision-total .number {
+    color: #7bc351;
+    font-size: 60rpx;
+}
+.panel {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d8d8d8;
+    margin-bottom: 25rpx;
+    padding: 25rpx;
+    background: #f2f2f2;
+}
+.extract-account {
+    margin: 22rpx 0;
+    padding: 0;
+    background: #fff;
+    overflow: hidden;
+}
+
+
+.extract-account .side-nav {
+    padding: 0;
+}
+.extract-account .side-nav .li {
+    margin: 0;
+}
+.account-none .spans{
+    line-height: 90rpx;
+    font-size: 36rpx;
+    float: left;
+    color: #999;
+    margin-left: 20rpx;
+}
+.extract-account .account-none .span {
+    line-height: 90rpx;
+    font-size: 36rpx;
+    color: #999;
+}
+.extract-account .side-nav .li .span {
+    float: left;
+}
+.address_new {
+    font-size: 26rpx;
+    position: relative;
+    padding: 20rpx;
+    border-top: 1px solid #e4e4e4;
+}
+.address_new {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.mbt10{
+  margin-bottom: 20rpx;
+}
+.address_new input {
+    background-color: #fff;
+    box-sizing: border-box;
+    color: #333;
+    line-height: 50rpx;
+    padding: 0 10rpx;
+    vertical-align: top;
+    z-index: 1;
+}
+.address_new input, .address_new select {
+    border: 1px solid #ddd;
+    font-size: 28rpx;
+    height: 70rpx;
+    width: 100%;
+}
+button, .button {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    padding: 0;
+    border: 1px solid #3396c2;
+    border-radius: 6rpx;
+    font-size: 40rpx;
+    font-family: "微软雅黑","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+}
+button.red, .button.red {
+    background: #f37872;
+    border: 1px solid #e86660;
+    text-align: center;
+    color:#fff;
+}
+.tables{
+    width: 100%;
+    margin-top:20rpx;
+}
+.tal_tr{
+  width:25%;
+  float:left;
+  text-align: center;
+  height:64rpx;
+  line-height: 64rpx;
+  color: #222222;
+}
+#tbodyshenqing{
+  background-color: #fff;
+}
+.clr{
+  clear:both;
+}
+.mlf10{
+  margin-left: 20rpx;
+}

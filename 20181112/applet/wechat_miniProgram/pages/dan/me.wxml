@@ -1,0 +1,164 @@
+<view class='head-box'>
+  <view class='user-avatar'>
+    <image src='{{member_info.avatar}}'></image>
+  </view>
+  <view class=''>
+    <view class="user-name">{{member_info.name}}</view>
+    <view class='address-link' bindtap='choseWeixinAddress' >
+      <view class='user-address'>
+        我的收货地址
+      </view>
+    </view>
+    <view wx:if="{{is_yue_open>0}}" class="user-charge" bindtap='charge_form'>
+      <view class="pd-right-6">
+        余额：{{member_info.account_money}} 元 
+      </view> 
+      <view class=' charge_button'>充值</view>
+    </view>
+  </view>
+
+  
+</view>
+<view class='cent_nav'>
+  <view class='orderTab'>
+    <view class='order_status all' bindtap='goLink2' data-link="/pages/order/index">
+      <view class='icon_span'></view>
+      全部订单
+    </view>
+   
+    <view class='order_status all' bindtap='goLink2' data-link="/pages/order/index?order_status=1">
+      <view class='icon_span icon_span_waitfa'></view>
+      待发货
+    </view>
+    <view class='order_status all' bindtap='goLink2' data-link="/pages/order/index?order_status=4">
+      <view class='icon_span icon_span_waitshouhuo'></view>
+      待收货
+    </view>
+    <view class='order_status all' bindtap='goLink2' data-link="/pages/order/index?order_status=6">
+      <view class='icon_span icon_span_waitcomment'></view>
+      待评价
+    </view>
+     <view class='order_status all' bindtap='goLink2' data-link="/pages/order/index?order_status=12">
+      <view class='icon_span icon_span_waitfu'></view>
+      售后
+    </view>
+  </view>
+</view>
+
+<view class='collection-tips'>
+  <view class='collection-header J_link' bindtap='goLink2' data-link="/pages/order/pintuan">
+    <view class='item-text'>
+      <view class='item-main'>
+        <view class="item-title item-pintuan" >我的拼团</view>
+        <view class="coupon-num"></view>
+      </view>
+    </view>
+  </view>
+  <view class='collection-header J_link'  bindtap='goLink2' data-link="/pages/dan/quan">
+    <view class='item-text'>
+      <view class='item-main'>
+        <view class="item-title">优惠券</view>
+        <view class="coupon-num"></view>
+      </view>
+    </view>
+  </view>
+  <view class='collection-header J_link' bindtap='goLink2' data-link="/pages/dan/myfav"> 
+    <view class='item-text'>
+      <view class='item-main'>
+        <view class="item-title item-fav">我的收藏</view>
+        <view class="coupon-num"></view>
+      </view>
+    </view>
+  </view>
+  <view class='collection-header J_link' bindtap='goLink2' data-link="/pages/dan/asklist" > 
+    <view class='item-text'>
+      <view class='item-main'>
+        <view class="item-title item-ask">常见问题</view>
+        <view class="coupon-num"></view>
+      </view>
+    </view>
+  </view>
+  
+
+  <view class='collection-header J_link' bindtap='shenqing_tuan' wx:if="{{is_open_commiss == 1 && member_info.comsiss_flag == 0}}"> 
+    <view class='item-text'>
+      <view class='item-main'>
+        <view class="item-title item-tuanz">升级为超级团长</view>
+        <view class="coupon-num"></view>
+      </view>
+    </view>
+  </view>
+  <view class='collection-header J_link' bindtap='goLink2' data-link="/pages/dan/tuaninfo" wx:if="{{is_open_commiss == 1 &&  member_info.comsiss_flag == 1}}"> 
+    <view class='item-text'>
+      <view class='item-main'>
+        <view class="item-title item-tuanz">超级团长</view>
+        <view class="coupon-num"></view>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+<view class='guess_box' hidden='{{showguess}}'>
+  <view class='guess_title'>
+    <view class='floor_title '>
+      <view class='title_bg'>
+        猜你喜欢
+      </view>
+    </view>
+  </view>
+  <view class='guess_goods'>
+    
+    <view wx:for-items="{{guessdata}}" wx:key="key"  bindtap="goGoods" data-type="{{item.goods_id}}" class='item-wrap waterfall-frame-1 waterfall-box waterfall-optimise-show'>
+      <view class='iwf'>
+        <view class='img-wrap J_dynamic_imagebox'>
+          <image class="J_dynamic_img fill_img scrollLoading" mode="widthFix" src="{{item.image}}" ></image>
+        </view>
+        <view class="title">   {{item.name}}  </view>
+        <view class='bot_box clearfix'>
+          <view class='pt_icon'> </view>
+          <view class="p_price fl" >¥{{item.pin_price}}</view>
+          <view class='p_feed fr'>{{item.fav_goods}}</view>
+        </view>
+      </view>
+    </view>
+    
+  </view>
+</view>
+
+
+<view class="bottom_view"> </view>
+
+<!--弹窗-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="modal-title">充值</view>
+  <view class="modal-content">
+    <view class="modal-input">
+      <input placeholder-class="input-holder" focus="{{getfocus}}" type="number" maxlength="10" bindinput="inputChange" class="input" placeholder="请输入充值金额"></input>
+    </view>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+  </view>
+</view>
+
+<view hidden='{{is_login}}'>
+	<view class="bg-fill app-bg-fill">
+		<view id="prompt-default">
+			
+			<view class="content-wrapper">
+				<view class="detail" id="prompt-default-detail">
+					<view class="title">请先授权登录</view>
+				</view>
+				<view class="buttons buttons-confirm">
+          <button  bindtap='close_win' bindgetuserinfo="bindGetUserInfo" open-type="getUserInfo"  class="button">授权登录</button>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<import src="../../footer.wxml" />
+<template is="footer"  data="{{tablebar}}"/>

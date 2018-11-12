@@ -1,0 +1,119 @@
+<!--pages/pinduoduo/category.wxml-->
+<view id="main" wx:if="{{loadover}}">
+  <view id="index-content-v2">
+    <!-- nav begin -->
+      <view id="navbar" class='nav-bar-container' style="display:none;">
+        <view class='nav-bar-content' id="navbar-ul">
+          <view class='nav-bar-item' bindtap='common_go_link' data-link="/pages/index/index">
+            <view class='span'>首页</view>
+          </view>
+          <view class='nav-bar-item ' wx:for="{{nav}}" bindtap='common_go_link' data-id="{{item.id}}" data-link="/pages/goods/category?id={{item.id}}">
+            <view class='span {{item.id == cur_pid ? "nbi-selected":""}}'>
+              {{item.name}}
+            </view>
+          </view>
+        </view>
+      </view>
+    <!-- nav end -->
+    <!-- newnav begin -->
+    <view class='nav_all_catgoods catname-slide-up' id="catname-slide-up" wx:if="{{show_more_cate}}">
+      <view class='nav_all_catgoods_header'>
+        <text class='span'>全部分类</text>
+        <view class='nav-fix-cat-arrow-bg' bindtap='hide_cate_d'>
+          <view class='nav_fix_cat std-goods-imgage-arrow'></view>
+        </view>
+      </view>
+      <view class='nav_all_catgoods_body'>
+        <view class='nav_all_catgoods_one' bindtap='common_go_link' data-id="{{cur_pid}}" data-link="/pages/goods/category?id={{cur_pid}}">
+          <text style='padding: 3px 0;' class='nav_cur_catgoods_one'>全部</text>
+        </view>
+        <view class='nav_all_catgoods_one' wx:for="{{subcate}}"  data-id="{{item.id}}" bindtap='common_go_link' data-link="/pages/goods/category?id={{item.id}}">
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+    </view>
+    <view id="nav_all_mask" bindtap='hide_cate_d' class=" {{show_more_cate ? 'show' : 'hide'}}"></view>
+
+    <view class='nav_fixed_wrap' wx:if="{{subcate.length >0}}">
+      <view class='nav_fixed_catgoods'>
+        <view class='fixed_nav_item_catgoods fixed_nav_item_catgoods_first'  bindtap='common_go_link' data-link="/pages/goods/category?id={{cur_ppid}}" data-id="{{cur_ppid}}">
+          <text class='{{cur_ppid == cur_pid ? "nav_cur_cat":""}}'>全部</text>
+        </view>
+        <view class='fixed_nav_item_catgoods' data-id="{{item.id}}" wx:for="{{subcate}}"  bindtap='common_go_link' data-link="/pages/goods/category?id={{item.id}}">
+          <text class='{{cur_pid == item.id ? "nav_cur_cat":""}}'>{{item.name}}</text>
+        </view>
+        
+      </view>
+      <view class='nav_fix_cat_btn' bindtap='show_more_cate' wx:if="{{subcate.length >4}}">
+        <view class='nav_fix_cat std-goods-imgage-arrow'></view>
+      </view>    
+    </view>
+    <!-- newnav end   -->
+    <!-- content begin-->
+    <view id="index-main-content" style="{{subcate.length >0 ? 'padding-top:82rpx;' :'padding-top:0rpx;'}}"
+>
+      <view id="pcv">
+        <view id="pcv-tv1-14">
+          <!--开始二级分类-->
+          <view class='category-board-module-v2-s1' wx:if="{{subcate.length >0}}" style="display:none;">
+            <view class='cbmv2-wrapper'>
+              <view class='li' wx:for="{{subcate}}" bindtap='common_go_link' data-link="/pages/goods/category?id={{item.id}}">
+                <view class='cbmv2-item-box'>
+                  <view class='cbmv2-item-img'>
+                    <image src='{{item.logo}}'></image>
+                  </view>
+                  <view class='cbmv2-item-name'>
+                    <view class='span'>
+                      {{item.name}}
+                    </view>
+                  </view>
+                </view>
+              </view>
+
+            </view>
+          </view>
+          <!--结束二级分类-->
+		  
+		  
+          <!--开始商品 -->
+          <view class='react-base-list-wrapper pcl-list-wrapper'>
+			
+            <view bindtap="goGoods_link" data-type="{{item.goods_id}}" class='double-grid-one double-grid-one-0' wx:for="{{list}}">
+              <view class='double-grid-item gap-right'>
+                <view style="position:relative" class='std-goods-image-square goods-image'>
+                <view wx:if="{{item.quantity != 0 && item.deliver_time!=0}}" style="width:88rpx;height:88rpx;position:absolute;right:0;top:0px;z-index:999"><image src="../../images/pre.png" style='height:100%;'></image></view>
+                <view wx:if="{{item.quantity == 0}}" style="width:60px;height:21px;position:absolute;right:0;top:5px;z-index:999"><image src="../../images/replenishment.png" style='height:100%;'></image></view>
+                  <image src='{{item.image}}' mode='widthFix'></image>
+                  <view wx:if="{{item.deliver_time!=0}}" style="background:rgba(255,87,118,.8);width:100%;position:absolute;bottom:1px;text-align:center;color:#fff;line-height:21px;">预售：预计{{item.deliver_time}}发货</view>
+                </view>
+                <view class='goods-name'>
+                  {{item.name}}1
+                </view>
+                <view class='detail'>
+                  <view class='price-icon b'>
+                    ￥
+                  </view>
+                  <view class='price b'>
+                      {{item.pinprice}}
+                  </view>
+                  <view class='info'>
+                    <view class='span'>
+                      已售{{item.seller_count}}
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <!--结束商品-->
+
+        </view>
+      </view>
+    </view>
+    <!-- content end -->
+
+	<view  wx:if="{{LoadingComplete}}" class="tips  {{hidetip?'hide':''}} ">正在加载...</view>
+    <view  wx:else class="tips ">{{tip_html}}</view>
+	
+  </view>
+</view>

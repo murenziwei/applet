@@ -1,0 +1,175 @@
+<!--car.wxml-->
+<view class="body">
+  <view class="wrapper">
+    
+    <view class="grid-wrap cart">
+      <view wx:for="{{carts}}" wx:key="id">
+        <view class="cart-brand-list" wx:if="{{item.shopcarts.length > 0}}" >
+          <view class="header">
+            <view bindtap="shopselect" class="cart-select-dot {{item.isselect?'selected':''}}" data-index="{{index}}" data-id="{{index}}"></view>
+            <view class="p title2 util-ellipsis">
+              <view class="p cart-martshow-go">{{item.shopname}}
+                <view class="span" style="color:#CCC">></view>
+              </view>
+            </view>
+            <view class="get-coupon-btn">
+              <view bindtap="edit" class="span coupon-edit" style="display:{{item.caredit}}" data-index="{{index}}" data-id="{{index}}">编辑</view>
+              <view bindtap="finish" class="span coupon-edit" style="display:{{item.finish}}" data-index="{{index}}" data-id="{{index}}">完成</view>
+            </view>
+          </view>
+          <view wx:for="{{item.shopcarts}}" wx:for-item="shopcarts" wx:for-index="idx" >
+            <view class="cart-item-list">
+              <view bindtap="goodsselect" class="cart-select-dot {{shopcarts.isselect?'selected':''}}" data-index="{{idx}}" data-parentid="{{index}}"></view>
+              <view class=" cart-item-wrapper">
+                <view>
+                  <view class="cart-item-img">
+                    <image src="{{shopcarts.imgurl}}" class="img"></image>
+                  </view>
+                </view>
+                <view class="cart-item-info" >
+                  <view style="display:{{shopcarts.edit}}">
+                    <view class="p title2">{{shopcarts.title}} </view>
+                  </view>
+                  <view class="p cart-control " style="display:{{shopcarts.finish}}">
+                    <view bindtap="regoodsnum" class="p mul-btn" style="float:left" data-index="{{idx}}" data-parentid="{{index}}">-</view>
+                    <view class="p  num-input " readonly="readonly" style="float:left;margin-left:4rpx;margin-right:4rpx">{{shopcarts.goodsnum}}</view>
+                    <view bindtap="addgoodsnum" class="p mul-btn " data-index="{{idx}}" data-parentid="{{index}}">+</view>
+                  </view>
+                  <view   wx:if="{{shopcarts.description == 'description'}}" class=" {{shopcarts.description}} util-ellipsis" style="">{{shopcarts.goodstype}}</view>
+                  <view wx:else="{{shopcarts.description == 'onedit-description'}}"class=" {{shopcarts.description}} util-ellipsis" style="">{{shopcarts.goodstypeedit}}</view>
+                  <view class="cart-item-price" style="display:{{shopcarts.edit}}">
+                    <view class="p discount">¥ {{shopcarts.currntprice}}</view>
+                    <view class="p original">¥ {{shopcarts.price}}</view>
+                  </view>
+                   <view class="p cart-item-number " style="display:{{shopcarts.edit}}">
+                    <view bindtap="regoodsnum" class="p mul-btn" style="float:left" data-index="{{idx}}" data-parentid="{{index}}">-</view>
+                    <view class="p  num-input " readonly="readonly" style="float:left;margin-left:4rpx;margin-right:4rpx;width:74rpx">{{shopcarts.goodsnum}}</view>
+                    <view bindtap="addgoodsnum" class="p mul-btn " data-index="{{idx}}" data-parentid="{{index}}">+</view>
+                  </view>
+                  <!--<view class="cart-item-number" style="display:{{shopcarts.edit}}">×{{shopcarts.goodsnum}}</view>-->
+                </view>
+                <view class="promotion-text"></view>
+                <view bindtap="delgoods" class="p cart-delete" style="display:{{shopcarts.finish}}" data-index="{{idx}}" data-parentid="{{index}}">删除</view>
+              </view>
+            </view>
+             
+          </view>
+          <view class="cart-item-sum">
+            <view class="cart-preferential-status">
+              <view class="cart-count">
+                <view class="p" style="color:#8f8f8f;font-size:24rpx;text-align:right">小计：
+                  <view class="span price">¥ {{item.count}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+      </view>
+      <view class="empty-cart" style="display:{{carts.length==0?'block':'none'}}">
+        <view class="cart-img"></view>
+        <view class="cart-hint">购物车空空如也，快来挑好货吧</view>
+        <view bindtap='goindex' class="span cart-btn">逛逛今日特卖</view>
+      </view>
+    </view>
+    <view></view>
+    <view class="lose-list" style="display:none">
+      <view wx:for="{{loselist}}" wx:key="id">
+        <view class="lose-item">
+          <view>
+            <view class="lose-icon-container">
+              <view class="span lose-icon">失效</view>
+            </view>
+            <view class="lose-item-wrapper">
+              <view class="lose-item-img">
+                <image src="{{item.imgurl}}"> </image>
+              </view>
+              <view class="lose-item-info">
+                <view class="title2">{{item.title}}</view>
+                <view class="description util-ellipsis">{{item.goodstype}}</view>
+                <view class="button-container">
+                  <view class="span collect-button">加入收藏</view>
+                  <view class="span similar-button">找相似</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="clear-button-container" style="display:none;">
+        <view  bindtap="clearlose" class=" span clear-button " >清空失效商品</view>
+      </view>
+    </view>
+
+    <view class="recommand-module" style="display:none;">
+      <view class="recommand-module-title">
+        <image src="https://b0.hucdn.com/party/2016/8/upload_1f3f9734b1c962a640fe1ca1798a8327_30x30.png"></image>
+        <view class='span recommand-module-title-span'>大家还买了</view>
+      </view>
+      <view class="recommand-list">
+        <view wx:for="{{recolist}}" wx:key="id">
+          <view class="recommand-item">
+            <view>
+              <view class="recommand-item-img">
+                <image src="{{item.imgurl}}"></image>
+              </view>
+              <view class="info">
+                <view class="title2">{{item.title}}</view>
+                <view class="price">
+                  <view class="span sell-price"> ¥
+                    <view class="span" style="font-size:32rpx">{{item.currntprice}}</view>
+                  </view>
+                  <view class="span original-price">¥ {{item.price}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='guess_box' >
+      <view class='guess_title'>
+        <view class='floor_title '>
+          <view class='title_bg'>
+            大家还买了
+          </view>
+        </view>
+      </view>
+      <view class='guess_goods'>
+        
+        <view wx:for-items="{{guessdata}}" wx:key="key"  bindtap="goGoods" data-type="{{item.goods_id}}" class='item-wrap waterfall-frame-1 waterfall-box waterfall-optimise-show'>
+          <view class='iwf'>
+            <view class='img-wrap J_dynamic_imagebox'>
+              <image class="J_dynamic_img fill_img scrollLoading" mode="widthFix" src="{{item.image}}" ></image>
+            </view>
+            <view class="title2">   {{item.name}}  </view>
+            <view class='bot_box clearfix'>
+              <view class='pt_icon'> </view>
+              <view class="p_price fl" >¥{{item.pin_price}}</view>
+              <view class='p_feed fr'>{{item.fav_goods}}</view>
+            </view>
+          </view>
+        </view>
+        
+      </view>
+    </view>
+
+    <view class="group-nav" style="display:{{carts.length==0?'none':'block'}}">
+      <view class="checkout">
+        <view class="select-all">
+          <view bindtap="allselect" class="span cart-select-dot {{allselect?'selected':''}}"></view>全选
+        </view>
+        <view class="checkout-info-wrapper">
+          <view bindtap="toorder" class="span button" style="background:{{allnum==0?'#CCCCCC':'#ff4965'}}">结算({{allnum}})</view>
+          <view class="span info">
+            <view class="price"> 总计： ¥ {{allcount}} </view>
+            <view class="save" style="display:none;">立减：¥ {{recount}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<import src="../../footer.wxml" />
+<template is="footer"  data="{{tablebar,s_num}}"/>

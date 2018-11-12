@@ -1,0 +1,53 @@
+.list-myorder {
+    margin: 20rpx 30rpx 20rpx 30rpx;
+    border: 1px solid #d9d9d9;
+    border-radius: 3px;
+    box-shadow: 0 2px 2px rgb(230,230,230);
+    font-size: 28rpx;
+}
+.list-myorder .ul-product {
+    margin: 10rpx 30rpx;
+    line-height: 1.2;
+}
+.hide{
+  display:none;
+}
+.list-myorder .li {
+    padding: 20rpx 0;
+    list-style: none;
+    border-bottom: 1px dotted #ccc;
+    overflow: hidden;
+}
+.list-myorder .pic {
+    float: left;
+    width: 140rpx;
+    height: 140rpx;
+    margin-right: 10px;
+    padding: 1px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+.list-myorder .pic image {
+    width: 100%;
+    height: 100%;
+}
+.list-myorder .text {
+    overflow: hidden;
+    font-size: 28rpx;
+}
+.list-myorder .pro-name {
+    color: #333;
+    font-size: 14px;
+}
+.list-myorder .pro-pric {
+    margin-top: 5px;
+    color: #333;
+    font-size: 14px;
+}
+.list-myorder .pro-pric .span {
+    font-size: 14px;
+    color: #999;
+}
+.span{
+  display:inline;
+}

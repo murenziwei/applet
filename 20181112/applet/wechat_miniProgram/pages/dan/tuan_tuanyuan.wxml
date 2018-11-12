@@ -1,0 +1,27 @@
+<view id="main">
+  <view class='list-myorder'>
+    <view class='ul-product'>
+      
+      <view class='li' wx:for="{{list}}">
+        <view class='pic'>
+          <image src='{{item.avatar}}'></image>
+        </view>
+        <view class='text'>
+          <view class='pro-name'>
+            昵称：{{item.name}}
+          </view>
+          <view class='pro-pric'>
+            <text class='span'>关注时间：</text>{{item.create_time}}
+          </view>
+          <view class='pro-pric'>
+            <text>推荐上级：</text>{{item.parent_name}}
+          </view>
+        </view>
+      </view>
+
+      <view  wx:if="{{LoadingComplete}}" class="tips fl {{hidetip?'hide':''}} ">正在加载...</view>
+      <view  wx:else class="tips fl">{{tip_html}}</view>  
+    </view>
+  </view>
+</view>
+

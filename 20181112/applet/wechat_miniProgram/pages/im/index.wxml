@@ -1,0 +1,70 @@
+<import src="../../wxParse/wxParse.wxml"/>
+<view id="imContainer">
+  <view class='chat-body with-header'>
+    <view class='navbar chat-header'>
+      <view class="back" style="display:none;">返回</view>
+      <view class="name h5">{{seller_info.s_true_name}}</view>
+      <view class="close-frame span"></view>
+    </view>
+    <view class='chat-main'>
+      <view>
+        <view class='chat-rooms show'>
+          <view class='goods-box' hidden="{{is_goods}}">
+              <view class='goods-msg'>
+                <image src="{{goods.image}}"></image>
+                <view class="title">{{goods.name}}</view>
+                <view class="btn btn-clear span" style="display:none;"></view>
+                <view class="price">
+                  ¥{{goods.price}}
+                  <view bindtap='sendGoodsLink' class="btn btn-sm span">发送链接</view>
+                </view>
+              </view>
+          </view>
+          <scroll-view bindscrolltoupper="loadmorepages" style="{{is_goods ?'padding-top:0px;height:882rpx;':''}}" class="list msglist-active goods-show list-msg" scroll-into-view="{{toView}}"  scroll-y >
+            
+            <view  class="history-btn span">{{tips_more}}</view>
+            <view  id="msg{{index}}" wx:for="{{msglist}}" wx:key="{{key}}"  class="msg {{item[0].type == 'client_sayto_seller' ? 'msg-mine':''}}" >
+              <view  class="avatar " style="width: 32px; height: 32px; background-color: rgb(255, 255, 255); color: rgb(255, 255, 255);">
+                <image src="{{item[0].avatar}}"  style="border-radius: 50%;"></image>
+              </view>
+              <view class="msg-context">
+                <view class="goods-msg" wx:if="{{item[0].content_type =='goods'}}">
+                    <image src="{{item[0].goods_image}}" alt=""></image>
+                    <view class="title">{{item[0].goods_name}}</view>
+                    <view class="price">¥{{item[0].goods_price}}</view>
+                </view>
+                <view class="msg-img" wx:if="{{item[0].content_type =='image'}}">
+                  <image src="{{item[0].image}}"  width="200" ></image>
+                </view>
+                <view class="span span_temp" wx:if="{{item[0].content_type =='text'}}"><template is="wxParse" data="{{wxParseData:item}}"/></view>
+              </view>
+              <view style="text-align: center;">
+                <view class="msg-notice span">{{item[0].sent}}</view>
+              </view>
+              
+            </view>
+            
+
+            
+            
+          </scroll-view>
+          <view class='chat-text '>
+            <view class="list  list-horizontal" bindtap='choseImg'>
+              <view class="item file-item">
+                <input type="file" name="image" class="upload-file"></input>
+                <view class="icon">
+                  <view class="icon-image span"></view>
+                  图片
+                </view>
+              </view>
+            </view>
+            <input  placeholder="" value="{{inpu_val}}" bindinput="inChange" class="editor " />
+            <view class="btn btn-primary" bindtap='sendmsgtoseller'>发送</view>
+
+          </view>
+
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

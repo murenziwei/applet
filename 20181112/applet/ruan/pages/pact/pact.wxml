@@ -1,0 +1,30 @@
+<view class="wx-body">
+   <view>
+     <view class="pact-info">
+          {{pi.info}}
+     </view>
+   </view>
+   <view>
+     <view class="pact-content">
+          <block wx:for="{{pc.data}}" wx:for-index="pdIndex" wx:for-item="pdItem" wx:key="pdKey">
+            <view class="pc-item">
+                <view class="pc-i-title">{{pdItem.title}}</view>
+                <view class="pc-i-frame">
+                   <block wx:for="{{pdItem.son}}" wx:key="sKey">
+                      <view class="pc-i-list">
+                        {{index+1}}.{{item}}
+                      </view>
+                   </block>
+                </view>
+            </view>
+          </block>
+     </view>
+   </view>
+   <view>
+     <view class="pact-tar">
+        <navigator url="../../issue/issue">
+           <button class="pact-btn">本人已阅读，进入发布</button>
+        </navigator>
+     </view>
+   </view>
+</view>

@@ -1,0 +1,45 @@
+<view id="main">
+  <view class="nav">
+    <scroll-view scroll-x style="width: 100%">
+      <view data-id="-1" data-navid="0"  bindtap="choiceMenu" data-navid="-1" class="nav_item {{menuindex == -1 ? 'cur' : ''}}">全部</view>
+      <view wx:for="{{nav}}" wx:key="key" data-id="{{index}}" data-navid="{{item.id}}" bindtap="choiceMenu" class="nav_item {{menuindex == index ? 'cur' : ''}}">{{item.name}}</view>
+    </scroll-view>
+  </view>
+  <view class='base-list-wrapper'>
+
+    <view class='spike-list-item-0' wx:for="{{list}}" data-link="/pages/goods/index?id={{item.goods_id}}" bindtap="goLink">
+      <view>
+        <view class='spike-goods'>
+            <image src='{{item.image}}' class='spike-img scrollLoading'></image>
+            <view class='spike-info'>
+              <view class='spike-goods-name'>
+                {{item.name}}
+              </view>
+              <view class='spike-buy'>
+                <view class='all-price'>
+                  <text class='sale-symbol'>￥</text>
+                  <text class='sale-price'>{{item.price}}</text>
+                  <text class='sale-symbol'>预计佣金:￥</text>
+                  <text class='sale-price'>{{item.yong_money}}</text>
+                </view>
+                <view class='left-time spike-button-on'>
+                  <view class='quantity'>
+                    <view class=' head'>
+                      剩余:<text>{{item.quantity}}</text>件
+                    </view>
+                  </view>
+                  <view class='btnClass'>
+                    去分享
+                  </view>
+                </view>
+              </view>
+            </view>
+        </view>
+
+
+      </view>
+    </view>
+    <view  wx:if="{{LoadingComplete}}" class="tips fl {{hidetip?'hide':''}} ">正在加载...</view>
+      <view  wx:else class="tips fl">{{tip_html}}</view>  
+  </view>
+</view>

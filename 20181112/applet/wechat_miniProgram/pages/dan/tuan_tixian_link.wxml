@@ -1,0 +1,81 @@
+<view class="container">
+  <view class='main-view'>
+    <view class='fixed'>
+      <view class='tab-bar'>
+        <view class='left-small'>
+        </view>
+        <view class='middle tab-bar-section'>
+          <view class='title h1'>
+            提取金额
+          </view>
+        </view>
+      </view>
+    </view> 
+    <view class='panel extract'>
+      <view class='commision-total'>
+        <view class='span-title span'>
+          可提现金额
+        </view>
+        <view class='number span'>
+          ¥{{info.money}}
+        </view>
+        <view wx:if="{{info.limit_money >0}}">(佣金满{{info.limit_money}}元可提现)</view>
+      </view>
+      <view class='panel extract-account'>
+        <view class='side-nav'>
+          <view class='account-none li'>
+            <view class='spans'>
+              <view class='span mlf10'>
+                <view>用户名：{{info.bankname}}</view>
+                <view>银行卡号:{{info.bankaccount}}</view>
+                <view>银行名称:{{info.bankusername}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='address_new mbt10'>
+        <input type='digit' placeholder='提现金额' bindinput='tixian_money'></input>
+      </view>
+      <view class='button [radius round] red' bindtap='shenqing'>
+        立即申请
+      </view>
+      <view class='tables' wx:if="{{list}}">
+        <view class='tal_tr'>
+          提现单号
+        </view> 
+        <view class='tal_tr'>
+          提现金额
+        </view> 
+        <view class='tal_tr'>
+          提现状态
+        </view>
+        <view class='tal_tr'>
+          提现时间
+        </view>
+        <view class='clr'></view>
+      </view>
+      <view id="tbodyshenqing" wx:for="{{list}}">
+        <view class='tal_tr'>
+          {{item.id}}
+        </view>
+        <view class='tal_tr'>
+         {{item.money}}
+        </view>
+        <view class='tal_tr'>
+          <text wx:if="{{item.state == 0}}">申请中</text>
+          <text class='strongs' wx:if="{{item.state == 1}}">已到账</text>
+          <text wx:if="{{item.state == 2}}">已拒绝</text>
+        </view>
+        <view class='tal_tr'>
+          {{item.addtime}}
+        </view>
+        <view class='clr'></view>
+      </view>
+      <view  wx:if="{{LoadingComplete}}" class="tips fl {{hidetip?'hide':''}} ">正在加载...</view>
+      <view  wx:else class="tips fl">{{tip_html}}</view>
+      <view class='clr'></view>
+    </view>
+
+  </view>
+</view>

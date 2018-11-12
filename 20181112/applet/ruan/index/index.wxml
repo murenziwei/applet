@@ -1,0 +1,90 @@
+<view class="wx-body">
+  <view>
+    <view class="wx-topReport" style="background-image:url({{tr.trBg}})">
+      <view class="tr-cause">
+         初步的为未来打下小程序基础
+      </view>
+      <view class="tr-fact">
+         小程序网友我已达到了 <text class="tfR" >{{tr.tfCount}}</text> 级
+      </view>
+    </view>
+  </view>
+  <view>
+    <view class="wx-flash">
+       <view class="f-flex">
+          <icon type="info"></icon>
+          <swiper class="ff-swiper" duration="{{lwf.duration}}" autoplay="{{lwf.autoplay}}" vertical="{{lwf.vertical}}" interval="{{lwf.interval}}" circular="{{lwf.circular}}">
+             <block wx:for="{{lwf.ffSwiper}}" wx:key="ffSkey">
+                <swiper-item class="ff-s-item">
+                    <text class="ff-s-text">
+                       {{index}}:{{item.text}}
+                    </text>
+                </swiper-item>
+             </block>
+          </swiper>
+       </view>
+    </view>
+  </view>
+  <view>
+    <view class="wx-slide-urgency">
+        <view class="su-top">
+            <view class="su-t-title">{{su.title}}</view>
+            <view class="su-t-prom">{{su.prompt}}</view>
+        </view>
+        <swiper class="su-b-swiper" autoplay="{{su.autoplay}}" duration="{{su.duration}}" vertical="{{su.vertical}}" interval="{{su.interval}}" circular="{{su.circular}}">
+           <block wx:for="{{su.swiper}}" wx:key="suKey">
+              <swiper-item>
+                   <view class="su-s-item">
+                      <block wx:for="{{item.arr}}" wx:for-index="arrIndex" wx:for-item="arrItem" wx:key="suarrKey">
+                        <view data-href="{{arrItem.href}}" class="ssi-child" style="background-image:url({{arrItem.imgUrl}})">
+                          <view class="sc-data">
+                            <view class="s-d-name">{{arrItem.name}}（{{arrItem.gender}}）</view>
+                            <view class="s-d-age">{{arrItem.age}}岁</view>
+                            <view class="s-d-time">{{arrItem.time}}升级</view>
+                          </view>
+                        </view>
+                      </block>
+                   </view>
+              </swiper-item>
+           </block>
+        </swiper>
+    </view>
+  </view>
+  
+  <view>
+    <view class="wx-people-means">
+        <view class="su-top">
+            <view class="su-t-title">{{pm.title}}</view>
+            <view class="su-t-prom">{{pm.prompt}}</view>
+        </view>
+        <scroll-view class="wx-p-datas">
+          <block wx:for="{{pm.arr}}" wx:key="pmKey">
+              <view class="pd-item" >
+                   <view class="pd-top">
+                       <view class="p-t-left">
+                          <image src="{{item.imgUrl}}" class="ptl-img" />
+                       </view>
+                       <view class="p-t-right">
+                          <view class="ptr-title">{{item.title}}</view>
+                          <view class="ptr-name">失踪人：{{item.name}}（{{item.gender}}）</view>
+                          <view class="ptr-age">年龄：{{item.age}}岁</view>
+                          <view class="ptr-date">失踪日期：{{item.date}}</view>
+                          <view class="ptr-address">失踪地址：{{item.address}}</view>
+                       </view>
+                   </view>
+                   <view class="pd-bottom">
+                      <view class="p-b-left">
+                         <icon type="success" size="20" class="pbl-icon"></icon>
+                            <text class="pbl-num">{{item.num}}</text>
+                            人正在一起寻找
+                      </view>
+                      <view class="p-b-right">
+                          <button class="pbr-btn">帮我回家</button>
+                      </view>
+                   </view>
+              </view>
+          </block>
+        </scroll-view>
+    </view>
+  </view>
+</view>

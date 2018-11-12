@@ -1,0 +1,45 @@
+<view class="main-view container">
+  <view>  
+    <view class='react-base-list-wrapper bargain-orders'>
+      <view class='cb-order-list'>
+        
+        <view class='cb-order-item' wx:for="{{list}}">
+          <image src='{{item.image}}' class='scrollLoading'></image>
+          <view class='order-right'>
+            <view class='goods-name'>
+              {{item.name}}
+            </view>
+            <view class='remain' wx:if="{{item.state ==0}}">
+              <view class='remain-desc'>离免费领取</view>
+              <view class='remain-price'>
+                还差{{item.deal_money}}元
+              </view>
+            </view>
+            <view class='remain' wx:if="{{item.state ==2}}">
+              <view class='remain-desc'></view>
+              <view class='remain-price'>
+                砍价失败
+              </view>
+            </view>
+
+            <button class='button' wx:if="{{item.state ==2}}" bindtap='go_bargain_index'>重砍一个</button>
+            <button class='button' wx:if="{{item.state ==0}}" bindtap='go_bargain_kan' data-order_id="{{item.id}}">继续砍价</button>
+            <button class='button' wx:if="{{item.state ==1}}" bindtap='go_bargain_kan' data-order_id="{{item.id}}">砍价成功</button>
+          </view>
+        </view>
+
+      </view>
+    </view>
+     <view  wx:if="{{LoadingComplete}}" class="tips fl {{hidetip?'hide':''}} ">正在加载...</view>
+      <view  wx:else class="tips fl">{{tip_html}}</view>
+  </view>
+  <view class='cb-tab'>
+    <view class='tab-item' bindtap='go_bargain_index'>
+      <text class='icon-bargain'>砍价商品</text>
+    </view>
+    <view class='tab-item' bindtap='go_bargain_me'>
+      <text class='icon-bargain-group active'>我的砍价</text>
+    </view>
+    <view class='tab-split'></view>
+  </view>
+</view>

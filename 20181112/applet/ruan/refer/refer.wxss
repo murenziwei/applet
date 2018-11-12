@@ -1,0 +1,64 @@
+.wx-body{
+  background-color:rgba(0,0,0,0.1);
+}
+.wx-body>view{
+  margin-bottom:10rpx;
+  background-color:#fff;
+  padding-bottom:10rpx;
+}
+.wx-topReport{
+  text-align:center;
+  background-repeat:no-repeat;
+  background-size:100% 100%;
+  height:300rpx;
+  margin:20rpx;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-content:center;
+  color:#fff;
+  border-radius:10rpx;
+  box-shadow:6rpx 6rpx rgba(0,0,0,0.2);
+}
+
+/* 文章详情样式 */
+
+.pd-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:150rpx;
+  padding:20rpx;
+  border-bottom:2rpx solid rgba(0,0,0,0.1);
+}
+.pd-i-left{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  height:100%;
+  width:450rpx;
+}
+.pd-i-l-bottom{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-size:22rpx;
+}
+.pd-i-l-top{
+  font-weight:bold;
+  font-size:30rpx;
+}
+.pd-i-r-img{
+  width:250rpx;
+  height:150rpx;
+  border-radius:10rpx;
+}
+.pil-b-read{
+  display:flex;
+  align-items:center;
+}
+.pil-b-read>.iconfont{
+  font-size:22rpx;
+  display:flex;
+  align-items:center;
+}
