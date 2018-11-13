@@ -1,0 +1,37 @@
+/* pages/dan/askdetail.wxss */
+.faq-wrap {
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-bottom: 50px;
+    margin-left: 4%;
+    margin-right: 4%;
+    font-size: 16px;
+}
+.faq-header {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    color: #000;
+    border-bottom: 1px solid #ccc;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.faq-list {
+    width: 100%;
+    margin-top: 10px;
+}
+.faq-list-one {
+    margin-bottom: 8px;
+}
+.faq-list-one {
+    margin-bottom: 8px;
+}
+.faq-list-one image{
+  width: 100%;
+}
+.in-center{
+  text-align: center;
+}

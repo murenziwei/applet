@@ -1,0 +1,155 @@
+<view class="buy">
+  <view class="tabs list-card tabs-top tabs-card">
+    <view class="tabs-bar">
+      <view class="tabs-nav--container">
+        <view class="tabs-nav--wrap">
+          <view class="tabs-nav tabs-nav--animated">
+            <view data-type="0" bindtap="getOrder" class="tabs-tab J-tabs-tab-key {{order_status == 0 ? 'tabs-tab-active' : ''}} list-line">全部</view>
+            <view data-type="1"  bindtap="getOrder" class="tabs-tab J-tabs-tab-key {{order_status == 1 ? 'tabs-tab-active' : ''}} list-line">拼团中</view>
+            <view data-type="2"  bindtap="getOrder" class="tabs-tab J-tabs-tab-key {{order_status == 2 ? 'tabs-tab-active' : ''}} list-line">拼团成功</view>
+            <view data-type="3"  bindtap="getOrder" class="tabs-tab J-tabs-tab-key {{order_status == 3 ? 'tabs-tab-active' : ''}} list-line">拼团失败</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="tabs-content tabs-content-animated" style="{{hide_tip ? 'display:none;':''}}" >
+      <view  class="tabs-tabpane J-tabs-tabpane-key tabs-tabpane-active">
+        <view class='no_order'>
+          还没有相关拼团订单哦
+        </view>
+        <view class='no_order_go'>
+          <view class=" operate-button" style="margin:0px auto;text-align:center;">
+             <navigator url="/pages/index/index" open-type="redirect" class="meili-all-vue-base-button primary ">
+              去开团
+             </navigator>
+          </view>
+        </view>
+        <view class='guess_box' >
+          <view class='guess_title'>
+            <view class='floor_title '>
+              <view class='title_bg'>
+                猜你喜欢
+              </view>
+            </view>
+          </view>
+          <view class='guess_goods'>
+            
+            <view wx:for-items="{{guessdata}}" wx:key="key"  bindtap="goGoods" data-type="{{item.goods_id}}" class='item-wrap waterfall-frame-1 waterfall-box waterfall-optimise-show'>
+              <view class='iwf'>
+                <view class='img-wrap J_dynamic_imagebox'>
+                  <image class="J_dynamic_img fill_img scrollLoading" mode="widthFix" src="{{item.image}}" ></image>
+                </view>
+                <view class="title">   {{item.name}}  </view>
+                <view class='bot_box clearfix'>
+                  <view class='pt_icon'> </view>
+                  <view class="p_price fl" >¥{{item.pin_price}}</view>
+                  <view class='p_feed fr'>{{item.fav_goods}}</view>
+                </view>
+              </view>
+            </view>
+            
+          </view>
+        </view>
+
+      </view>
+    </view>
+
+
+    <view class="tabs-content tabs-content-animated">
+      <view  class="tabs-tabpane J-tabs-tabpane-key tabs-tabpane-active">
+        <view>
+          <view class="meili-all-base-componentName componentName">
+            <view>
+              <view class="meili-all-vue-base-goodswall">
+                <view class="wall-wrap">
+                  <view class="module-list-wrap show">
+                    <view  wx:for="{{order}}" wx:key="key" class="module-item-wrap" style="width: 100%;">
+                      <view class="meili-all-vue-order-list-order order">
+                        <view class="order-panel">
+                          <view  bindtap="goOrder" data-type="{{item.order_id}}" class="meili-all-order-list-order-shop shop">
+                            <view class="shop-title">
+                             <image  src='{{item.store_info.s_logo}}'></image>
+                              <text class="shop-title--name">{{item.store_info.s_true_name}}</text>
+                              <text class="shop-title--status">{{item.status_name}}</text>
+                            </view>
+                            <view class="shop-product">
+                              <view class="meili-all-vue-order-base-product product is-noborder product-list">
+                                <view class="product-wrap">
+
+                                  <view class="product-pic">
+                                    
+
+                                    <view class="meili-all-vue-base-image">
+                                      <image src="{{item.goods_images}}" class="product-pic--img fadeIn"/>
+                                    </view>
+                                  </view>
+                                  <view class="product-des">
+
+                                    <view class="orders-lottery-status">     		                         
+                                      <view class="order-lottery-wait" wx:if="{{item.order_status_id==1 && item.is_lottery == 1 && item.lottery_state ==0 }}" style="display:block;height:67px;"></view>
+                                      <view class="order-lottery-lucky" wx:if="{{item.is_lottery == 1 && item.lottery_win == 1}}"  style="display:block;height:67px;"></view>
+                                      <view class="order-lottery-not" wx:if="{{item.is_lottery == 1 && item.lottery_state ==2 && item.lottery_win == 0}}"  style="display:block;height:67px;"></view>
+                                    </view>
+
+                                    <view class="product-des--name">
+                                       <text class="red" wx:if="{{item.is_lottery == 1}}">[抽奖团]</text>
+                                      <text>{{item.name}}</text>
+                                    </view>
+                                    <view class="product-des--sku">
+                                      <view>
+                                        <text>{{item.option_str}}</text>
+                                      </view>
+                                    </view>
+                                  </view>
+                                  <view class="product-price">
+                                    <view class="product-price--origin">￥{{item.orign_price}}</view>
+                                    <view class="product-price--price">￥{{item.price}}</view>
+                                    <view class="product-price--number">×{{item.quantity}}</view>
+                                  </view>
+                                </view>
+                              </view>
+                            </view>
+                          </view>
+                          <view  class="order-panel--price pay clearfix">
+                           <text  class="pay-delivery">{{item.shipping_fare}}，</text> 
+                           <text class="pay-price">合计<text class="pay-price--content">￥{{item.total}}</text></text>
+                          </view>
+                          <view wx:if="{{item.order_status_id==3}}" class="order-panel--operate operate-button">
+                            <view bindtap="cancelOrder" data-type="{{item.order_id}}"   class="meili-all-vue-base-button primary operate-button--white">取消订单</view>
+                            <view bindtap="orderPay" data-type="{{item.order_id}}"   class="meili-all-vue-base-button primary">付款</view>
+                          </view>
+                         
+                          <view wx:if="{{item.order_status_id!=3 && item.order_status_id!=5 }}" class="order-panel--operate operate-button">
+                            <navigator url="/pages/share/index?id={{item.order_id}}" open-type="navigate" class="meili-all-vue-base-button primary operate-button--white">拼团详情</navigator>
+                            
+                            <navigator wx:if="{{item.order_status_id==2 }}" url="/pages/share/index?id={{item.order_id}}" open-type="redirect" class="meili-all-vue-base-button primary primary">邀请好友</navigator>
+
+                            <navigator wx:if="{{item.order_status_id !=2 }}" url="/pages/order/order?id={{item.order_id}}" open-type="navigate" class="meili-all-vue-base-button primary ">订单详情</navigator>
+                          </view>
+                          
+
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">{{tisp}}</view>
+    </view>
+    
+  </view>
+</view>
+<view class="bottom_view"> </view>
+
+<import src="../../footer.wxml" />
+
+<template is="footer"  data="{{tablebar}}"/>

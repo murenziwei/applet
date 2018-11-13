@@ -1,0 +1,86 @@
+<view id="view">
+  <view class='meili-all-vue-base-head head'>
+    <view class='head-content is-fixed'>
+      <view class='head-left' bindtap='goLink2' data-link="/pages/dan/me">
+        <view class='head-left--back back'>
+          
+        </view>
+      </view>
+      <view class='head-title'>
+        我的优惠券
+      </view>
+      <view class='head-right'>
+        <view class='head-right--part'></view>
+      </view>
+    </view>
+  </view>
+  <view class='meili-all-vue-base-tab tabs tabs-top tabs-line'>
+    <view class='tabs-bar'>
+      <view class='tabs-nav--container'>
+        <view class='tabs-nav--wrap'>
+          <view class='tabs-nav tabs-nav--animated'>
+            <view class='tabs-link-bar tabs-link-bar-animated'></view>
+            <view bindtap='tabchange' data-index='1' class='tabs-tab J-tabs-tab-key {{tab_index ==1 ? "tabs-tab-active" : ""}}'>
+              未使用
+            </view>
+            <view bindtap='tabchange' data-index='2' class='tabs-tab J-tabs-tab-key {{tab_index ==2 ? "tabs-tab-active" : ""}} '>
+             已使用/已过期
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='tabs-content tabs-content-animated' style="visibility: visible;">
+      <view class='tabs-tabpane J-tabs-tabpane-key tabs-tabpane-active'>
+        <view>
+          <view class='meili-all-vue-coupon-base-list'>
+            
+            <view wx:for="{{quan}}" wx:key="key" class='item meili-all-vue-coupon-list-platform-coupon {{item.is_over ==1 ? "expired":"available" }}'>
+              <view class='btn {{item.store_id ==0  || item.is_over ==1 ? "hide":"" }}' bindtap='goLink2' data-link="/pages/store/index?id={{item.store_id}}" >
+                进店逛逛
+              </view>
+              <view class='btn {{item.store_id !=0  || item.is_over ==1 ? "hide":"" }}' bindtap='goLink2' data-link="/pages/index/index" >
+                去使用
+              </view>
+              <image wx:if="{{item.consume == 'N'}}" src="https://mall.shiziyu888.com/Common/images/170517_46hdg321884df6918j4keal57kjl7_252x180.png" class="tag-img"></image>
+              <image wx:if="{{item.consume == 'Y'}}" src="https://mall.shiziyu888.com/Common/images/quan_y.png" class="tag-img"></image>
+              
+              <view class='circle left-circle span'>
+              </view>
+              <view class='circle right-circle'>
+              </view>
+              <view class='title' wx:if="{{item.store_id >0 }}">
+                <image  src="{{item.s_logo}}"></image>
+                <view class='span'>{{item.store_name}}</view>
+                <view class='m-icon m-icon-arrow-right i'></view>
+              </view>
+              <view class='title' wx:if="{{item.store_id ==0 }}">
+                <view class='span'>全场通用</view>
+              </view>
+              <view>
+                <view class='rmb span'>¥</view>
+                <view class='price span'>{{item.credit}}</view>
+                <view class='limit-price-desc span'>{{item.limit_money >0.01 ?'满'+item.limit_money+'元可用':'不限制'}}</view>
+              </view>
+              <view class='border'></view>
+              <view class='time'>
+                {{item.begin_time}}~{{item.end_time}}
+              </view>
+            </view>
+
+            
+            
+            <view class='loading' hidden='true'>正在加载...</view>
+            <view class='nomore'  hidden='true'>已经没有更多了~</view>
+
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="bottom_view"> </view>
+
+<import src="../../footer.wxml" />
+<template is="footer"  data="{{tablebar}}"/>

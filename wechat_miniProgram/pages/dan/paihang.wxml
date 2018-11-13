@@ -1,0 +1,59 @@
+<!--index.wxml-->
+<scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="loadMore">
+
+<view class="goods">
+  <view wx:for-items="{{list}}" wx:key="key"  bindtap="goGoods" data-type="{{item.goods_id}}" class="pin_goods_item pin_goods_single fl">
+    <view style="background-image:url({{item.image}});" class="pin_good_img loading_bg_120  fl">
+      <view class="pin_top_icon">{{item.pin_count}}人团</view>
+    </view>
+    <view class="pin_good_info fr pin_good_info_sellout">
+      <view class="pin_good_title">{{item.name}}</view>
+      <view class="pin_good_tags">
+        <view class="pin_good_tag fl">{{item.summary}}</view>
+      </view>
+      <view class="pin_good_price_info">
+        <view class="pin_goods_price fl">¥{{item.pin_price}}</view>
+        <del class="pin_goods_origin_price fl">¥{{item.danprice}}</del>
+      </view>
+      <view class="pin_info">
+        <text class="pin_info_number fl">已团{{item.seller_count}}件</text>
+      </view>
+      <view class="pin_info_gotuan">
+        <view class="pin_info_go fl">去开团</view>
+      </view>
+    </view>
+  </view>
+  <view  wx:if="{{LoadingComplete}}" class="tips fl {{hidetip?'hide':''}} ">正在加载...</view>
+  <view  wx:else class="tips fl " >^_^已经到底了</view>
+</view>
+<view class='guess_box' hidden='{{showguess}}'>
+  <view class='guess_title'>
+    <view class='floor_title '>
+      <view class='title_bg'>
+        猜你喜欢
+      </view>
+    </view>
+  </view>
+  <view class='guess_goods'>
+    
+    <view wx:for-items="{{guessdata}}" wx:key="key"  bindtap="goGoods" data-type="{{item.goods_id}}" class='item-wrap waterfall-frame-1 waterfall-box waterfall-optimise-show'>
+      <view class='iwf'>
+        <view class='img-wrap J_dynamic_imagebox'>
+          <image class="J_dynamic_img fill_img scrollLoading" mode="widthFix" src="{{item.image}}" ></image>
+        </view>
+        <view class="title">   {{item.name}}  </view>
+        <view class='bot_box clearfix'>
+          <view class='pt_icon'> </view>
+          <view class="p_price fl" >¥{{item.pin_price}}</view>
+          <view class='p_feed fr'>{{item.fav_goods}}</view>
+        </view>
+      </view>
+    </view>
+    
+  </view>
+</view>
+<view class="bottom_view"> </view>
+
+<import src="../../footer_dan.wxml" />
+<template is="footer"  data="{{tablebar}}"/>
+</scroll-view>

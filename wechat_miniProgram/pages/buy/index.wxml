@@ -1,0 +1,213 @@
+<view class="buy">
+
+  <view class='meili-all-vue-base-tab tabs tabs-top tabs-line' hidden='{{is_ziti==1?false:true}}'>
+    <view class='tabs-bar'>
+      <view class='tabs-nav--container'>
+        <view class='tabs-nav--wrap'>
+          <view class='tabs-nav tabs-nav--animated'>
+            <view class='tabs-link-bar tabs-link-bar-animated'></view>
+            <view bindtap='tabchange' data-index='1' class='tabs-tab J-tabs-tab-key {{tab_index ==1 ? "tabs-tab-active" : ""}}'>
+              快递
+            </view>
+            <view bindtap='tabchange' data-index='2' class='tabs-tab J-tabs-tab-key {{tab_index ==2 ? "tabs-tab-active" : ""}} '>
+             门店自提
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="creatOrder" >
+    <view class="createOrder-wrap">
+      <view hidden='{{ (is_ziti == 0 || is_ziti == 1) &&   dispatching =="express" ? fasle: true}}'>
+        <view  class="address" bindtap="chooseAddress">
+          <view class="m-icon m-icon-location address-location"></view>
+          <view wx:if="{{addressState}}" class="address-yes" >
+            <view class="address-contacter" >
+              <span>收货人：{{address.userName}} {{address.telNumber}}</span>
+            </view>
+            <view class="address-addr" >
+              <span>收货地址：{{address.provinceName}}{{address.cityName}}{{address.countyName}}{{address.detailInfo}}
+              </span>
+            </view>
+          </view>
+          <view wx:else class="address-no" bindtap="chooseAddress">请填写收货地址(请授权允许小程序使用通讯地址)</view>          
+          <view class="m-icon m-icon-arrow-right address-arrow"></view>
+        </view>
+      </view>
+
+      <view hidden='{{dispatching =="express" ? fasle: true}}'>
+        <view class='pd10' style="border-bottom:1px dashed #d1d1d1">
+            <text>身份证：</text>
+            <input type='text' value="{{idcard}}" bindinput="bindIdcardInput" placeholder="请输入与收件人名字一致的身份证" name="" focus="" style='width:100%'></input>
+        </view>
+        <view class="idCardTips"><span>提示：</span>输入正确的名字和正确的身份证才能成功清关哦</view>
+      </view>
+
+      <view class="pd_btop" hidden='{{is_ziti == 2 ||  dispatching =="pickup" ? fasle: true}}'>
+        <view class='pd10'>
+          <text>联系人：</text>
+          <input type='text' value="{{ziti_name}}" bindinput="bindNameInput" placeholder="请填写联系人" name="" focus="{{focus_name}}"></input>
+        </view>
+        <view class='pd10'>
+          <text>手机号：</text>
+          <input type='number' value="{{ziti_mobile}}" bindinput="bindMobileInput" placeholder="请填写手机号" name="" focus="{{focus_mobile}}"></input>
+        </view>
+        
+        <view  bindtap="chooseZiti" class="address" style="background:none;background-color:#fff;">
+          <view class="m-icon m-icon-location address-location"></view>
+          <view class="address-no">自提点：{{pickname}}</view>          
+          <view class="m-icon m-icon-arrow-right address-arrow"></view>
+        </view>
+      </view>
+
+
+      <view wx:for="{{seller_goodss}}" wx:key="key" class="shop">
+        <view class="shopHead">
+          <view class="shopHead-title">
+            <text>{{item.store_info.s_true_name}}</text>
+          </view>
+          <view class="shopHead-im" style="display:none;">
+            <view class="m-icon m-icon-message shopHead-im--icon"></view>
+            <text>联系商家</text>
+          </view>
+        </view>
+        
+        <view class="skuItem" wx:for="{{item.goods}}" wx:for-item="item_goods">
+          <view class="skuItem-wrap">
+            <view>
+              <image src="{{item_goods.image}}" class="skuItem-img" />
+            </view>
+            <view class="skuItem-desc">
+              <text class="skuItem-desc--title">{{item_goods.name}}</text>
+              <view class="skuDesc">
+                <text wx:for="{{item_goods.option}}"  wx:key="key" wx:for-item="option" class="skuDesc-desc">{{option.name}}：{{option.value}}；</text>
+              </view>
+            </view>
+            <view class="skuItem-price">
+              <view>
+                <text class="skuItem-price--old">¥{{item_goods.shop_price}}</text>
+              </view>
+              <view>
+                <text class="skuItem-price--now">¥{{item_goods.price}}</text>
+              </view>
+              <view class="skuItem-num skuItem-counter">
+                <text class="skuItem-num--origininput">x{{item_goods.quantity}}</text>
+                <view class="m-icon m-icon-edit"></view>
+              </view>
+            </view>
+          </view>
+          <view class="skuItem-tips">
+          </view>
+        </view>
+
+        <view class="salebar" hidden='{{item.show_voucher == 1? false:true}}' bindtap='show_voucher'  data-chose_voucher_id="{{item.chose_vouche.id}}"  data-seller_id="{{item.store_info.s_id}}">
+          <view class="salebar-title span">店铺优惠：</view> 
+          <view class="salebar-desc span" wx:if="{{item.chose_vouche.limit_money>0}}">满{{item.chose_vouche.limit_money}}元减{{item.chose_vouche.credit}}元</view> 
+          <view class="salebar-desc span" wx:else="{{item.chose_vouche.limit_money<=0}}">减{{item.chose_vouche.credit}}元</view> 
+
+          <view class="m-icon m-icon-arrow-right salebar-arrow i"></view> 
+          <view class="salebar-price salebar-price--red span">- ¥{{item.chose_vouche.credit}}</view>
+        </view>
+        <view class="salebar" wx:if="{{dispatching == 'express' && ( is_ziti ==0 || is_ziti == 1) }}">
+          <text class="salebar-title">快递运费：</text>
+          <text wx:if="{{item.trans_free<=0}}" class="salebar-desc">包邮</text>
+          <text  wx:if="{{shipping==1}}" class="salebar-price">¥{{item.trans_free}}</text>
+          <text  wx:else class="salebar-price">¥{{item.trans_free}}</text>
+        </view>
+        <view class="salebar">
+          <text class="salebar-title">店铺合计：</text>
+          <text class="salebar-desc"></text>
+          <text class="salebar-price">¥{{item.total}}</text>
+        </view>
+
+        
+
+        <view class="comment" wx:if="{{hide_quan}}"> 
+          <textarea bindinput="textarea_input"  placeholder="留言" class="comment-text" />
+        </view>
+      </view>
+	  
+		<view class="oc-payment"  avalonctrl="oc_payment" bindtap="ck_wxpays">
+		  <view class="oc-payment-item {{ck_yupay == 0 ? 'oc-payment-selected':''}}">
+			<view class="span oc-payment-method oc-p-2">微信支付</view>
+			<view class="span oc-payment-recommend">推荐</view>
+		  </view>	
+		</view>
+		<view class="oc-payment" wx:if="{{is_yue_open >0}}"  avalonctrl="oc_payment" bindtap="ck_yupays">
+		  <view class="oc-payment-item {{ck_yupay >0 ? 'oc-payment-selected':''}}">
+			<view class="span oc-payment-method oc-p-1">余额支付（余额：{{
+			yu_money}}）</view>
+			
+		  </view>	
+		</view>
+    </view>
+    <view class="paybar-wrap">
+      <view data-aid="0" class="paybar">
+        <view class="paybar-detail">
+          <view class="moneyInfo">
+            <view class="paybar-sum">总价:
+              <text class="paybar-sum--red">¥{{total_free}}</text>
+            </view>
+          </view>
+          <view class="totalNum">
+            <text class="paybar-num">共{{goods.length}}件商品</text>
+          </view>
+        </view>
+        <form bindsubmit="goOrderfrom" report-submit="true">
+          <button formType="submit" class="paybar-btn">{{pay_str}}</button>
+        </form>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="dialog is-bottom" width="100%" style="z-index: 10005;display:{{skustate==1?' ':'none'}}; {{is_ziti == 2 ? 'top:144rpx;':''}}">
+  <view class="dialog-mask" bindtap='click_hide_dialog'></view>
+  <view class="dialog-core" style=" top:-1rpx;">
+    <view class="sku sku m-fixed" position="bottom">
+      <view class="sku-content">
+        <view class="sku-content--scroll">
+          <view class="scroll">
+            <view class='fuj_mend'>
+              <view class="m-icon m-icon-location address-location"></view>
+              附近自提门店
+            </view>
+            <view class="prop">
+              <view  wx:for="{{pick_up_arr}}" wx:key="key" class="prop-rows" bindtap='chose_mendian' data-name="{{item.pick_name}}" data-id="{{item.id}}">
+                <view class="prop-rows--title">{{item.pick_name}}</view>
+                <view class="prop-rows--title-sumary">{{item.pick_pos}}</view>
+              </view>
+            </view>
+          </view>
+          
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class="meili-all-vue-base-dialog dialog is-bottom" hidden='{{hide_quan}}' width="100%" bgcolor="transparent" style="z-index: 1013;">
+	<view class="dialog-mask"></view> 
+	<view class="dialog-core" style="">
+		<view class="couponlist">
+			<view class="couponlist-content">
+				<view class="couponlist-content--title">
+					<view class="couponlist-shopname span">请选择优惠券</view> 
+					<view class="couponlist-content--close" bindtap='close_voucher'>╳</view>
+				</view> 
+				<view class="couponlist-content--list"  >
+
+					<view bindtap='chose_voucher_id' wx:for="{{ssvoucher_list}}" wx:for-item="item_voucher" data-voucher_id="{{item_voucher.id}}" data-seller_id="{{voucher_serller_id}}" class="couponItem {{item_voucher.id == seller_chose_id ?'couponItem-active':''}} ">
+						<view class="m-icon m-icon-right i"></view> 
+						<view class="span"  wx:if="{{item_voucher.limit_money>0}}">满{{item_voucher.limit_money}}元减{{item_voucher.credit}}元</view> 
+            <view class="span"  wx:else="{{item_voucher.limit_money<=0}}">减{{item_voucher.credit}}元</view> 
+					</view>
+					
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

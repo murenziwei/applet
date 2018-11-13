@@ -1,0 +1,300 @@
+/* pages/order/comment.wxss */
+.comment_container {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #eceded;
+}
+.comment_main {
+    width: 100%;
+    padding: 10px 10px;
+}
+.comment_goods_image {
+    float: none;
+    width: 100%;
+    height: auto;
+	margin-left: 5px;
+    display: inline-block;
+}
+.comment_goods_image image {
+    width: 30%;
+    height: auto;
+    -webkit-border-radius: 4px;
+}
+#image_uploader_selector {
+	width:56px;
+	height:56px;
+	border:1px dashed #e6e6e6;
+	display:inline-block;
+}
+#image_uploader_indicate {
+	position:absolute;
+	font-size:32px;
+	color:#e6e6e6;
+	width:56px;
+	height:56px;
+	line-height:56px;
+	text-align:center;
+}
+.rf {
+    clear: both;
+    margin-top: 10px;
+}
+.comment_expect {
+    margin-left: 0px;
+    margin-bottom: 0px;
+    height: auto;
+    position: relative;
+	display: inline-block;
+}
+
+.comment_general {
+    font-size: 15px;
+    height: 20px;
+    line-height: 20px;
+    width: 80px;
+    margin-top: 5px;
+    color: #303030;
+	position: absolute;
+    left: 0px;
+    top: 0px;
+    margin-left: 0px;
+}
+.comment_ul {
+    display: block;
+    margin-left: 80px;
+    margin-top: 0px;
+}
+
+.comment_star_background {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    margin-right: 1px;
+    background-image: url(https://mall.shiziyu888.com/Common/pinduoduo/assets/img/comment_bg_star-bee23e23e8.png);
+    background-repeat: no-repeat;
+    background-size: 60px;
+    background-position: 0;
+}
+.form-group {
+    margin-bottom: 10px;
+}
+.label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+.xo-weixin-blt-upload {
+    text-align: justify;
+    font-size: 0;
+    box-sizing: border-box;
+}
+.xo-weixin-blt-upload .ul {
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+.xo-weixin-blt-upload .li {
+    display: inline-block;
+    text-align: center;
+}
+.xo-weixin-blt-upload .ul:after {
+    list-style: none;
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+}
+.xo-weixin-blt-upload-btn {
+    display: block;
+    width: 55px;
+    height: 55px;
+    color: #d2d6de;
+    font-size: 16px;
+    line-height: 55px;
+    border-radius: 0px;
+    text-align: center;
+    vertical-align: middle;
+}
+.webuploader-container {
+    position: relative;
+}
+.xo-weixin-blt-upload-btn .webuploader-pick {
+    padding: 0px 0px;
+    background: none;
+    border-radius: 0px;
+    color: #d2d6de;
+    width: 100%;
+    height: 100%;
+	position: relative;
+    display: inline-block;
+    cursor: pointer;
+	text-align: center;
+	overflow: hidden;
+}
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-plus:before {
+    content: "\2b";
+}
+.xo-weixin-blt-upload .ul {
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+.xo-weixin-blt-upload .li {
+    display: inline-block;
+    padding-right:5px;
+    text-align: center;
+}
+.xo-weixin-blt-upload-btn {
+    display: block;
+    width: 55px;
+    height: 55px;
+    color: #d2d6de;
+    font-size: 16px;
+    line-height: 55px;
+    border-radius: 0px;
+    text-align: center;
+    vertical-align: middle;
+}
+.xo-weixin-blt-upload-btn {
+	width: 106rpx;
+    height: 106rpx;
+    vertical-align: top;
+}
+.xo-weixin-blt-upload-btn image{
+  width:100%;
+
+}
+.comment_content {
+    padding: 8px;
+    font-size: 14px;
+    display: block;
+    height: 120px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+.comment_content {
+    margin-left: 0px;
+    background-color:#fff;
+    width:90%;
+    margin-left:3%;
+
+}
+.comment_commit_button {
+    width: 90%;
+    margin-left: 5%;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    margin-top: 20px;
+    text-align: center;
+    background-color: #fe243d;
+    border-radius: 5px;
+    font-size: 19px;
+}
+.comment_commit_button {
+    background-color: #ff6699;
+}
+
+
+
+.shop-product, .shop-title {
+padding:0 10px;
+margin:0 -10px;
+
+}
+
+.product {
+	border-bottom:1px solid #ddd;
+	min-height:1.8rem;
+
+}
+.product-list{
+    padding: 10px 0;
+}
+.product.is-noborder{
+    border: none;
+}
+.product-wrap{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.product-pic{
+    width: 4rem;
+    height: 4rem;
+    border: 1px solid #e2e2e2;
+    display: inline-block;
+}
+.product-pic image {
+    width: 4rem;
+    height: 4rem;
+    visibility: inherit;
+    display: inherit;
+}
+.product-des{
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    margin: 0 10px;
+    position: relative;
+}
+.product-des--name {
+    color: #333;
+    height: 2.2rem;
+    font-size: .75rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+.product-des--sku{
+    margin-bottom: 5px;
+    font-size: .65rem;
+    color: #999;
+}
+.meili-all-order-list-order-shop .product-des--sku view {
+    display: inline-block;
+    margin-right: 5px;
+}
+.product-price {
+    text-align: right;
+    line-height: 1rem;
+    font-size: .75rem;
+}
+.product-price--origin {
+    text-decoration: line-through;
+    color: #999;
+}
+.product-price--number {
+    color: #999;
+}
+.order-panel--operate {
+    border-top: 1px solid #e5e5e5;
+    margin: 0 -10px;
+    vertical-align: middle;
+    text-align: right;
+}
+.operate-button{
+    overflow: hidden;
+}

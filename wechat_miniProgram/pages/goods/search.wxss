@@ -1,0 +1,390 @@
+/* pages/pinduoduo/search.wxss */
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    min-height: 100%;
+    margin: 0 auto;
+    padding: 0 0 118rpx;
+    overflow-x: hidden;
+    background-color: #f2f2f2;
+}
+#classification-container {
+    background-color: #fff;
+    height:100%;
+    overflow: hidden;
+    line-height: 1;
+}
+#search-bar {
+    width: 100%;
+    max-width: 640px;
+    height: 45px;
+    background-color: #f8f8f8;
+    position: relative;
+}
+#search-bar:before {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    transform-origin: 0 0;
+    transform: scale(.5);
+    box-sizing: border-box;
+    -webkit-transform-origin: 0 0;
+    -webkit-transform: scale(.5);
+    -webkit-box-sizing: border-box;
+    content: "";
+    border-bottom: 2rpx solid #ededed;
+}
+#search-bar .search-container {
+    background-color: #f2f2f2;
+    text-align: center;
+    height: 90rpx;
+    padding: 12rpx 20rpx;
+}
+#search-bar .search-container .search-icon-container {
+    border-radius: 10rpx;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 64rpx;
+    background-color: #fff;
+}
+#search-bar .search-container .search-icon-container .search-icon-class {
+    display: inline-block;
+    width: 28rpx;
+    height: 28rpx;
+    background-image: url('https://pinduoduo.liofis.com/Common/image/icon_search.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: 16rpx;
+}
+#search-bar .search-container .search-box {
+    line-height: 1;
+    font-size: 30rpx;
+    color: #9c9c9c;
+}
+.span{
+  display:inline;
+}
+#root-list {
+    position: relative;
+    height: 100%;
+    width: 204rpx;
+}
+.root-list-item {
+    position: relative;
+    height: 106rpx;
+    color: #666;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-display: flex;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+    background-color: #fafafa;
+}
+.root-list-item, .root-list-item .root-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.root-active {
+    color: #ff5777;
+    background-color: #fff;
+}
+.root-list-item, .root-list-item .root-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.root-list-item .root-box {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+.root-list-item .root-box span {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    text-align: center;
+    font-size: 28rpx;
+}
+
+.icon {
+    font-family: icomoon;
+    font-style: normal;
+    font-smoothing: antialiased;
+}
+.root-list-item .root-box .i {
+    width: 42rpx;
+    height: 42rpx;
+    border-radius: 50%;
+    text-align: center;
+    box-sizing: border-box;
+    position: relative;
+    margin-left: 12rpx;
+    display:inline;
+}
+.icon-category-bag:before {
+    content: "\e60c";
+}
+.root-list-item .root-box .i:before {
+    display: inline-block;
+    line-height: .21rem;
+    font-size: .11rem;
+    color: #fff;
+    position: relative;
+}
+.root-active .root-box .icon:before {
+    color: #fff;
+    z-index: 1;
+}
+.root-list-item .root-box .i image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: 10;
+}
+.root-list-item .root-box .i .selected-icon {
+    display: none;
+}
+.root-active .root-box .icon .selected-icon {
+    display: inline-block;
+}
+.root-list-item .root-box .i .unselected-icon {
+    display: inline-block;
+}
+.root-active .root-box .icon .unselected-icon {
+    display: none;
+}
+#detail-list, #root-list {
+    overflow: hidden;
+    float: left;
+}
+#root-list .scroll_view{
+  background-color:#fafafa;
+}
+
+
+
+#detail-list {
+    position: relative;
+    width: 546rpx;
+    padding: 0 20rpx 0 0;
+    background-color: #fff;
+    height: 100%;
+}
+.classification-detail-item .head {
+    height: 72rpx;
+    padding-top: 32rpx;
+    position: relative;
+    width: 100%;
+    line-height: 40rpx;
+}
+.classification-detail-item .head {
+    height: 72rpx;
+    padding-top: 32rpx;
+    position: relative;
+    width: 100%;
+    line-height: 40rpx;
+}
+.classification-detail-item .head .head-container .tab {
+    display: inline-block;
+    height: 40rpx;
+    background-size: 116rpx 40rpx;
+    background-repeat: no-repeat;
+}
+.classification-detail-item .head .head-container .tab .span {
+    color: #333;
+    margin-left: 22rpx;
+    font-size: 28rpx;
+}
+.classification-detail-item .head .head-container .show-all {
+    position: absolute;
+    display: inline-block;
+    font-size: 26rpx;
+    color: #9c9c9c;
+    height: 40rpx;
+    line-height: 42rpx;
+    right: 0;
+    padding-right: 20rpx;
+}
+.classification-detail-item .detail {
+    margin-left: 20rpx;
+    width: 100%;
+    overflow: hidden;
+}
+.classification-detail-item .detail .li {
+    width: 120rpx;
+    height: 144rpx;
+    margin: 0 64rpx 32rpx 0;
+    float: left;
+}
+.classification-detail-item .detail .li image {
+    width: 120rpx;
+    height: 120rpx;
+}
+.classification-detail-item .detail .li .p {
+    color: #666;
+    font-size: 24rpx;
+    text-align: center;
+}
+.classification-detail-item .detail .li:nth-child(3n) {
+    margin-right: 0;
+}
+
+
+.search-view-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 640px;
+    height: 200%;
+    background-color: #f8f8f8;
+    overflow: hidden;
+    z-index: 999999998;
+    font-family: PingFangSC-Regular;
+}
+.search-view-box {
+    height: 50%;
+    overflow-y: auto;
+}
+.search-view-top {
+    width: 100%;
+    max-width: 640px;
+    padding: 12rpx 0 12rpx 24rpx;
+    height: 90rpx;
+    border-bottom: 2rpx solid #ededed;
+}
+.search-box-view-main, .view-top-container {
+    height: 64rpx;
+    float: left;
+    border-radius: 10rpx;
+}
+.view-top-container {
+    width: 606rpx;
+    background-color: #fff;
+}
+.search-box-view-main, .search-recent-list-view .span {
+    font-family: PingFangSC-Regular,Helvetica,STHeiti STXihei,Microsoft JhengHei,Microsoft YaHei,Arial;
+}
+.search-box-view-main, .view-top-container {
+    height: 64rpx;
+    float: left;
+    border-radius: 100rpx;
+}
+.search-box-view-main {
+    width: 480rpx!important;
+    margin-left: 60rpx;
+    font-size: 30rpx;
+    display: inline-block;
+    color: #151516;
+    -webkit-border-radius: 10rpx;
+    background-color: #fff;
+}
+input[type=search] {
+    -webkit-appearance: textfield;
+    box-sizing: content-box;
+}
+#view-input {
+    background-color: #fff;
+}
+.search-content-clear, .search-view-icon {
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.search-view-icon {
+    width: 28rpx;
+    height: 28rpx;
+    position: relative;
+    top: 16rpx;
+    left: 28rpx;
+    background-image: url('https://pinduoduo.liofis.com/Common/image/icon_search.png');
+}
+.cancel-container-view, .submit-container-view {
+    margin-right: 0;
+    padding-top: 10rpx;
+    width: 94rpx;
+    height: 60rpx;
+    font-size: 32rpx;
+    float: right;
+    display: inline-block;
+}
+.cancel-container-view {
+    color: #9c9c9c;
+}
+.search-main-view {
+    padding-top: 46rpx;
+    height: auto;
+    width: 100%;
+}
+.search-recent-title-view {
+    line-height: 32rpx;
+    font-size: 30rpx;
+    color: #151516;
+    margin-left: 24rpx;
+    width: 200rpx;
+    display: inline-block;
+}
+.search-recent-delete-view {
+    padding-top: 4rpx;
+    float: right;
+    margin-right: 40rpx;
+    width: 32rpx;
+    height: 32rpx;
+    background-image: url(https://pinduoduo.liofis.com/Common/image/sprite_search-d13f06ef49.png);
+    background-repeat: no-repeat;
+    background-size: 140rpx 70rpx;
+    background-position: 0 0;
+}
+.search-recent-list-view {
+    margin: 10rpx 24rpx 0 4rpx;
+}
+.search-recent-list-view .span {
+    display: inline-block;
+    padding: 0 30rpx;
+    margin: 16rpx 0 0 20rpx;
+    border: 2rpx solid #d2d2d2;
+    border-radius: 8rpx;
+    color: #151516;
+    cursor: pointer;
+    min-width: 120rpx;
+    max-width: 600rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 64rpx;
+    line-height: 60rpx;
+    font-size: 28rpx;
+    text-align: center;
+    vertical-align: top;
+}
+.search-recent-list-view .span {
+    max-width: 300rpx;
+}
+.search-recent-list-view {
+    margin: 10rpx 24rpx 0 4rpx;
+}
+.search-hotquery-list-view {
+    height: 160rpx;
+    overflow: hidden;
+}

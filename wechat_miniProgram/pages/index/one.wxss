@@ -1,0 +1,37 @@
+/**index.wxss**/
+.nav{
+  white-space: nowrap;
+  background: #fff;
+  font-size: 0.75rem;
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:999;
+  border-bottom:1px solid #dedede;
+}
+.hide{display:none;}
+.nav_item{
+  display: inline-block;
+  padding: 0 10px;
+  margin: 0 5px;
+  line-height: 2.4rem;
+}
+.nav .cur{
+  color: #ff5777;
+  border-bottom: 1px solid #ff5777;
+}
+.banner{
+  background: #fff;
+}
+.swiper {
+  height: 7rem;
+  width: 100%;
+}
+.swiper image {
+  height: 100%;
+  width: 100%;
+}
+.goods{
+  margin-bottom: 50px;
+  overflow: hidden;
+}

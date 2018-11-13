@@ -1,0 +1,139 @@
+<!--pages/pinduoduo/search.wxml-->
+<view id="classification-container" class='container'>
+  <!--搜索框begin-->
+  <view id='search-bar' bindtap='show_search_func'>
+    <view class='search-container'>
+      <view class='search-icon-container'>
+        <view class='search-icon-class'></view>
+        <view class='search-box span'>搜索商品{{s_num}}</view>
+      </view>
+    </view>
+  </view>
+  <!--搜索框end-->
+  
+  <!--左侧导航开始-->
+  <view id="root-list" class='turn-background-grey'>
+    <view class='ul'>
+      <scroll-view scroll-y="true" style="height:{{del_height}}px" class="scroll_view" scroll-into-view="{{nav_view_id}}">
+      <!--iscroll begin -->
+	  <view wx:for="{{list}}" id="nav_{{index}}" class='root-list-item {{cur_view_id == index ? "root-active":""}}' data-cate_id="{{index}}" bindtap='change_cate' >
+        <view class='root-box'>
+          <view class='span'>
+            {{item.name}}
+          </view>
+          <view class='icon icon-category-bag url-icon i' wx:if="{{item.logo.length >0}}">
+            <image src='{{item.logo}}' class='selected-icon'></image>
+            <image class='unselected-icon' src='{{item.logo}}'></image>
+          </view>
+        </view>
+      </view>
+      </scroll-view>
+      <!--iscroll end -->
+    </view>
+  </view>
+  <!--左侧导航结束-->
+  <!--右侧导航开始-->
+  <view id="detail-list">
+    <view class='ul'>
+      <scroll-view scroll-y="true" style="height:{{del_height}}px" bindscrolltolower="tolower" bindscrolltoupper="toupper" bindscroll="scroll" scroll-into-view="{{del_view_id}}">
+      
+	  <!--一个分类开始-->
+      <view class='classification-detail-item' wx:for="{{list}}" id="cate_{{index}}" style="height:{{s_count == index ? del_height+'px':'auto'}}">
+        <view class='head' bindtap='common_go_link' data-link="/pages/goods/category?id={{item.id}}">
+          <view class='head-container'>
+            <view class='tab'>
+              <view class='span'>
+                {{item.name}}
+              </view>
+            </view>
+            <view class='show-all' style="display:none;">
+              查看更多
+            </view>
+          </view>
+        </view>
+        <view class='detail'>
+		  <view bindtap='common_go_link' data-link="/pages/goods/category?id={{subcate.id}}" class='detail-item li' wx:for="{{item.child_list}}" wx:for-item="subcate">
+            <image src='{{subcate.logo}}'></image>
+            <view class='p'>
+              {{subcate.name}}
+            </view>
+          </view>
+		  
+        </view>
+      </view>
+      <!--一个分类结束-->
+      </scroll-view>
+
+
+
+    </view>
+  </view>
+  <!--右侧导航结束-->
+  <!--底部以后放这里begin-->
+
+  <!--底部以后放这里end-->
+</view>
+
+<view class='search-view-container' hidden='{{show_search}}'>
+  <view class='search-view-box'>
+    <view class='search-view-top'>
+      <view class='view-top-container'>
+        <input type='text' class='search-box-view-main' focus="{{!show_search}}" bindconfirm="serach_form_event" placeholder="输入商品名称"></input>
+        <view class='search-view-icon'></view>
+      </view>
+      <view class='cancel-container-view' bindtap='show_search_func'>
+        <view class='cancel-button-view'>
+          取消
+        </view>
+      </view>
+    </view>
+    <view class='search-main-view' wx:if="{{false}}">
+      <view class='search-recent-title-view'>
+        历史搜索
+      </view>
+      <view class='search-recent-list-view'>
+        <view class='recent-history-list span'>
+          是的
+        </view>
+        <view class='recent-history-list span'>
+          第三方
+        </view>
+      </view>
+    </view>
+    <view class='search-main-view' wx:if="{{false}}">
+      <view class='search-recent-title-view'>
+        热门搜索
+      </view>
+      <view class='search-recent-list-view search-hotquery-list-view'>
+        <view class='recent-history-list span'>
+          棒棒糖
+        </view>
+        <view class='recent-history-list span'>
+          vivoy66
+        </view>
+        <view class='recent-history-list span'>
+          毛衣男
+        </view>
+        <view class='recent-history-list span'>
+          十字绣鞋垫
+        </view>
+      </view>
+
+    </view>
+
+
+  </view>
+</view>
+
+
+<view bindtap="noticego" data-orderid ="{{notice_orderid}}" hidden="{{isHidenotice}}" class="pin_tips_container {{isHidenotice ? 'pin_tips_fadeOut' : 'pin_tips_fadeIn'}}" > 
+	<image class="pin_tips_user_pic fl" src="{{notice_avatar}}"> </image>
+	<view class="pin_tips_info fl">  
+	  <view class="fl span">最新拼团来自</view>  
+	  <view class="pin_tips_info_name fl span" >{{notice_name}}</view>  
+	  <view class="fl span">,{{notice_miao}}秒前</view> 
+	</view>
+</view>
+
+<import src="../../footer.wxml" />
+<template is="footer"  data="{{tablebar,s_num}}"/>

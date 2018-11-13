@@ -1,0 +1,17 @@
+/**index.wxss**/
+.goods{
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+.banner{
+  background: #fff;
+}
+.hide{display:none;}
+.swiper {
+  height: 7rem;
+  width: 100%;
+}
+.swiper image {
+  height: 100%;
+  width: 100%;
+}

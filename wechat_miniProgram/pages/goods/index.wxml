@@ -1,0 +1,504 @@
+<view id="views">
+  <view class="componentName">
+    <view>
+      <view class="module-primary">
+        <view class="swiper swiper" style="height:{{imageheight}}px;">
+          <view class="swiper-content">
+            <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+              <block wx:for="{{goods_image}}" wx:key="key">
+                <swiper-item>
+                  <image src="{{item.image}}" style="width: {{imagewidth}}px; height: {{imageheight}}px;" bindload="imageLoad" class="slide-image" />
+                </swiper-item>
+              </block>
+
+            </swiper>
+          </view>
+        </view>
+
+        <view class="topbanner" wx:if="{{goods.type=='pintuan' || goods.type=='lottery'}}" style="background-image: url(https://mall.shiziyu888.com/Common/image/170714_6j89aakce46hkdib61h7a7fi90eh7_750x80.png);">
+          <view class="topbanner-container">
+            <view class="topbanner-text">距结束仅剩</view>
+            <view class="countdown topbanner-countdown">
+              <view class="countdown-timer topbannertime-timer-count">
+                <view class="countdown-timer--num topbannertime-timer-num">{{endtime.days}}</view>
+                <view class="countdown-timer--symbol topbannertime-timer-symbol">天</view>
+              </view>
+              <view class="countdown-timer topbannertime-timer-count">
+                <view class="countdown-timer--num topbannertime-timer-num">{{endtime.hours}}</view>
+                <view class="countdown-timer--symbol topbannertime-timer-symbol">时</view>
+              </view>
+              <view class="countdown-timer topbannertime-timer-count">
+                <view class="countdown-timer--num topbannertime-timer-num">{{endtime.minutes}}</view>
+                <view class="countdown-timer--symbol topbannertime-timer-symbol">分</view>
+              </view>
+              <view class="countdown-timer topbannertime-timer-count">
+                <view class="countdown-timer--num topbannertime-timer-num">{{endtime.seconds}}</view>
+                <view class="countdown-timer--symbol topbannertime-timer-symbol">秒</view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="title-content">
+          <view class="title-content-title title title-left">
+            <view class="title-text">{{goods.name}}</view>
+          </view>
+          <view class='share_pos'>
+         
+            <button open-type="share" plain="true" class="btn" style="background:none;">
+              <image src="https://mall.shiziyu888.com/Common/image/share_tip.png" width="40" mode='widthFix'></image>
+              <view class='share_title'>分享</view>
+            </button>
+          </view>
+        </view>
+
+        <view class="price-mgj-normal price-content">
+          <view wx:if="{{goods.type=='pintuan' || goods.type=='lottery'}}" class="price">
+            <view class="price-now">
+              <view class="price-now--unit">¥</view>
+              <view class="price-now--price">{{pin_info.pin_price}}</view>
+            </view>
+            <view class="price-old" >
+              <view class="price-old--price">¥{{goods.price}}</view>
+              <view class="price-old--tags">
+                <view class="tag price-old--tag">{{pin_info.pin_count}}人拼团</view>
+                <view wx:if="{{pin_info.type=='newman'}}" class="tag price-old--tag">老带新</view>
+                <view wx:if="{{pin_info.type=='lottery'}}" class="tag price-old--tag">抽奖团</view>
+              </view>
+            </view>
+          </view>
+          <view wx:else class="price">
+            <view class="price-now">
+              <view class="price-now--unit">¥</view>
+              <view class="price-now--price">{{goods.danprice}}</view>
+            </view>
+            <view class="price-old">
+              <view class="price-old--price">¥{{goods.price}}</view>
+              
+            </view>
+          </view>
+        </view>
+
+        <view class="service">
+          <view class="service-cloumns">
+            <view class="service-cloumns--content service-cloumns--express" style="width:100%">
+              <view wx:if="{{goods.deliver_time!=0}}" style="text-indent:20rpx;color:#fff;width:100%;background:rgba(255, 87, 119, .8)">此商品为预售商品:预计{{goods.deliver_time}}发货</view>
+            </view>
+          </view>
+          <view class="service-content" wx:if="{{service.length >0}}">
+            <view wx:for-items="{{service}}" wx:key="key" class="service-content--item item">
+              <view class="item-icon">
+                <view class="item-icon--image" >
+                  <image src="https://mall.shiziyu888.com/Common/mogu/image/upload_ie4tkmbtgqztomjqhezdambqgqyde_44x44.png" class="fadeIn" />
+                </view>
+              </view>
+              <view class="item-name">{{item}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="occupying"></view>
+      </view>
+
+      <view wx:if="{{options.name.length>0}}" bindtap="openSku" data-type="{{goods.type=='pintuan' || goods.type=='lottery' ? 'pin':'dan'}}" class="module-moresku">
+        <view class="more-sku">
+          <view wx:if="{{sku.length>0}}" class="more-sku--text">已选择：
+            <text wx:for-items="{{sku}}" wx:key="key" class="goods-choose">{{item.name}}{{sku.length - index == 1 ?'':'，'}}</text>
+          </view>
+          <view wx:else class="more-sku--text">请选择：
+            <text wx:for-items="{{options.name}}" wx:key="key"> {{item}}{{options.name.length - index == 1 ?'':'，'}}</text>
+          </view>
+          <view class="more-sku--arrow m-icon m-icon-arrow-right"></view>
+        </view>
+        <view class="occupying"></view>
+      </view>
+
+      <view class="module-social">
+        <view wx:if="{{pin_info.type=='newman'}}">
+          <view class="pintuannew">
+            <view class="pintuannew-icon">
+              <image src="../../images/170327_86e66hj1gc0gk4eh4580d32l8i733_79x73.png" class="fadeIn" />
+            </view>
+            <view class="pintuannew-text">所有用户都能开团，但没有购买过的用户才可参团哦，快快邀请新朋友来参团吧~</view>
+          </view>
+          <view class="occupying"></view>
+        </view>
+        <view wx:if="{{goods.type=='pintuan'||goods.type=='lottery'}}" class="pintuan">
+          <view wx:if="{{goods.type=='pintuan'}}">
+            <view class="pintuan-head">
+              <view class="pintuan-head--title">
+                海贝小栈
+              </view>
+            </view>
+            <view class="pintuan-process">
+              <view class="pintuan-process--title">支付商品开团，邀请好友参与，成功发货失败退款。</view>
+              <view class="pintuan-process--arrow">
+                <view style="display:inline-block;"></view>
+                <view style="display:inline-block;display:none;" class="pintuan-process--icon m-icon m-icon-arrow-right"></view>
+              </view>
+            </view>
+          </view>
+          <view wx:if="{{goods.type=='lottery'}}" class="meili-all-base-game-rule game-rule">
+            <view class="game-rule-head">
+              <view class='game-rule-head--title'>抽奖规则</view>
+              <view class='game-rule-head--arrow'>
+                详细规则
+                <text style='font-size:0.7rem;' class='game-rule-head--icon m-icon m-icon-arrow-right'></text>
+              </view>
+            </view>
+            <view class="game-rule-content" >
+              <view class='rule' wx:for-items="{{goods.activity_summary}}" wx:key="key">{{item}}</view>
+            </view>
+          </view>
+
+          <view wx:if="{{pintuan.length>0}}" class="pintuan-info info">
+            <view class="pintuan-info--head info-head">
+              <!--
+              <view class="info-head--title">已拼团成功231484单，快拉小伙伴去开团吧</view>
+                <view class="info-head--start">
+                <view style="display:inline-block;">去开团</view>  
+                <view style="display:inline-block;" class="pintuan-head--icon m-icon m-icon-arrow-right"></view>
+              </view>
+              -->
+              <view class="info-head--title">以下小伙伴正在发起拼团，您可以直接参与：</view>
+            </view>
+            <view class="pintuan-info--list info-order">
+              <view wx:for-items="{{pintuan}}" wx:key="key" class="order">
+                <view class="order-left">
+                  <view class=" order-left--avatar">
+                    <image src="{{item.avatar}}" class="fadeIn" />
+                  </view>
+                  <view class="order-left--username">{{item.name}}</view>
+                </view>
+                <view class="order-right">
+                  <view class="order-right--time">
+                    <view class="order-right--time-tuan">还差{{item.re_need_count}}人成团</view>
+                    <view class="order-right--time-time"> 剩余
+                      <view class="countdown">
+                        {{item.end_time_html}}
+                      </view>
+                    </view>
+                  </view>
+                  <view bindtap="goShare" data-type="{{item.order_id}}" class="order-right--btn">去参团</view>
+                </view>
+                <!--
+                <view class="order-right">
+                  <view class="order-right--time">{{item.time}}前</view>  
+                  <view class="order-right--tip">已拼满</view>
+                </view>
+                -->
+              </view>
+            </view>
+          </view>
+          <view class="occupying"> </view>
+        </view>
+        <view class="meili-all-vue-detail-base-shop">
+          <view class="head">
+            <view class="avatar head--avatar">
+              <view class="avatar-image">
+                <image src="{{seller_info.s_logo}}" class=" fadeIn" />
+              </view>
+            </view>
+            <view class="info head--info">
+              <view class="info-title">
+                <view class="info-title--name">{{seller_info.s_true_name}}</view>
+              </view>
+              <view class="info-star">
+                <view class=" info-star--level">
+                  <image src="../../images/upload_580e3fdj2l1d6ihdhh96d4i8fg9li_18x18.png" class=" fadeIn" />
+                </view>
+                <view class=" info-star--level">
+                  <image src="../../images/upload_580e3fdj2l1d6ihdhh96d4i8fg9li_18x18.png" class=" fadeIn" />
+                </view>
+                <view class=" info-star--level">
+                  <image src="../../images/upload_580e3fdj2l1d6ihdhh96d4i8fg9li_18x18.png" class=" fadeIn" />
+                </view>
+                <view class=" info-star--level">
+                  <image src="../../images/upload_580e3fdj2l1d6ihdhh96d4i8fg9li_18x18.png" class=" fadeIn" />
+                </view>
+                <view class=" info-star--level">
+                  <image src="../../images/upload_580e3fdj2l1d6ihdhh96d4i8fg9li_18x18.png" class=" fadeIn" />
+                </view>
+              </view>
+            </view>
+            <view class="entry">
+              <view class="entry-text">
+                <view data-type="{{seller_info.s_id}}" bindtap="goStore" class="entry-text--text">进店逛逛 ></view>
+              </view>
+            </view>
+          </view>
+          <view class="desc">
+            <view class="desc-sale">
+              <view class="desc-sale--num">{{seller_info.seller_count}}</view>
+              <view class="desc-sale--text">总销量</view>
+            </view>
+            <view class="desc-fav">
+              <view class="desc-fav--num">{{seller_info.goods_count}}</view>
+              <view class="desc-fav--text">商品数量</view>
+            </view>
+            <view class="desc-score">
+              <view class="desc-score--text score">
+                <view class="score-text">描述相符</view>
+                <view class="score-num">5</view>
+              </view>
+              <view class="desc-score--text score">
+                <view class="score-text">质量满意</view>
+                <view class="score-num">5</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="occupying"> </view>
+      </view>
+      <view class="module-brief" wx:if="{{goods.summary}}">
+       
+        <view class="desc-brief">
+          <view class="desc-brief" style="color:#999;padding:20rpx;">
+              <import src="../../wxParse/wxParse.wxml" />
+              <template is="wxParse" data="{{wxParseData:summary.nodes}}" />
+          </view>
+        </view>
+        <view style='' class="occupying"> </view>
+      </view>
+      <view class="module-tabpannal">
+        <view class="tabs tabs-top tabs-anchor">
+          <view class="tabs-bar m-fixed">
+            <view class="tabs-nav--container">
+              <view class="tabs-nav--wrap">
+                <view class="tabs-nav tabs-nav--animated">
+                  <view class="tabs-tab J-tabs-tab-key {{show_detail == 1 ? 'tabs-tab-active':''}}" bindtap='ck_tab' data-rel="1">图文详情</view>
+                  <view class="tabs-tab J-tabs-tab-key {{show_detail == 2 ? 'tabs-tab-active':''}}" bindtap='ck_tab' data-rel="2">商品评价({{order_comment_count}})</view>
+                  <view class="tabs-tab J-tabs-tab-key" style="display:none;">热卖推荐</view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="tabs-content" style="{{show_detail == 2 ? 'display:none;':''}}">
+            <import src="../../wxParse/wxParse.wxml" />
+            <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+          </view>
+
+          <view class='tabs-content' style="{{show_detail == 1 ? 'display:none;':''}}">
+              <view class="panel-item" id="PanelRates">
+                <view class="detail-wrap detail-rates" bindtap='go_goods_comment'>
+                  <view class="rates-head plr30">  
+                    <view class="title" >购买评价 
+                      <view class="more span">更多<i class="arrow"></i></view>
+                    </view>  
+                  </view>
+                  <view class="rates-list plr30">  
+                    
+                    <view class="rate-item" wx:for="{{comment_list}}"> 
+                      <view class="rate-user"> 
+                        <view class="user-info span"> 
+                          <image class="avatar" src="{{item.avatar}} "></image> 
+                          <view class="name span">{{item.name}}</view> 
+                        </view> 
+                      </view>   
+                      <view class="rate-cont">
+                        {{item.content}}		
+                      </view>
+                      <view class="rate-attr"> 
+                        <view class="time span">{{item.add_time}}</view> 
+                        <view class="sku span">{{item.option_str}}</view> 
+                      </view>  
+                      <view class="rate-imgs show-img">  
+                        <view class="item" wx:for="{{item.images}}" wx:for-item="imgss">
+                          <image src="{{imgss}}" mode="widthFix" ></image>
+                        </view>  
+                      </view>	
+                    </view>
+
+                  </view>
+                </view>
+              </view>
+
+
+          </view>
+        </view>
+      </view>
+
+      <view class="module-footbar" >
+        <view>
+          <view style='height:3rem;' class="occupying"> </view>
+          <view wx:if="{{goods.type=='pintuan'}}" class="footbar m-fixed">
+            <view class="footbar-shop" data-link="/pages/index/index" bindtap="goLink">
+              <view class="footbar-shop--icon m-icon m-icon-shop"></view>
+              <view class="footbar-shop--text">首页</view>
+            </view>
+            <view class="footbar-im" bindtap='gokefu'>
+              <view class="footbar-im--icon m-icon m-icon-message-38"></view>
+              <view class="footbar-im--text">客服</view>
+            </view>
+            <view class="footbar-like {{favgoods ==2 ? 'fav':''}}" bindtap='favtoggle'>
+              <view class="footbar-shop--icon m-icon m-icon-like "></view>
+              
+              <view class="footbar-shop--text" wx:if="{{favgoods=='2'}}" >
+              已收藏
+              </view>
+              <view class="footbar-shop--text" wx:else >
+              收藏
+              </view>
+            </view>
+            
+            <block wx:if="{{is_login}}">
+              <view bindtap="goBuy" data-type="dan" class="footbar-buy">
+              <view class="footbar-buy--price">¥{{goods.danprice}}</view>
+              <view class="footbar-buy--text" >单独购买</view>
+              </view>
+              <view bindtap="goBuy" data-type="pin" class="footbar-tuan">
+              <view class="footbar-buy--price">¥{{pin_info.pin_price}}</view>
+              <view class="footbar-buy--text">{{pin_info.pin_count}}人拼团</view>
+              </view>
+            </block>
+            <block wx:if="{{!is_login}}">
+              <button bindgetuserinfo="bindGetUserInfo" open-type="getUserInfo" data-type="dan" class="footbar-buy">
+              <view class="footbar-buy--price">¥{{goods.danprice}}</view>
+              <view class="footbar-buy--text" >单独购买</view>
+              </button>
+              <button bindgetuserinfo="bindGetUserInfo" open-type="getUserInfo" data-type="pin" class="footbar-tuan">
+              <view class="footbar-buy--price">¥{{pin_info.pin_price}}</view>
+              <view class="footbar-buy--text">{{pin_info.pin_count}}人拼团</view>
+              </button>
+            </block>
+
+
+          </view>
+          <view wx:elif="{{goods.type=='lottery'}}" class="footbar m-fixed">
+            <view class="footbar-content content">
+              <view class="content-btns"> 
+                <view class="content-btns--cart" data-type="{{seller_info.s_id}}" bindtap="goStore" >
+                  <text class="cart-title">进店逛逛</text> 
+                </view>
+                
+                <view bindtap="goBuy" wx:if="{{lottery_info.lottery_is_end_open_status == 0}}"  data-type="pin"  class="content-btns--buy">
+                  立即参团参与抽奖
+                </view>
+                <view wx:if="{{lottery_info.lottery_is_end_open_status == 1}}"    class="content-btns--buy">
+                  稍候马上开奖
+                </view>
+                <view wx:if="{{lottery_info.lottery_is_end_open_status == 2}}"    class="content-btns--buy" bindtap='goRewardList' >
+                  已开奖查看中奖名单
+                </view>
+
+              </view>
+            </view>
+          </view>
+          <view wx:else class="footbar m-fixed">
+            <view class="footbar-content content">
+              <view class="content-icons">
+                <view class="footbar-shop" data-link="/pages/index/index" bindtap="goLink">
+                  <view class="footbar-shop--icon m-icon m-icon-shop"></view>
+                  <view class="footbar-shop--text">首页</view>
+                </view>
+                <view class="footbar-im" bindtap='gokefu' style="position:relative;">
+                  <view class="footbar-im--icon m-icon m-icon-message-38"></view>
+                  <view class="footbar-im--text">客服</view>
+                    <span wx:if="{{s_num > 0}}" style="background-color:red;position:absolute;top:0px;right:7px;color:#fff;width:30rpx;height:30rpx;text-align:center;line-height:30rpx;border-radius:50%">{{s_num}}</span>
+                </view>
+                <view class="footbar-like {{favgoods ==2 ? 'fav':''}}" bindtap='favtoggle'>
+                  <view class="footbar-shop--icon m-icon m-icon-like "></view>
+                  
+                  <view class="footbar-shop--text" wx:if="{{favgoods=='2'}}" >
+                  已收藏
+                  </view>
+                  <view class="footbar-shop--text" wx:else >
+                  收藏
+                  </view>
+                </view>
+              </view>
+
+              <block wx:if="{{is_login}}">
+                <view class="content-btns">
+                  <view class="content-btns--cart" bindtap="goBuy" data-type="dan" data-is_car="1">
+                    <text class="cart-title">加入购物车</text>
+                  </view>
+                  <view bindtap="goBuy" data-type="dan" class="content-btns--buy">立即购买</view>
+                </view>
+                </block>
+                <block wx:if="{{!is_login}}">
+                <view class="content-btns">
+                  <button bindgetuserinfo="bindGetUserInfo" open-type="getUserInfo" data-type="dan" class="content-btns--cart">
+                    <text class="cart-title">加入购物车</text>
+                  </button>
+                  <button bindgetuserinfo="bindGetUserInfo" open-type="getUserInfo" data-type="dan" class="content-btns--buy">
+                    立即购买
+                  </button>
+                </view>
+              </block>
+
+            </view>
+          </view>
+        </view>
+        <view class="dialog is-bottom" width="100%" style="z-index: 10005;display:{{skustate==1?' ':'none'}};">
+          <view class="dialog-mask"></view>
+          <view class="dialog-core">
+            <view class="sku sku m-fixed" position="bottom">
+              <view class="sku-content">
+                <form bindsubmit="goOrderfrom" report-submit="true">
+                <view class="goods">
+                  <view class="goods-img">
+                    <view class="goods-img--inner">
+                      <image mode="widthFix" src="{{goods.image_thumb}}" class="basedetailskugoodsimage" style="" />
+                    </view>
+                  </view>
+                  <view class="goods-cont">
+                    <view class="goods-cont--price">
+                      <text class="goods-cont--price-unit">¥</text>
+                      <text class="goods-cont--price-text">{{order.buy_type=='dan'?skudanprice:skupin_price}}</text>
+                    </view>
+                    <text class="goods-cont--stock">库存{{goods.quantity}}件</text>
+                    <view class="goods-cont--addon">已选择：
+                      <text wx:for-items="{{sku}}" wx:key="key" class="goods-choose">{{item.name}}{{sku.length - index == 1 ?'':'，'}}</text>
+                    </view>
+                  </view>
+                  <view data-type="{{goods.type=='pintuan' ? 'pin':'dan'}}" bindtap="closeSku" class="goods-close">
+                    <text class="goods-close--icon m-icon m-icon-close"></text>
+                  </view>
+                </view>
+                <view class="sku-content--scroll">
+                  <view class="scroll">
+                    <view class="prop">
+                      <view wx:for-items="{{options.list}}" wx:key="key" data-id="{{item.goods_option_id}}" class="prop-rows">
+                        <view class="prop-rows--title">{{item.name}}：</view>
+                        <view class="prop-rows--content">
+                          <view class="prop-list">
+                            <view wx:for="{{item.option_value}}" wx:key="key" wx:for-item="value"  data-type="{{index}}_{{idx}}_{{value.option_value_id}}_{{value.name}}" wx:for-index="idx" bindtap="selectSku" class="{{value.class_status}} prop-item {{idx==sku[index]['idx']&&value.class_status==''?'is-selected':''}}">{{value.name}}</view>
+                          </view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                  <view class="number">
+                    <view class="number-title">数量：</view>
+                    <view class="number-calculator">
+                      <text  bindtap="setNum" data-type="decrease" class="number-calculator--reduce">-</text>
+                      <text class="number-calculator--value">{{order.quantity}}</text>
+                      <text  bindtap="setNum" data-type="add"  class="number-calculator--increase">+</text>
+                    </view>
+                  </view>
+                </view>
+                <view class="foot">
+                  <button formType="submit" class="foot-okbtn">确定</button>
+                </view>
+                </form>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view bindtap="noticego" data-orderid ="{{notice_orderid}}" hidden="{{isHidenotice}}" class="pin_tips_container {{isHidenotice ? 'pin_tips_fadeOut' : 'pin_tips_fadeIn'}}" > 
+    <image class="pin_tips_user_pic fl" src="{{notice_avatar}}"> </image>
+    <view class="pin_tips_info fl">  
+      <view class="fl span">最新拼团来自</view>  
+      <view class="pin_tips_info_name fl span" >{{notice_name}}</view>  
+      <view class="fl span">,{{notice_miao}}秒前</view> 
+    </view>
+  </view>
+
+<import src="../../nav.wxml" />
+<template is="nav" data="{{navState}}" />

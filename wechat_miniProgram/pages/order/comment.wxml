@@ -1,0 +1,95 @@
+<!--pages/order/comment.wxml-->
+<view class="comment_container">
+	<view class="comment_main">
+        <view  class="shop-product">
+          <view class="meili-all-vue-order-base-product product is-noborder product-list">
+          <view class="product-wrap">
+            <view class="product-pic">
+            <view class="meili-all-vue-base-image">
+              <image src="{{order_goods.goods_images}}" class="product-pic--img fadeIn"/>
+            </view>
+            </view>
+            <view class="product-des">
+
+            <view class="product-des--name">
+              <text>{{order_goods.name}}</text>
+            </view>
+            <view class="product-des--sku">
+              <view>
+              <text>{{order_goods.option_str}}</text>
+              </view>
+            </view>
+            </view>
+            
+          </view>
+          </view>
+        </view>
+
+
+        <view class="rf">  
+			    <view class="comment_expect">
+				    <view class="comment_general">描述符合</view>
+
+       
+
+				<view class="comment_ul ul">
+					<view class="comment_star_background li" data-stype="miaoshu_no" bindtap='choseStar' data-sval="1" style="{{miaoshu_no>0?'background-position: -30px 50%;':'background-position: 0px 50%;'}}">
+					</view>
+					<view class="comment_star_background li" data-stype="miaoshu_no" bindtap='choseStar' data-sval="2"  style="{{miaoshu_no>1?'background-position: -30px 50%;':'background-position: 0px 50%;'}}"></view>
+					<view class="comment_star_background li" data-stype="miaoshu_no" bindtap='choseStar' data-sval="3" style="{{miaoshu_no>2?'background-position: -30px 50%;':'background-position: 0px 50%;'}}"></view>
+					<view class="comment_star_background li" data-stype="miaoshu_no" bindtap='choseStar'  data-sval="4" style="{{miaoshu_no>3?'background-position: -30px 50%;':'background-position: 0px 50%;'}}"></view>
+					<view class="comment_star_background li" data-stype="miaoshu_no" bindtap='choseStar' data-sval="5" style="{{miaoshu_no>4?'background-position: -30px 50%;':'background-position: 0px 50%;'}}"></view>
+				</view>
+				
+			</view>
+			 <view class="comment_expect">
+				<view class="comment_ul ul">
+					<view class="comment_star_background li" data-stype="price_no" bindtap='choseStar' data-sval="1" style="{{price_no>0?'background-position: -30px 50%;':'background-position: 0px 50%;'}}"></view>
+					<view class="comment_star_background li" data-stype="price_no" bindtap='choseStar' data-sval="2" style="{{price_no>1?'background-position: -30px 50%;':'background-position: 0px 50%;'}}"></view>
+					<view class="comment_star_background li" data-stype="price_no" bindtap='choseStar' data-sval="3" style="{{price_no>2?'background-position: -30px 50%;':'background-position: 0px 50%;'}}"></view>
+					<view class="comment_star_background li" data-stype="price_no" bindtap='choseStar' data-sval="4" style="{{price_no>3?'background-position: -30px 50%;':'background-position: 0px 50%;'}}"></view>
+					<view class="comment_star_background li" data-stype="price_no" bindtap='choseStar' data-sval="5" style="{{price_no>4?'background-position: -30px 50%;':'background-position: 0px 50%;'}}"></view>
+				</view>
+				<view class="comment_general">价格合理</view>
+			</view>
+			<view class="comment_expect">
+				<view class="comment_ul ul">
+					<view class="comment_star_background li" data-stype="zhiliang_no" bindtap='choseStar' data-sval="1" style="{{zhiliang_no>0?'background-position: -30px 50%;':'background-position: 0px 50%;'}}"></view>
+					<view class="comment_star_background li"  data-stype="zhiliang_no" bindtap='choseStar' data-sval="2" style="{{zhiliang_no>1?'background-position: -30px 50%;':'background-position: 0px 50%;'}}"></view>
+					<view class="comment_star_background li"  data-stype="zhiliang_no" bindtap='choseStar' data-sval="3" style="{{zhiliang_no>2?'background-position: -30px 50%;':'background-position: 0px 50%;'}}"></view>
+					<view class="comment_star_background li" data-stype="zhiliang_no" bindtap='choseStar' data-sval="4" style="{{zhiliang_no>3?'background-position: -30px 50%;':'background-position: 0px 50%;'}}"></view>
+					<view class="comment_star_background li" data-stype="zhiliang_no" bindtap='choseStar' data-sval="5" style="{{zhiliang_no>4?'background-position: -30px 50%;':'background-position: 0px 50%;'}}"></view>
+				</view>
+				<view class="comment_general">质量满意</view>
+			</view>
+		</view>
+		<view class="form-group">
+			<view class="label">图片</view>
+			<view class="xo-weixin-blt-upload" bindtap='choseImg'>
+				<view class="ul">
+					<view class="li">
+            <view id="image_uploader_selector"  >
+              <view id="image_uploader_indicate">+</view>
+            </view>
+					</view>
+				</view>
+			</view>
+		</view>
+		
+		<view class="form-group">
+			<view class="xo-weixin-blt-upload">
+				<view class="ul">
+
+					<view class="li" wx:for="{{thumb_img}}">
+						<view class="xo-weixin-blt-upload-btn span">
+						  <image src="{{item}}" style="width:53px; height:53px; vertical-align:top;"></image>
+						</view>
+					</view>
+
+				</view>
+			</view>
+		</view>
+    </view>
+	<textarea bindinput="textinput" placeholder="亲，您对这个商品满意吗？您的评价会帮助我们选择更好的商品哦！" class="comment_content" name="textarea"/>
+    <view class="comment_commit_button" bindtap='sub_comment'>提交评价</view>
+</view>

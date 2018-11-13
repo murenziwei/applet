@@ -1,0 +1,36 @@
+<view class="dialog-content">
+	<view class="express-title">
+		<view class="goods-express-icon" >
+			<image src="{{goods_info.image}}"></image>
+		</view>
+		<view class="express-header">
+			物流公司: <view class="span">{{seller_express.express_name}}</view>
+		</view>
+		<view class="express-shipper">
+			运单编号: <view class="tracking-number span">{{order_info.shipping_no}}</view>
+		</view>
+		<view class="express-tel">
+               
+        </view>
+		<div class="express-copy" style="display: none;"></div>
+	</view>
+	<view class="express-main">
+		<view class="express-main-title">
+			订单跟踪
+			<!--ms-if-->
+		</view>
+		<view  class="express-ui  ul" style="">
+
+			<view class="one-expre li"  wx:for="{{order_info.shipping_traces}}">
+				<view class="express-trace-info-dot express-trace-info-dot-green"></view>
+				<view class="express-trace-info">
+					<view class="_trace-info">
+						<view class="trace-detail">{{item.AcceptStation}}</view>
+						<view class="trace-time ">{{item.AcceptTime}}</view>
+					</view>
+				</view>
+			</view>
+      
+		</view>
+	</view>
+</view>

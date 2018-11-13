@@ -1,0 +1,52 @@
+<view class="wx-body">
+  
+   <view class="wx-search">
+     <icon type="search" size="15" class="s-search"></icon>
+     <input type="search" placeholder="请输入被寻找姓名" class="search-input"></input>
+   </view>
+   <view class="wx-pane">
+    <view class="wx-noa">
+      <view class="wx-nav">
+        <block wx:for="{{lwp.arrn}}" wx:key="arrnKey" >
+          <view class="n-node {{lwp.point===index?'active':''}}" bindtap="arrNfn" data-index="{{index}}">
+             {{item.name}}
+          </view>
+        </block>
+      </view>
+      <text class="luku"></text>
+      <view class="wx-address">
+        东莞 <image class="a-img"></image>
+      </view>
+    </view>
+     <view class="wx-content">
+        <scroll-view class="wx-p-datas">
+          <block wx:for="{{pm.arr[lwp.point]}}" wx:key="pmKey">
+              <view class="pd-item" >
+                   <view class="pd-top">
+                       <view class="p-t-left">
+                          <image src="{{item.imgUrl}}" class="ptl-img" />
+                       </view>
+                       <view class="p-t-right">
+                          <view class="ptr-title">{{item.title}}</view>
+                          <view class="ptr-name">失踪人：{{item.name}}（{{item.gender}}）</view>
+                          <view class="ptr-age">年龄：{{item.age}}岁</view>
+                          <view class="ptr-date">失踪日期：{{item.date}}</view>
+                          <view class="ptr-address">失踪地址：{{item.address}}</view>
+                       </view>
+                   </view>
+                   <view class="pd-bottom">
+                      <view class="p-b-left">
+                         <icon type="success" size="20" class="pbl-icon"></icon>
+                            <text class="pbl-num">{{item.num}}</text>
+                            人正在一起寻找
+                      </view>
+                      <view class="p-b-right">
+                          <button class="pbr-btn">帮我回家</button>
+                      </view>
+                   </view>
+              </view>
+          </block>
+        </scroll-view>
+     </view>
+   </view>
+</view>

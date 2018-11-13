@@ -1,0 +1,141 @@
+<!--pages/pinduoduo/category.wxml-->
+<view id="main" wx:if="{{loadover}}">
+  <view id="index-content-v2">
+    
+    <!-- newnav begin -->
+    <view id='search-bar'>
+      <view class='search-title-container-result'>
+        <view class='view-top-container'>
+          <view class="search-content-clear search-content-clear-result" bindtap='clear_input'></view>
+          <view id="search-result-submit">
+            <input id="result-input" value='{{keyword}}' bindinput="bindKeyInput"  bindconfirm="searchbtn" placeholder="输入商品名称"   class='search-box-view-main'></input>
+          </view>
+          <view class='search-view-icon' bindtap='clear_input'></view>
+        </view>
+        <view class='cancel-container-view' bindtap='clear_input'>
+          <view class='cancel-button-view'>取消</view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- newnav end-->
+    <!--new content begin-->
+    <view id='sr-gl' class='search-goods-list' >
+      <view class='test-wrap'>
+        <view class='search-sort-tab-seat search-sort-with-filter'></view>
+        <view id="searchSortTabWrap" class='search-sort-with-filter search-result-sort-sticky'>
+          <view class='search-sort-tab'>
+            <view class='sort-droplist-trigger {{cur_type == "default" ? "sort-tab-highlight":"" }}' bindtap='go_sort_by' data-type="default">
+              <text>综合</text>
+            </view>
+            <view class='recent-hot-sort {{cur_type == "seller_count" ? "sort-tab-highlight":"" }}' bindtap='go_sort_by' data-type="seller_count" >
+              销量
+              
+            </view>
+            <view class='sort-by-price {{cur_type == "price" ? "sort-tab-highlight":"" }}' bindtap='go_sort_by' data-type="price" data-sort="{{sort}}">
+              价格
+              <view class='price-icon-wrapper'>
+                <text class='price-icon-up {{cur_type == "price" && sort =="desc" ? "price-up-hightlight":""}}'></text>
+                <text class='price-icon-down {{cur_type == "price" && sort =="asc" ? "price-down-hightlight":""}}'></text>
+              </view>
+            </view>
+            <view class='search-sort-cut-off' style="display:none;"></view>
+            <view class='add-filter ' bindtap='show_price_search_do' style="display:none;">
+              <text>筛选</text>
+              <text class='sort-droplist-trigger-menu'></text>
+            </view>
+          </view>
+          <view class='filter-panel search-tab-filter-opt' wx:if="{{show_price_search}}">
+            <view class="filter-panel-mask" bindtap='hide_search'></view>
+            <view class='filter-content' id="filter-content">
+              <view class='filter-content-conditions'>
+                <view class='price-filter price-filter-opt price-padding-bottom' id="price-filter">
+                   <view class='filter-title'>价格区间(元)</view>
+                    <view class='price-items-wrap' id="price-items-wrap">
+                      <view class='price-items'>
+                        <text bindtap='chose_price' data-price_index="1" data-min_price="0" data-max_price="19" class='price-item no-margin-left {{cur_price_index == 1 ? "filter-selected": ""}}'>0-19</text>
+                        <text bindtap='chose_price' data-price_index="2" data-min_price="19" data-max_price="40" class='price-item {{cur_price_index == 2 ? "filter-selected": ""}}'>19-40</text>
+                        <text bindtap='chose_price' data-price_index="3" data-min_price="40" data-max_price="50" class='price-item {{cur_price_index == 3 ? "filter-selected": ""}}'>40-50</text>
+                        <text bindtap='chose_price' data-price_index="4" data-min_price="50" data-max_price="1000000" class='price-item {{cur_price_index == 4 ? "filter-selected": ""}}'>50以上</text>
+                      </view>
+                    </view>
+                    <view class='custom-price '>
+                      <input class='custom-price-item' bindinput="bindKeyInputmin"  type='digit' placeholder="最低价"></input>
+                      <text class='custom-price-line'>-</text>
+                      <input class='custom-price-item' bindinput="bindKeyInputmax" type='digit' placeholder="最高价"></input>
+                    </view>
+                </view>
+              </view>
+              <view class='filter-ok-btn' bindtap='go_search'>完成</view>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </view>
+    <!--new content end-->
+    <!-- nav begin -->
+      <view id="navbar" class='nav-bar-container' style="display:none;">
+        <view class='nav-bar-content' id="navbar-ul">
+          <view class='nav-bar-item' bindtap='common_go_link' data-link="/pages/index/index">
+            <view class='span'>首页</view>
+          </view>
+          <view class='nav-bar-item ' wx:for="{{nav}}" bindtap='common_go_link' data-link="/pages/goods/category?id={{item.id}}">
+            <view class='span {{item.id == cur_pid ? "nbi-selected":""}}'>
+              {{item.name}}
+            </view>
+          </view>
+        </view>
+      </view>
+    <!-- nav end -->
+    <!-- content begin-->
+    <view id="index-main-content">
+      <view id="pcv">
+        <view id="pcv-tv1-14">
+          
+		  
+		  
+          <!--开始商品 -->
+          <view class='react-base-list-wrapper pcl-list-wrapper'>
+			
+            <view bindtap="goGoods_link" data-type="{{item.goods_id}}" class='double-grid-one double-grid-one-0' wx:for="{{list}}">
+              <view class='double-grid-item gap-right'>
+                <view style="position:relative" class='std-goods-image-square goods-image'>
+                  <view wx:if="{{item.quantity != 0 && item.deliver_time!=0}}" style="width:88rpx;height:88rpx;position:absolute;right:0;top:0px;z-index:999"><image src="../../images/pre.png" style='height:100%;'></image></view>
+                  <image src='{{item.image}}' mode='widthFix'></image>
+                  <view wx:if="{{item.deliver_time!=0}}" style="background:rgba(255,87,118,.8);width:100%;position:absolute;bottom:1px;text-align:center;color:#fff;line-height:21px;">预售：预计{{item.deliver_time}}发货</view>
+                </view>
+                <view class='goods-name'>
+                  {{item.name}}
+                </view>
+                <view class='detail'>
+                  <view class='price-icon b'>
+                    ￥
+                  </view>
+                  <view class='price b'>
+                      {{item.danprice}}
+                  </view>
+                  
+                  
+
+                  <view class='info'>
+                      <view class='span'>
+                      已售{{item.seller_count}}
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <!--结束商品-->
+
+        </view>
+      </view>
+    </view>
+    <!-- content end -->
+
+	<view  wx:if="{{LoadingComplete}}" class="tips  {{hidetip?'hide':''}} ">正在加载...</view>
+    <view  wx:else class="tips ">{{tip_html}}</view>
+	
+  </view>
+</view>

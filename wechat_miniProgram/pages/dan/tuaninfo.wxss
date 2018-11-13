@@ -1,0 +1,139 @@
+.header .info {
+    text-align: center;
+    width: 100%;
+    height: 310rpx;
+    background-color: #ff6f60;
+    color: #fff;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+}
+.header .info .img {
+    border: none;
+}
+.header .info .img image {
+    width: 120rpx;
+    height: 120rpx;
+    background-position: center center;
+    background-size: cover;
+    border: 2px solid #fff;
+    border-radius: 50%;
+}
+.header .info .nickname {
+    margin: 20rpx 0 12rpx 0;
+    font-size: 32rpx;
+}
+.section .bottom2 {
+    border-width: 0 0 1px;
+    -webkit-box-align: center;
+    background-color: #fff;
+}
+.section .bonus {
+    height: 170rpx;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: justify;
+    padding: 0 20rpx 0 30rpx;
+    background-color: #fff;
+}
+.section .bonus .total2 view:first-of-type {
+    font-size: 28rpx;
+    color: #333;
+    padding: 32rpx 0 10rpx 0;
+}
+.section .bonus .total2 view:last-of-type {
+    color: #ff534c;
+    font-size: 56rpx;
+}
+.section .gray {
+    color: #999;
+    font-size: 28rpx;
+}
+.section .message .bonus .cashout .p {
+    font-size: 28rpx;
+    line-height: 170rpx;
+}
+.section .message .label {
+    display: inline-block;
+    margin: 0 20rpx 0 20rpx;
+    width: 16rpx;
+    height: 16rpx;
+    border-top: 1px solid #999;
+    border-right: 1px solid #999;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    line-height: 16rpx;
+}
+.bottom {
+    position: relative;
+    width: 100%;
+    height: 46rpx;
+    line-height: 46rpx;
+    margin: 42rpx 0;
+    text-align: center;
+}
+.section .myqcode, .myfans, .mycard, .cs, .leader {
+    height: 88rpx;
+}
+.section .myqcode, .myfans, .mycard, .cs, .leader {
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-align: center;
+    -webkit-box-pack: justify;
+    padding: 0 20rpx 0 30rpx;
+    background-color: #fff;
+}
+.section .font {
+    font-size: 30rpx;
+    color: #333;
+}
+.bottom .span {
+    position: relative;
+    display: inline-block;
+    color: #9f9f9f;
+    font-size: 24rpx;
+}
+.myqcode .span image {
+    width: 40rpx;
+    height: 40rpx;
+    position:absolute;
+    left:-50rpx;
+    top:-30rpx;
+
+}
+.section .myqcode, .myfans, .mycard, .cs, .leader {
+    height: 88rpx;
+}
+.section .myqcode, .myfans, .mycard, .cs, .leader {
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-align: center;
+    -webkit-box-pack: justify;
+    padding: 0 20rpx 0 30rpx;
+    background-color: #fff;
+}
+.section .myfans, .cs {
+    margin-bottom: 20rpx;
+}
+.section .font {
+    font-size: 30rpx;
+    color: #333;
+}
+.recommend {
+    /* height: 115px; */
+    text-align: center;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    font-size: 12px;
+    padding: 40rpx 0 40rpx 0;
+}
+.section .myfans, .cs {
+    margin-bottom: 20rpx;
+}

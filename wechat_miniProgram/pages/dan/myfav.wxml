@@ -1,0 +1,65 @@
+<!--pages/dan/myfav.wxml-->
+<view id="views">
+  <view class='meili-all-vue-base-head head'>
+    <view class='head-content'>
+      
+      <view class="head-title">
+        我的收藏
+      </view>
+
+    </view>
+  </view>
+  <view class='meili-all-vue-base-tab tabs tabs-top tabs-line'>
+    <view class='tabs-bar' hidden='true'>
+      <view class='tabs-nav--container'>
+        <view class='tabs-nav--wrap'>
+          <view class='tabs-nav tabs-nav--animated'>
+            <view class='tabs-tab J-tabs-tab-key tabs-tab-active'>
+              宝贝
+            </view>
+            <view class='tabs-tab J-tabs-tab-key'>
+              店铺
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='tabs-content tabs-content-animated'>
+      <view class='tabs-tabpane J-tabs-tabpane-key tabs-tabpane-active'>
+        <view class=''>
+          
+          <view  wx:for="{{goods}}" wx:key="key"  class='meili-all-vue-fav-base-goodscollect'>
+            <view bindtap='goLink2' data-link="/pages/goods/index?id={{item.goods_id}}" class='meili-all-vue-fav-base-goodscollect-item item'>
+              <view class='item-a'>
+                <view class='meili-all-vue-base-image item-img'>
+                  <image mode="widthFix" src="{{item.image}}" class=" lazyload-bind fadeIn lazyload-trigger" style="visibility: inherit;display: inherit;"></image>
+                </view>
+                <view class='item-right right'>
+                  <view class='right-title'>
+                    {{item.name}}
+                  </view>
+                  <view class='right-price'>
+                    ￥{{item.danprice}}
+                    <view class="oldprice span">￥{{item.price}}</view>
+                  </view>
+                  <view class="right-alike">去看看</view>
+
+                </view>
+              </view>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </view>
+
+    <view class='loading' hidden='{{isHideLoadMore}}'>正在加载...</view>
+    <view class='nomore'  hidden='{{showTpo}}'>已经没有更多了~</view>
+
+  </view>
+</view>
+<view class="bottom_view"> </view>
+
+<import src="../../footer.wxml" />
+<template is="footer"  data="{{tablebar}}"/>
+

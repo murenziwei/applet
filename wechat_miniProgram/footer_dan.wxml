@@ -1,0 +1,26 @@
+<template name="footer">
+  <view class="bottom-area">
+    <view class="bottom-nav dan-bottom-nav clearfix">
+        <view  bindtap='goLink' data-link="/pages/index/index"  class="bottom-nav-item fl {{tablebar == 1 ? 'active' : ''}}">
+            <view class="img-wrap  m-icon m-png-index" >
+            </view>
+            <view class="title">首页</view>
+        </view>
+        <view  bindtap='goLink' data-link="/pages/dan/paihang"  class="bottom-nav-item fl {{tablebar == 2 ? 'active' : ''}}">
+            <view class="img-wrap m-icon m-icon-rank" >
+            </view>
+            <view class="title">排行</view>
+        </view>
+        <view  bindtap='goLink' data-link="/pages/dan/new"  class="bottom-nav-item fl {{tablebar == 3 ? 'active' : ''}}">
+            <view class="img-wrap m-icon m-icon-new">
+            </view>
+            <view class="title">新品</view>
+        </view>
+        <view bindtap='goLink' data-link="/pages/dan/me"  class="bottom-nav-item fl {{tablebar == 4 ? 'active' : ''}}">
+            <view class="img-wrap m-icon m-png-me">
+            </view>
+            <view class="title">我的</view>
+        </view>
+    </view>
+  </view>
+</template>

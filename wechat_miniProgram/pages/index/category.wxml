@@ -1,0 +1,73 @@
+<!--index.wxml-->
+<scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="loadMore">
+<view class="nav">
+  <scroll-view scroll-x style="width: 100%">
+     <view data-id="-1" data-navid="0" bindtap="goLink" data-link="/pages/index/index" class="nav_item {{menuindex == -1 ? 'cur' : ''}}">首页</view>
+    <view wx:for="{{nav}}" wx:key="key" data-id="{{index}}" data-navid="{{item.id}}" bindtap="choiceMenu" class="nav_item {{menuindex == index ? 'cur' : ''}}">{{item.name}}</view>
+  </scroll-view>
+</view>
+
+
+<view class="goods">
+  <view wx:for-items="{{list}}" wx:key="key"   class="pin_goods_item pin_goods_single fl">
+    <form bindsubmit="goOrderfrom" report-submit="true">
+    <view bindtap="goGoods_link" data-type="{{item.goods_id}}" style="background-image:url({{item.image}});" class="pin_good_img loading_bg_120  fl">
+      <view class="pin_top_icon">{{item.pin_count}}人团</view>
+    </view>
+    <view class="pin_good_info fr pin_good_info_sellout">
+      <view class="pin_good_title" bindtap="goGoods_link" data-type="{{item.goods_id}}">{{item.name}}</view>
+      <view class="pin_good_tags">
+        <view class="pin_good_tag fl" bindtap="goGoods_link" data-type="{{item.goods_id}}">{{item.summary}}</view>
+      </view>
+      <view class="pin_good_price_info" bindtap="goGoods_link" data-type="{{item.goods_id}}">
+        <view class="pin_goods_price fl">¥{{item.pin_price}}</view>
+        <del class="pin_goods_origin_price fl">¥{{item.price}}</del>
+      </view>
+      <view class="pin_info">
+        <text class="pin_info_number fl">已团{{item.seller_count}}件</text>
+      </view>
+      <view class="pin_info_gotuan">
+        <button formType="submit" data-type="{{item.goods_id}}" class="pin_info_go fl">去开团</button>
+      </view>
+    </view>
+     </form>
+  </view>
+  
+  <view class='jg_16' wx:if="{{prolist.length > 0}}">
+    精选商品
+  </view>
+  <view class='guess_goods'>  
+    <view wx:for-items="{{prolist}}" wx:key="key"  bindtap="goGoods_link" data-type="{{item.goods_id}}" class='item-wrap waterfall-frame-1 waterfall-box waterfall-optimise-show'>
+      <view class='iwf'>
+        <view class='img-wrap J_dynamic_imagebox'>
+          <image class="J_dynamic_img fill_img scrollLoading" mode="widthFix" src="{{item.image}}" ></image>
+        </view>
+        <view class="title">   {{item.name}}  </view>
+        <view class='bot_box clearfix'>
+          <view class="p_price fl" >¥{{item.danprice}}</view>
+          <view class='p_feed fr'>{{item.seller_count}}人已抢</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view  wx:if="{{LoadingComplete}}" class="tips fl {{hidetip?'hide':''}} ">正在加载...</view>
+  <view  wx:else class="tips fl">{{tip_html}}</view>
+</view>
+
+
+
+<import src="../../footer.wxml" />
+<template is="footer"  data="{{tablebar}}"/>
+
+<view bindtap="noticego" data-orderid ="{{notice_orderid}}" hidden="{{isHidenotice}}" class="pin_tips_container {{isHidenotice ? 'pin_tips_fadeOut' : 'pin_tips_fadeIn'}}" > 
+    <image class="pin_tips_user_pic fl" src="{{notice_avatar}}"> </image>
+    <view class="pin_tips_info fl">  
+      <view class="fl span">最新拼团来自</view>  
+      <view class="pin_tips_info_name fl span" >{{notice_name}}</view>  
+      <view class="fl span">,{{notice_miao}}秒前</view> 
+    </view>
+  </view>
+</scroll-view>
+
+  

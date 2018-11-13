@@ -1,0 +1,22 @@
+<view class="suggestion-wrap">
+  <view class='suggestion-header'>
+    常见帮助
+  </view>
+  <view class='suggestion-body'>
+    <view class='suggestion-list' id="tuan_list">
+      <view class='suggestion-one' wx:for="{{list}}" data-id="{{item.blog_id}}" bindtap='go_ask_page'>
+        <view class='suggestion-title'>
+          {{item.title}}
+        </view>
+        <view class='suggestion-arrow'>
+          <image src='https://www.shellsbuy.com/Common/pinduoduo/assets/img/home_arrow-0417024bbe.png'></image>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+  <view class='loading' hidden='{{isHideLoadMore}}'>正在加载...</view>
+  <view class='nomore'  hidden='{{showTpo}}'>已经没有更多了~</view>
+
+</view>

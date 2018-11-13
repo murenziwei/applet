@@ -1,0 +1,239 @@
+<!--index.wxml-->
+<scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="loadMore" scroll-top="{{scrollTop}}">
+<view class="nav">
+  <scroll-view scroll-x style="width: 100%">
+     <view data-id="-1" data-navid="0" bindtap="choiceMenu" class="nav_item {{menuindex == -1 ? 'cur' : ''}}">首页</view>
+    <view wx:for="{{nav}}" wx:key="key" data-id="{{index}}" data-navid="{{item.id}}" bindtap="choiceMenu" class="nav_item {{menuindex == index ? 'cur' : ''}}">{{item.name}}</view>
+  </scroll-view>
+</view>
+
+<view class="banner" hidden='{{gid ==0 ? false: true}}'>
+  <swiper class="swiper" style="height: {{imageheight}}px;" circular='true' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{slide}}" wx:key="key">
+      <swiper-item>
+        <image bindtap='goBannlinc' style="width: {{imagewidth}}px; height: {{imageheight}}px;" bindload="imageLoad" data-id="{{item.slider_id}}"  data-url="{{item.url}}" src="{{item.image}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<view wx:if="{{quan.length >0 && gid ==0}}"  style="{{show_quan?'':' display:none;'}}" class="meili-all-vue-detail-base-promotion promotion">
+	<view class="meili-all-vue-base-slider slider" style="height: 53px;">
+		<view class="slider-wraper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
+			<view class="list" style="position: absolute;">
+				
+        <view bindtap='get_quan' data-quan_id="{{item.id}}" class="card-content list-item {{item.is_get == 1? 'get':''}}" wx:for="{{quan}}">
+					<view class="card">
+						<view class="card-price span">
+							<view class="card-price--unit span">¥</view> 
+							<view class="card-price--num span">{{item.credit}}</view>
+						</view> 
+						<view class="card-desc span" wx:if="{{item.limit_money >0}}">
+            满{{item.limit_money}}元立减</view> 
+            <view class="card-desc span" wx:else>
+            全场通用</view> 
+						<view class="card-tag span {{item.is_get == 1? 'card-tag--get':''}}">
+							<view class="card-tag--text span">已领</view>
+						</view>
+					</view>  
+				</view>
+
+				
+
+			</view>
+		</view>
+	</view>
+</view>
+
+<view id="quick-entrance-new-2" wx:if="{{gid ==0}}" >
+  <view class="quick-entrance-new-2">
+  <view class="h3">小栈承诺 | 100%正品</view>
+  <view class='ul'>
+  <view class="li"><image src="../../images/01.png" class="index-images" /><span>小栈自营</span></view>
+  <view class="li"><image src="../../images/02.png" class="index-images" /><span>全球直采</span></view>
+  <view class="li"><image src="../../images/03.png" class="index-images" /><span>正品保证</span></view>
+  <view class="li"><image src="../../images/04.png" class="index-images" /><span>售后无忧</span></view>
+  </view>
+  <view class='readInfo'>
+    <!-- <span>12项保障措施</span> -->
+    <!-- <button>查看详情</button> -->
+  </view>
+</view>
+  <view class='qe-wrapper-2'>
+
+    <block wx:for="{{iconnav}}" wx:key="key">
+    <view class='li'> 
+      <view class='quick-entrance-cube'>
+        <view class="item-img-box">
+						<image  bindtap='goBannlinc' data-id="{{item.slider_id}}" data-url="{{item.url}}" src="{{item.image}}"  ></image>
+				</view>
+        <view class="cube-text"><view class='span'>{{item.name}}</view></view>
+      </view>
+    </view>
+    </block>
+    
+  </view>
+</view>
+
+<view class="ad" wx:if="{{ad.length >0}}">
+  <view wx:for="{{ad}}" wx:key="key" class="ad_nav {{index == 0 ? 'ad_l' : 'ad_r'}}" style=" height: {{imageheight2/2}}px;" >
+    <image  bindtap='goBannlinc' bindload="imageLoad2" data-id="{{item.slider_id}}" style=" height: {{imageheight2/2}}px;" data-url="{{item.url}}"  src="{{item.image}}" />
+  </view>
+</view>
+
+<view class="ad_line" wx:if="{{menuindex == -1}}">
+  <view wx:for="{{ad_line}}" wx:key="key" class="ad_line_img" style="height: {{imageheight3}}px;">
+    <image  bindtap='goBannlinc' data-id="{{item.slider_id}}" style="width: {{imagewidth3}}px; height: {{imageheight3}}px;" data-url="{{item.url}}" bindload="imageLoad3" mode="widthFix" src="{{item.image}}"></image>
+  </view>
+</view>
+<view class="goods" style="margin-top:0px;">
+
+  <view wx:if="{{types == 1 && gid == 0}}" class="pintuan-list" >
+    <view class="pintuan-one">
+      <view class="pintuan-index">
+        <span class="pintuan-shop">超值拼团好物</span>
+        <span class="pintuan-shoplist" bindtap='goBannlinc' data-url="/pages/dan/paihang">查看更多</span>
+      </view>
+    
+      <swiper class="swiper" style="height: 820rpx;" circular='true' indicator-active-color="#e944a0" indicator-dots="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+          <swiper-item class='clearfix' wx:for="{{list}}" wx:key="key">
+            <view class='swiper_view'>
+              <ul class="swiperUL clearfix">
+                <li wx:for="{{item}}" wx:for-item="lists" bindtap="goGoods_link" data-type="{{lists.goods_id}}">
+                  <view class='bacImg'>
+                    <image mode="scaleToFill" src="{{lists.image}}"></image>
+                    <span>已团{{lists.seller_count}}件</span>
+                  </view>
+                  <p>单买价:￥{{lists.danprice}}</p>
+                  <view class='swiper_UnitPrice'><span>{{lists.pin_count}}人团</span><p>￥{{lists.pin_price}}</p></view>
+                  <view class='goToaLeague'><span>去拼团</span></view>
+                
+                </li>
+               
+              </ul>
+            </view>
+          </swiper-item>
+         
+      </swiper>
+    </view>
+  </view>
+
+    <view wx:if="{{typetwo == 1 && gid == 0}}" class="pintuan-list">
+      <view class="pintuan-two">
+        <view class="pintuan-index">
+          <span class="pintuan-shop">老带新专享</span>
+          <span class="pintuan-shoplist" bindtap='goBannlinc' data-url="/pages/index/one">查看更多</span>
+        </view>
+        <swiper class="swiper" style="height: 1000rpx;" circular='true' indicator-active-color="#e944a0" indicator-dots="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+            <swiper-item  class='clearfix'  wx:for="{{listtwo}}" wx:key="key">
+              <view class='swiper_view'>
+                <ul class="swiperUlTwo clearfix">
+                  <li wx:for="{{item}}" wx:for-item="lists" bindtap="goGoods_link" data-type="{{lists.goods_id}}">
+                      <view class='Product_picture'>
+                        <image src="{{lists.image}}"></image>
+                        <image class='Newlyweds' src='../../images/xrzx.png'></image>
+                      </view>
+                      <view class='Product_text'>
+                        <view class='Product_text_one'>{{lists.name}}</view>
+                        <view class='Progress_bar'>
+                          <view><p style="width:{{lists.quantity_width}}%"></p></view>
+                          <span>已团{{lists.seller_count}}件</span>
+                        </view>
+                        <view class='Progress_bar_two'>
+                          <p>￥{{lists.pin_price}}</p>
+                          <span>￥{{lists.pin_price}}</span>
+                          <view>去拼团</view>
+                        </view>
+                      </view>
+                  </li>
+                 
+                 
+                </ul>
+              </view>
+            </swiper-item>
+     
+
+        </swiper>
+      </view>
+    </view>
+
+
+  <!-- <view wx:for-items="{{list}}" wx:key="key"   class="pin_goods_item pin_goods_single fl">
+    <form bindsubmit="goOrderfrom" report-submit="true">
+    <view bindtap="goGoods_link" data-type="{{item.goods_id}}" style="background-image:url({{item.image}});" class="pin_good_img loading_bg_120  fl">
+      <view class="pin_top_icon">{{item.pin_count}}人团</view>
+    </view>
+    <view class="pin_good_info fr pin_good_info_sellout">
+      <view class="pin_good_title" bindtap="goGoods_link" data-type="{{item.goods_id}}">{{item.name}}</view>
+      <view class="pin_good_tags">
+        <view class="pin_good_tag fl" bindtap="goGoods_link" data-type="{{item.goods_id}}">{{item.summary}}</view>
+      </view>
+      <view class="pin_good_price_info" bindtap="goGoods_link" data-type="{{item.goods_id}}">
+        <view class="pin_goods_price fl">¥{{item.pin_price}}</view>
+        <del class="pin_goods_origin_price fl">¥{{item.price}}</del>
+      </view>
+      <view class="pin_info">
+        <text class="pin_info_number fl">已团{{item.seller_count}}件</text>
+      </view>
+      <view class="pin_info_gotuan">
+        <button formType="{{is_login?'submit':''}}"  bindgetuserinfo="{{is_login ? '':'bindGetUserInfo'}}" open-type="{{is_login ? '':'getUserInfo'}}" data-type="{{item.goods_id}}" class="pin_info_go fl">去开团</button>
+      </view>
+    </view>
+     </form>
+  </view> -->
+  
+  <view class='jg_16' wx:if="{{menuindex == -1}}">
+    精选商品
+  </view>
+  <view class='guess_goods' style="margin-top:50px;">  
+    <view wx:for-items="{{prolist}}" wx:key="key"  bindtap="goGoods_link" data-type="{{item.goods_id}}" class='item-wrap waterfall-frame-1 waterfall-box waterfall-optimise-show'>
+      <view class='iwf'>
+        <view style="position:relative" class='img-wrap J_dynamic_imagebox'>
+          <view wx:if="{{item.quantity == 0}}" style="width:60px;height:21px;position:absolute;right:0;top:5px;z-index:999"><image src="../../images/replenishment.png" style='height:100%;'></image></view>
+          <view wx:if="{{item.quantity != 0 && item.deliver_time!=0}}" style="width:88rpx;height:88rpx;position:absolute;right:0;top:0px;z-index:999"><image src="../../images/pre.png" style='height:100%;'></image></view>
+          <image class="J_dynamic_img fill_img scrollLoading" mode="widthFix" src="{{item.image}}" ></image>
+          <view wx:if="{{item.deliver_time!=0}}" style="background:rgba(255,87,118,.8);width:100%;position:absolute;bottom:7px;text-align:center;color:#fff;">预售：预计{{item.deliver_time}}发货</view>
+        </view>
+        <view class="title">   {{item.name}}  </view>
+        <view class='bot_box clearfix'>
+          <view class="p_price fl" >¥{{item.danprice}}</view>
+          <view class='p_feed fr'>{{item.seller_count}}人已抢</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view  wx:if="{{LoadingComplete}}" class="tips fl {{hidetip?'hide':''}} ">正在加载...</view>
+  <view  wx:else class="tips fl">{{tip_html}}</view>
+</view>
+<view hidden='{{is_login}}'>
+	<view class="bg-fill app-bg-fill">
+		<view id="prompt-default">
+			
+			<view class="content-wrapper">
+				<view class="detail" id="prompt-default-detail">
+					<view class="title">请先授权登录</view>
+				</view>
+				<view class="buttons buttons-confirm">
+          <button  bindtap='close_win' bindgetuserinfo="bindGetUserInfos" open-type="getUserInfo"  class="button">授权登录</button>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view class="foot_div"></view>
+<import src="../../footer.wxml" />
+<template is="footer"  data="{{tablebar,s_num}}"/>
+
+<view bindtap="noticego" data-orderid ="{{notice_orderid}}" hidden="{{isHidenotice}}" class="pin_tips_container {{isHidenotice ? 'pin_tips_fadeOut' : 'pin_tips_fadeIn'}}" > 
+    <image class="pin_tips_user_pic fl" src="{{notice_avatar}}"> </image>
+    <view class="pin_tips_info fl">  
+      <view class="fl span">最新拼团来自</view>  
+      <view class="pin_tips_info_name fl span" >{{notice_name}}</view>  
+      <view class="fl span">,{{notice_miao}}秒前</view> 
+    </view>
+  </view>
+</scroll-view>
+
+  

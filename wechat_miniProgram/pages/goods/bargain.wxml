@@ -1,0 +1,161 @@
+<view id="main">
+  <view class='main-view container bg-white'>
+    <view id='bargain-goods-list'>
+      <block wx:for="{{slide}}" wx:key="key">
+        
+          <image data-id="{{item.slider_id}}" style="width: {{imagewidth}}px; height: {{imageheight}}px;" bindload="imageLoad" data-url="{{item.url}}" src="{{item.image}}" bindtap='goBannlinc' class='cb-banner'></image>
+      
+      </block>
+
+      <view>
+        <view class='official-activity'>
+          <form bindsubmit="goOrderfrom_bt" report-submit="true">
+            <button class='rule-btn2' formType="submit">活动规则</button>
+          </form>
+        </view>
+      </view>
+
+      <view class='bargain-rolling-msg' wx:if="{{success_order_list.length >0}}">
+        <view class='ul'>
+          <scroll-view scroll-y style="height: 80rpx;" scroll-with-animation="{{scoll_animate}}" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+          <view class='content stop-10' wx:for="{{success_order_list}}" id="x{{index}}">
+            <image src='{{item.avatar}}' class="avatar"></image>
+            <view class='label'>
+              {{item.uname}}砍价成功啦，0元拿了{{item.goods_name}}
+            </view>
+          </view>
+          </scroll-view>
+        </view>
+      </view>
+      <view class='cb-goods-list'>
+        
+        <view class='cb-goods-item item-0' wx:for="{{list}}" data-goods_id="{{item.goods_id}}" bindtap="{{is_login?'kan_handler':''}}">
+          <image src='{{item.image}}' class='scrollLoading'></image>
+          <view class='goods-right'>
+            <view class='goods-name'>
+              {{item.name}} 
+            </view>
+            <view class='goods-name desc' >
+              {{item.summary}}
+            </view>
+            <view class='detail'>
+              <view class='sold-quantity'>{{item.seller_count }}人已0元拿</view>
+              <view class='goods-price'>
+                原价<text class='b'>{{item.pin_price}}</text>元
+              </view>
+            </view>
+            <button class='button' data-goods_id="{{item.goods_id}}" bindtap="{{is_login?'kan_handler':''}}" bindgetuserinfo="{{is_login ? '':'bindGetUserInfo'}}" open-type="{{is_login ? '':'getUserInfo'}}">砍价0元得</button>
+          </view>
+        </view>
+
+      </view>
+      <view  wx:if="{{LoadingComplete}}" class="tips fl {{hidetip?'hide':''}} ">正在加载...</view>
+      <view  wx:else class="tips fl">{{tip_html}}</view>
+    </view>
+
+    <view class="address-popup" id="address-popup" hidden='{{hide_address}}' >
+      <view class="address-popup-mask"></view>
+      <view class="address-popup-content" id="address-popup-content">
+        <view class="address-popup-title">
+          选择收货地址
+          <text class="i address-popup-title-close" bindtap='hide_address'></text>
+        </view>
+        <view class="address-popup-list" id="address-popup-list">
+        <view class="p address-popup-list-item">
+          <input placeholder="身份证号码" bindinput="idcardInput" type="idcard" />
+        </view>
+          <view class="address-popup-list-item" bindtap='chose_address_detai' data-address_id="{{item.address_id}}" wx:for="{{address_list}}">
+            <view class="p">{{item.name}}, {{item.telephone}}</view>
+            <view class="p">{{item.province_name}}{{item.city_name}}{{item.country}}{{item.address}}</view>
+            <text class='address_text'></text>
+          </view>	
+          <view class="address-popup-list-item address-popup-list-item-last" bindtap='chooseAddress'>
+            <view class="p">添加新收货地址</view>
+          </view>
+
+        </view>
+        
+      </view>
+    </view>
+    <view class="dialog is-bottom" width="100%" style="z-index: 10005;display:{{skustate==1?' ':'none'}};">
+      <view class="dialog-mask"></view>
+      <view class="dialog-core">
+        <view class="sku sku m-fixed" position="bottom">
+          <view class="sku-content">
+            <view class="goods">
+              <view class="goods-img">
+                <view class="goods-img--inner">
+                  <image mode="widthFix" src="{{goods.image_thumb}}" class="basedetailskugoodsimage" style="" />
+                </view>
+              </view>
+              <view class="goods-cont">
+                <view class="goods-cont--price">
+                  <text class="goods-cont--price-unit">¥</text>
+                  <text class="goods-cont--price-text">{{skupin_price}}</text>
+                </view>
+                <text class="goods-cont--stock">库存{{goods.quantity}}件</text>
+                <view class="goods-cont--addon">已选择：
+                  <text wx:for-items="{{sku}}" wx:key="key" class="goods-choose">{{item.name}}{{sku.length - index == 1 ?'':'，'}}</text>
+                </view>
+              </view>
+              <view data-type="{{goods.type=='pintuan' ? 'pin':'dan'}}" bindtap="closeSku" class="goods-close">
+                <text class="goods-close--icon m-icon m-icon-close"></text>
+              </view>
+            </view>
+            <view class="sku-content--scroll">
+              <view class="scroll">
+                <view class="prop">
+                  <view wx:for-items="{{options.list}}" wx:key="key" data-id="{{item.goods_option_id}}" class="prop-rows">
+                    <view class="prop-rows--title">{{item.name}}：</view>
+                    <view class="prop-rows--content">
+                      <view class="prop-list">
+                        <view wx:for="{{item.option_value}}" wx:key="key" wx:for-item="value" data-type="{{index}}_{{idx}}_{{value.option_value_id}}_{{value.name}}" wx:for-index="idx" bindtap="selectSku" class="prop-item {{idx==sku[index]['idx']?'is-selected':''}}">{{value.name}}</view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              
+            </view>
+            <form bindsubmit="goOrderfrom" report-submit="true">
+            <view class="foot">
+              <button formType="submit" class="foot-okbtn">确定</button>
+            </view>
+            </form>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='tab-bottom'></view>
+    <view class='cb-tab'>
+      <view class='tab-item' bindtap='go_bargain_index'>
+        <view class='icon-bargain active'>
+          砍价商品
+        </view>
+      </view>
+      <view class='tab-item' bindtap='go_bargain_me'>
+        <view class='icon-bargain-group '>
+          我的砍价
+        </view>
+      </view>
+      <view class='tab-split'></view>
+    </view>
+  </view>
+</view>
+
+<view id="jsalert-assist_free_coupon_rules666" hidden='{{is_hiden_kan}}' bindtap='hide_guize_box'>
+    <view class='bg-fill bg-fill2'></view>
+    <view id='assist-free-coupon-rules-alert' class='assist-free-coupon-rules-alert'>
+      <view class='content-wrapper'>
+        <view class='detail'>
+          <view class='title'>活动规则</view>
+          <view class='desc'>
+            <view class='li' wx:for="{{kan_rules_str}}">
+              {{item}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>

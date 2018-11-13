@@ -1,0 +1,78 @@
+<view class="text">
+  <view class='pending_confirmation'>
+    <view class='ul'>
+      <view class='li'>
+        <view class='header'>
+          <view class=''>
+            今日收入（元）
+          </view>
+          <view class='bill' bindtap='golistorder' data-state="-1">
+            <view class='bill_text span'>
+              账单
+            </view> 
+            <image src='https://mall.shiziyu888.com/Common/images/arrow-aa73bc1779.png' class='arrow_img'></image>
+          </view>
+        </view>
+      </view>
+      <view class='li mengtuan_earn'>
+        <view>{{list.today_commiss}}</view>
+      </view>
+      <view class='li'>
+        <view class='header_bottom'>
+          <view class='header_month_income'>
+            <view class='month_income'>
+              本月收入（元）
+            </view>
+            <view class='income_data_mes'>
+              {{list.month_commiss}}
+            </view>
+          </view>
+          <view></view>
+          <view class='header_total_revenue'>
+            <view class='total_revenue'>
+              累计收入（元）
+            </view>
+            <view class='income_data_mes'>
+              {{list.total_commiss}}
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='li'>
+        <view class='body_top'>
+          <view>
+            <view class='money_text' bindtap='golistorder' data-state="0"> 
+              待确认收入（元）
+              <text class='blackse'>订单明细</text>
+            </view>
+            <view class='data'>
+              {{list.total_wait_commiss}}
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='li'>
+        <view class='body_bottom'>
+          <view>
+            <view class='money_text'>
+              可提现金额（元）<text bindtap='golistorder' data-state="1" class='blackse'>订单明细</text> | <text class='blackse' bindtap='gotixian'>提现记录</text>
+            </view>
+            <view class='data'>
+              {{list.can_tixian_money}}
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+  <view class='footer_bonus'>
+    <view class='btn_mes'>
+      <view class='withdrawals' bindtap='gotixian'>佣金提现</view>
+    </view>
+    <view class='money_record'>
+    </view>
+  </view>
+
+</view>

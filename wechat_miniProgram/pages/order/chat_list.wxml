@@ -1,0 +1,73 @@
+<!--pages/pinduoduo/chat_list.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+<scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="loadMore" scroll-top="{{scrollTop}}">
+<view id="main">
+  <view class='chat-list-container'>
+    <view id='msg-list' class='react-base-list-wrapper '>
+      
+	  <view class='msg-detail' wx:if="{{list.length > 0}}" wx:for="{{list}}" bindtap='gokefu' data-s_id="{{item[0].from}}">
+        <view class='avatar' style="position:relative">
+          <image src='{{item[0].avatar}}' class='img'></image>
+          <span wx:if="{{item[0].unread_count > 0}}" style="background-color:red;position:absolute;top:10px;right:7px;color:#fff;width:30rpx;height:30rpx;text-align:center;line-height:30rpx;border-radius:50%">{{item[0].unread_count}}</span>
+        </view>
+        <view class='detail-box'>
+          <view class='name'>
+            <view class="span">{{item[0].user_name}}</view>
+          </view>
+          <view class='date-time'>
+            {{item[0].sent}}
+          </view>
+          <view class='short-msg' wx:if="{{item[0].content_type == 'text'}}">
+                   <template is="wxParse" data="{{wxParseData:item}}"/>
+          </view>
+		      <view class='short-msg' wx:if="{{item[0].content_type == 'image'}}">
+            [图片]
+          </view>
+		      <view class='short-msg' wx:if="{{item[0].content_type == 'goods'}}">
+            [商品]
+          </view>
+          <view class='unread-sign' style="display:none;">
+            
+          </view>
+        </view>
+      </view>
+	  
+    </view>
+    <view class='no_order' wx:if="{{list.length <= 0 }}">
+    您暂时没有新的消息
+    </view>
+    <!-- <block wx:for="{{icnolist}}" wx:key="">
+                    <template is="wxParse" data="{{wxParseData:item}}"/>
+                </block> -->
+
+
+    <view class='chat-feedback-container' style="display:none;">
+      <view class='chat-num-hint'>
+        仅显示最近 2 个月的聊天
+      </view>
+    </view>
+
+
+
+
+  </view>
+</view>
+<view class="jg_16">猜你喜欢！相似商品</view>
+
+<view class='guess_goods'>  
+      <view wx:for-items="{{prolist}}" wx:key="key"  bindtap="goGoods_link" data-type="{{item.goods_id}}" class='item-wrap waterfall-frame-1 waterfall-box waterfall-optimise-show'>
+          <view class='iwf'>
+              <view class='img-wrap J_dynamic_imagebox'>
+                <image class="J_dynamic_img fill_img scrollLoading" mode="widthFix" src="{{item.image}}" ></image>
+              </view>
+              <view class="title">   {{item.name}}  </view>
+              <view class='bot_box clearfix'>
+                <view class="p_price fl" >¥{{item.danprice}}  </view>
+                <view class='p_feed fr'>{{item.seller_count}}人已抢</view>
+               </view>
+          </view>
+      </view>
+</view>
+<import src="../../footer.wxml" />
+<template is="footer"  data="{{tablebar,s_num}}"/>
+</scroll-view>

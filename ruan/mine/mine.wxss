@@ -1,0 +1,49 @@
+.my-top{
+  height:600rpx;
+  width:100%;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+.mt-user{
+  background-size:100% 100%;
+  background-position:0 0;
+  background-repeat:no-repeat;
+  width:200rpx;
+  height:200rpx;
+  border-radius:100%;
+  box-shadow:0 0 10rpx #ccc;
+}
+.mt-nameUser{
+  font-size:30rpx;
+  padding:20rpx;
+  color:black;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  opacity:0.7;
+}
+.my-userThing{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.m-ut-item{
+  width:27%;
+  margin:24rpx;
+  height:260rpx;
+  box-shadow:0 0 5rpx #ccc;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-around;
+}
+.m-ut-item .iconfont{
+  font-size:50rpx;
+}
+.m-ut-text{
+  font-size:35rpx;
+  color:black;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  opacity:0.7;
+}

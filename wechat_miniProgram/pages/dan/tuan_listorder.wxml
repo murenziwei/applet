@@ -1,0 +1,102 @@
+<view id="main">
+  <view class='my-memvers'>
+    <view class='member-count'>
+      <view class='member-count-title'>
+        <view class='icon-chunk-gray i'>
+          <view class='i icon-chunk-blue'></view>
+        </view>
+        <view class='span'>推荐订单数据</view>
+      </view>
+      <view class='row member-count-row'>
+        <view class='small-4 columns member-count-column'>
+          <view class='member-count-label'>
+            今日新增
+          </view>
+          <view class='member-count-number'>
+            {{tuaninfo.today_count}}
+          </view>
+        </view>
+        <view class='small-4 columns member-count-column'>
+          <view class='member-count-label'>
+            昨日新增
+          </view>
+          <view class='member-count-number'>
+            {{tuaninfo.yes_count}}
+          </view>
+        </view>
+        <view class='small-4 columns member-count-column'>
+          <view class='member-count-label'>
+            订单总数
+          </view>
+          <view class='member-count-number'>
+            {{tuaninfo.total_count}}
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='member-browse'>
+      <view class='member-browse-title'>
+        <view class='icon-chunk-gray i'>
+          <view class='icon-chunk-blue i'></view>
+        </view>
+        <view class='span'>
+          详细订单记录
+        </view>
+      </view>
+      <view class='member-browse-ul'>
+        
+        <view class='member-browse-li' wx:for="{{list}}">
+          <view class='row member-browse-summey'>
+            <view class='member-browse-summey-info'>
+              <view class='member-browse-nt'>
+                <view class='member-browse-name'>
+                  订单：{{item.order_num_alias}}<text>【{{item.status_name}}】</text>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class='member-browser-pro-list'>
+            <view class='member-browser-pro-a'>
+              <view class='pro-img'>
+                <image src='{{item.image}}'></image>
+              </view>
+              <view class='pro-info'>
+                <view class='pro-name'>
+                  {{item.name}}
+                </view>
+                <view class='pro-price span'>
+                  <text wx:if="{{item.state == 0}}">预估佣金：</text>
+                  <text wx:if="{{item.state == 1}}">已获佣金：</text>
+                  <text wx:if="{{item.state == 2}}">退回佣金：</text>
+                  <text class='strong'>+{{item.money}}</text>
+                </view>
+                <view class='pro-price'>
+                      数量：<text class='strong'>{{item.quantity}}</text>
+                </view>
+
+              </view>
+
+            </view>
+          </view>  
+          <view class='row member-browse-summey'>
+            <view class='member-browse-summey-info'>
+              <view class='member-browse-nt'>
+                  <view class='member-browse-name'>
+                    <view>购买人：{{item.uname}}    金额：{{item.total}}      <text class='strong'>{{item.level}} </text>级分佣 </view>
+                     <view>日期：{{item.addtime}}</view>	
+                  </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view  wx:if="{{LoadingComplete}}" class="tips fl {{hidetip?'hide':''}} ">正在加载...</view>
+        <view  wx:else class="tips fl">{{tip_html}}</view>
+
+      </view>
+      
+
+    </view>
+
+  </view>
+</view>

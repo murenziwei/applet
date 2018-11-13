@@ -1,0 +1,40 @@
+<view class="container">
+  <view class='main-view'>
+    <view class='bro-spare'>
+      <view class='tip-txt'>
+        可提现奖金余额
+      </view>
+      <view class='number-big'>
+        ¥{{list.money}}
+      </view>
+      <view class='field-2'>
+        已打款奖金总额：  <text>¥{{list.getmoney}}</text>
+      </view>
+    </view>
+    <view class='wx_bar'>
+      <view class='wx_bar_tit'>
+        提现账号
+      </view>
+    </view>
+    <view class='wx_wrap'>
+      <view class='address_new'>
+        <view class='p'>
+          <input type='text' class='input' bindinput="inp_name" placeholder='请输入真实姓名'></input>
+        </view>
+        <view class='p'>
+          <input type='text' class='input' bindinput="card_name" placeholder='请输入转账银行名称，如：支付宝、建行等'></input>
+        </view>
+        <view class='p'>
+          <input type='text' class='input' bindinput="card_no" placeholder='请输入转账账号'></input>
+        </view>
+        <view class='action'>
+          <view class='button' bindtap='sub_form'>
+            提交
+          </view>
+        </view>
+        
+      </view>
+    </view>
+
+  </view>
+</view>

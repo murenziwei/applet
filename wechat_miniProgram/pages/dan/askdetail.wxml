@@ -1,0 +1,19 @@
+<!--pages/dan/askdetail.wxml-->
+<view class='faq-wrap'>
+  <view class='faq-header'>
+    {{info.title}}
+  </view>
+  <view class='faq-list'>
+    <view class='faq-list-one in-center'>
+      <image src='{{info.image}}' mode='widthFix'></image>
+    </view>
+    <view class='faq-list-one'>
+        
+        <view class="tabs-content" >
+            <import src="../../wxParse/wxParse.wxml" />
+            <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+          </view>
+    </view>
+  </view>
+
+</view>

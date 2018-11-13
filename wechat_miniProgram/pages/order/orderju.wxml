@@ -1,0 +1,176 @@
+<view id="views" wx:if="{{is_show}}">
+  <view class="mgj-order detail">
+    <view class="meiview-all-vue-order-detail-status status">
+      <view class="status-title">{{order_status_info.name}}</view>
+    </view>
+    <view class="logisticsWrap" hidden="{{order.order_info.delivery =='pickup'?'true':'false'}}">
+      <view class="meiview-all-base-receiver receiver">
+        <text class="m-icon m-icon-location detail-content--icon"></text>
+        <view class="receiver-user">
+          <view class="receiver-user--name">{{order.order_info.shipping_name}} {{order.order_info.shipping_tel}}</view>
+          <view class="receiver-user--address">{{order.shipping_province.area_name}}{{order.shipping_city.area_name}}{{order.shipping_country.area_name}}{{order.order_info.shipping_address}}</view>
+        </view>
+      </view>
+      <view class="borderImage"></view>
+    </view>
+	
+	<view wx:for="{{orders}}" wx:for-item="order" class="ref">
+		<view  wx:for="{{order.order_goods_list}}" wx:key="key" class="meiview-all-vue-order-detail-shop shop J_shopTitle">
+		  <view class="shop-title">
+			<view class="shop-title--show">
+			  <image mode='widthFix' src='{{item.store_info.s_logo}}'></image>
+			  <text class="shop-title--name">{{item.store_info.s_true_name}}</text>
+			</view>
+			<view class="shop-title--im" bindtap='gokefu' data-s_id="{{item.store_id}}">
+			  <text class="m-icon m-icon-message"></text>
+			  <text class="sho-title--tip">联系商家</text>
+			</view>
+		  </view>
+		  <view  class="shop-show">
+			<view class="meiview-all-vue-order-base-product product">
+			  <view class="product-wrap">
+				<view class="product-pic">
+				  <view class="meiview-all-vue-base-image">
+					<image src="{{item.image}}" class="product-pic--img"/>
+				  </view>
+				</view>
+				<view class="product-info">
+				  <view class="product-detail">
+					<view class="product-des">
+					  <view class="product-des--name">
+						<text wx:if="{{order.order_info.delivery == 'pickup'}}" class="red">[自提]</text>
+						<text wx:if="{{order.order_info.delivery == 'express'}}" class="red">[快递]</text>
+						<text>{{item.name}}</text>
+					  </view>
+					  <view class="product-des--sku">
+						{{item.option_str}}
+					  </view>
+					</view>
+					<view class="product-price">
+					  <view class="product-price--origin">￥{{item.shop_price}}</view>
+					  <view class="product-price--price">￥{{item.price}}</view>
+					  <view class="product-price--number">×{{item.quantity}}</view>
+					</view>
+				  </view>
+				</view>
+			  </view>
+			</view>
+
+			
+
+			<view class='shop-show--item' style="padding:0px;" >
+			  <view class=" operate-button" style="margin:0px auto;text-align:right;">
+				 
+				 <view class='clear'></view>
+			  </view>
+			</view>
+
+			<view class='shop-show--item' style="padding:0px;" >
+			  <view class=" operate-button" style="margin:0px auto;text-align:right;">
+				
+				 <view class='clear'></view>
+			  </view>
+			</view>
+
+			
+
+			<view class="shop-show--viewst">
+			  <view class="shop-show--item">
+          <view class="shop-show--flex ship-remark" wx:if="{{order.order_info.delivery =='express'}}">
+            <text class="shop-item-title ship-remark--title">快递运费：</text>
+            <text class="shop-item-value ship-remark--value freight-free">￥{{item.shipping_fare}}</text>
+          </view>
+			  </view>
+			  <view class="shop-show--item shop-show--flex total-price">
+				<view class="shop-item-title total-price--title">
+				  <text>商品总计</text>
+				</view>
+				<span class="shop-item-value total-price--value">￥{{item.total}}</span>
+			  </view>
+			  
+
+			</view>
+		  </view>
+
+		</view>
+		
+		<view class="meiview-all-vue-order-detail-discount discount">
+		  <view class="discount-viewst">
+			<view class="discount-item order-trade">
+			  <view>订单编号：{{order.order_info.order_num_alias}}</view>
+			  <view>下单时间：{{order.order_info.date_added}}</view>
+		  
+			
+
+			  <view hidden="{{order.order_info.order_status_id == 4 && order.order_info.delivery =='pickup'?false:true}}">自提门店：{{order.order_info.pick_order_info.pick_name}}</view>
+			  <view hidden="{{order.order_info.order_status_id == 4 &&  order.order_info.delivery =='pickup'?false:true}}">自提位置：{{order.order_info.pick_order_info.pick_pos}}</view>
+			  <view data-mobile="{{order.order_info.pick_order_info.telephone}}" bindtap='call_mobile' hidden="{{order.order_info.order_status_id == 4 &&  order.order_info.delivery =='pickup'?false:true}}">门店电话：<text style="color:blue;" >{{order.order_info.pick_order_info.telephone}}</text></view>
+
+			  <view hidden="{{order.order_info.order_status_id == 4 &&  order.order_info.delivery =='pickup' ? false:true}}">自提券号：{{order.order_info.pick_order_info.pick_sn}}</view>
+			  <view>
+			  <view style="font-size:30rpx;margin-top:10px;" hidden="{{order.order_info.order_status_id == 4 &&  order.order_info.delivery =='pickup'  ? false:true}}">给商家扫一扫:</view>
+			  <image hidden="{{order.order_info.order_status_id == 4 &&  order.order_info.delivery =='pickup' ? false:true}}" src="{{order.order_info.pick_order_info.qrcode}}" style="width:60%;margin-left:20%;" mode='widthFix'></image>
+			  </view>
+
+
+			</view>
+		  </view>
+		</view>
+
+		
+		
+
+		<view class="meiview-all-vue-order-detail-foot foot">
+		  <view class="foot-price price" wx:if="{{order.order_info.voucher_credit > 0}}">优惠券 :
+			<text class=""> - ￥{{order.order_info.voucher_credit}}</text>
+		  </view>
+		  <view class="foot-price price">实付金额(含运费) :
+			<text class="foot-price--sum">￥{{order.order_info.total}}</text>
+		  </view>
+		</view>
+	</view>
+
+
+
+  </view>
+</view>
+
+<view class="meiview-all-vue-order-detail-foot foot">
+	<view class='shop-show--item' style="padding:0px;" wx:if="{{order_status_info.order_status_id==3}}">
+	  <view class=" operate-button" style="margin:0px auto;text-align:right;">
+		 <view data-type="{{order_all_id}}" bindtap="orderPay" class="meili-all-vue-base-button primary ">
+		  付款
+		 </view>
+		 <view class='clear'></view>
+	  </view>
+	</view>
+</view>
+
+<view class='guess_box' >
+  <view class='guess_title'>
+    <view class='floor_title '>
+      <view class='title_bg'>
+        猜你喜欢
+      </view>
+    </view>
+  </view>
+  <view class='guess_goods'>
+    
+    <view wx:for-items="{{guessdata}}" wx:key="key"  bindtap="goGoods" data-type="{{item.goods_id}}" class='item-wrap waterfall-frame-1 waterfall-box waterfall-optimise-show'>
+      <view class='iwf'>
+        <view class='img-wrap J_dynamic_imagebox'>
+          <image class="J_dynamic_img fill_img scrollLoading" mode="widthFix" src="{{item.image}}" ></image>
+        </view>
+        <view class="title">   {{item.name}}  </view>
+        <view class='bot_box clearfix'>
+          <view class='pt_icon'> </view>
+          <view class="p_price fl" >¥{{item.pin_price}}</view>
+          <view class='p_feed fr'>{{item.fav_goods}}</view>
+        </view>
+      </view>
+    </view>
+    
+  </view>
+</view>
+<import src="../../nav.wxml" />
+<template is="nav" data="{{navState}}" />

@@ -1,0 +1,138 @@
+<!--pages/goods/bargain_detail.wxml-->
+<view class='main-view container red-bg revision'>
+  <view class='cb-detail-container'>
+    <image src='https://mall.shiziyu888.com/dan/Common/image/bargain_bg_v3.png' class='bargain-bg' mode='widthFix'></image>
+    <view>
+      <form bindsubmit="goOrderfrom" report-submit="true">
+      <button class='rule-btn' formType="submit">活动规则</button>
+      </form>
+    </view>
+    <view class='bargain-base-info'>
+      <image src='{{member_info.avatar}}' class='avatar'></image>
+      <view class='nickname'>{{member_info.uname}}</view>
+      <view class='info-hint'>
+        我发现一件好货，来一起砍价0元拿吧
+      </view>
+      <view class='goods-info'>
+        <image src='{{goods_info.image}}'></image>
+        <view class='right'>
+          <view class='goods-name'>
+            {{goods_info.name}}
+          </view>
+          <view class='price'>
+            <text class='i'>￥</text>{{bargain_info.total_money}}
+          </view>
+        </view>
+        <view class='sold-quantity'>{{goods_info.seller_count}}人已0元拿</view>
+      </view>
+    </view>
+    <view class='bargain-status'>
+      <view class='status'>
+        <view class='amount'>
+          已砍
+          <text class='already i'>{{bargain_info.already_money}}</text>
+          元，还差
+          <text class='remain'>{{bargain_info.deal_money}}</text>元
+        </view>
+		
+    
+
+		<button class="button go_kan_list" bindtap="{{is_login?'go_bargain_index':''}}" bindgetuserinfo="{{is_login ? '':'bindGetUserInfo'}}" open-type="{{is_login ? '':'getUserInfo'}}"  wx:if="{{bargain_info.state == 1}}">砍价成功，重砍一个</button>
+		<button class="button go_share" open-type="share" plain="true" wx:if="{{bargain_info.state == 3 && is_me && bargain_info.is_share == 0}}">分享给好友，多砍一刀</button>
+        <button class="button go_share" open-type="share" plain="true" wx:if="{{bargain_info.state == 3 && is_me && bargain_info.is_share == 1}}">喊好友砍一刀</button>
+		<button class="button go_kan_list" bindtap="{{is_login?'go_bargain_index':''}}" bindgetuserinfo="{{is_login ? '':'bindGetUserInfo'}}" open-type="{{is_login ? '':'getUserInfo'}}"  wx:if="{{bargain_info.state == 3 && !is_me && has_kan}}">我也要砍价</button>
+		<button class="button kan_bargain" bindtap="{{is_login?'kan_othder':''}}" bindgetuserinfo="{{is_login ? '':'bindGetUserInfo'}}" open-type="{{is_login ? '':'getUserInfo'}}"  wx:if="{{bargain_info.state == 3 && !is_me && !has_kan}}">帮他砍一刀</button>
+        <button class="button go_kan_list" bindtap='go_bargain_index' wx:if="{{bargain_info.state == 2}}">砍价失败，重砍一个</button>
+        
+         <view class="count-down " wx:if="{{bargain_info.state == 3}}"> 
+        剩余{{endtime.days>0? endtime.days+'天':''}}{{endtime.hours}}:{{endtime.minutes}}:{{endtime.seconds}}结束，快来砍价吧~
+		    </view>
+       
+		
+      </view>
+	  <view  class="mask black-mask" style="display:none;">
+       <image class="arrow" src="http://mobile.yangkeduo.com/assets/img/arrow-3bc881bf3f.png" alt="arrow" ></image>
+       <view class="hint-hew-combo with-arrow">
+         <view class="hint-1">你已砍<i class="already">{{bargain_info.already_money}}</i>元啦，赶快分享给好友吧
+         </view>
+		 <view class="hint-2" id="share_tip" wx:if="{{bargain_info.is_share}}">喊好友帮你砍价吧~</view>
+         <view class="hint-2" id="share_tip" wx:if="{{bargain_info.is_share != 1}}">分享成功后可以多砍一刀哦</view>
+       </view>
+      </view>
+	  
+    </view>
+	
+	<view class="bargain-group">
+      <view class="title">砍价帮</view>
+      <view class="bg-list " id="bg-list">
+	  
+		
+		<view wx:for="{{kan_order_list}}" class="user-item {{is_hide && index>2 ? 'hide':''}}" >
+			<image src="{{item.avatar}}" class='std-goods-image-square goods-pic' alt="avatar" ></image>
+			<view class="text">
+			 <view class="nickname">{{item.nickname}}</view>
+			 <view class="hint">来一起砍价0元拿</view>
+			</view>
+			<view class="amount">
+			 <view class="knives knives-1">
+			  <view class="knife"></view>
+			 </view>
+			 砍掉
+			 <text class="detail i">{{item.kan_money}}</text>
+			 元
+			</view>
+		</view>
+      </view>
+	  
+      <view class="bottom-note" wx:if="{{kan_order_list.length > 14}}">只显示最近15个好友砍价记录</view>
+	 
+	   <view class="draw-label draw-up" bindtap='show_hide_kan'  wx:if="{{show_hide_act ==1 && kan_order_list.length >= 3}}">
+       查看更多
+		  <text class="draw-icon down i" ></text>
+	   </view>
+	   <view  class="draw-label draw-down" bindtap='hide_hide_kan' wx:if="{{show_hide_act == 2 && kan_order_list.length >= 3}}" >
+        收起
+	    <text class="draw-icon up " style="background:none;"></text>
+	   </view>
+	   
+    </view>
+	
+  </view>
+
+  <view class='react-base-list-wrapper cb-recommend-container bargain-recommend-list'>
+    <view class='goods-item-container' bindtap='go_goods' wx:for="{{related_goods}}" data-goods_id="{{item.goods_id}}">
+      <view class='goods-item gap-right'>
+        <image src='{{item.image}}' class='std-goods-image-square goods-pic'></image>
+        <view class='goods-name'>
+          {{item.name}}   
+        </view>
+        <view class='goods-detail'>
+          <text class='price-icon b'>￥</text>
+          <text class='price b'>{{item.danprice}}</text>
+          <view class='info'>
+            <text>已拼</text>{{item.seller_count}}件
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <view id="jsalert-assist_free_coupon_rules666" hidden='{{is_hiden_guize}}' bindtap='hide_guize_box'>
+    <view class='bg-fill bg-fill2'></view>
+    <view id='assist-free-coupon-rules-alert' class='assist-free-coupon-rules-alert'>
+      <view class='content-wrapper'>
+        <view class='detail'>
+          <view class='title'>活动规则</view>
+          <view class='desc'>
+            <view class='li' wx:for="{{kan_rules_str}}">
+              {{item}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+</view>

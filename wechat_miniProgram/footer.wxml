@@ -1,0 +1,44 @@
+<template name="footer">
+  <view class="bottom-area">
+    <view class="bottom-nav clearfix">
+        <view bindtap='goLink' data-link="/pages/index/index" class="bottom-nav-item fl {{tablebar == 1 ? 'active' : ''}}">
+            <view class="img-wrap  m-icon m-icon-index" style=''>
+            </view>
+            <view class="title">首页</view>
+        </view>
+        <view bindtap='goLink' style="display:none;" data-link="/pages/index/one"  class="bottom-nav-item fl {{tablebar == 2 ? 'active' : ''}}">
+            <view class="img-wrap m-icon m-icon-yifenzhong">
+            </view>
+            <view class="title">一分团</view>
+        </view>
+        <view bindtap='goLink' style="display:none;" data-link="/pages/index/lucky"  class="bottom-nav-item fl {{tablebar == 3 ? 'active' : ''}}">
+            <view class="img-wrap m-icon m-icon-weibiaoti210">
+            </view>
+            <view class="title">抽奖团</view>
+        </view>
+		
+		<view  bindtap='goLink' data-link="/pages/goods/search"  class="bottom-nav-item fl {{tablebar == 5 ? 'active' : ''}}">
+            <view class="img-wrap m-icon m-icon-category" >
+            </view>
+            <view class="title">分类</view>
+        </view>
+        <view  bindtap='goLink' data-link="/pages/order/car"  class="bottom-nav-item fl {{tablebar == 6 ? 'active' : ''}}">
+            <view class="img-wrap m-icon m-icon-car">
+            </view>
+            <view class="title">购物车</view>
+        </view>
+		<view  bindtap='goLink' data-link="/pages/order/chat_list"  class="bottom-nav-item fl {{tablebar == 7 ? 'active' : ''}}">
+            <view class="img-wrap m-icon m-icon-chat"></view>
+            <view class="title">消息</view> 
+            <view class="msg_point" wx:if="{{s_num}}" >{{s_num}}</view>
+        </view>
+		 
+		
+        <view bindtap='goLink' data-link="/pages/dan/me"  class="bottom-nav-item fl {{tablebar == 4 ? 'active' : ''}}">
+            <view class="img-wrap m-icon m-icon-my">
+            </view>
+            <view class="title">我的</view>
+        </view>
+    </view>
+  </view>
+</template>

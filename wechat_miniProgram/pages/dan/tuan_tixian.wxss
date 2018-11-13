@@ -1,0 +1,92 @@
+.container {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    padding: 0 0 92rpx;
+    overflow-x: hidden;
+    background-color: #f8f8f8;
+}
+.bro-spare {
+    margin: 0px 0 0 0;
+    padding: 40rpx 30rpx 0 30rpx;
+    background: #1c5f97;
+    border: 0;
+    border-bottom: 1px solid #1c5f97;
+    overflow: hidden;
+}
+.bro-spare .tip-txt {
+    margin-bottom: 0;
+    font-size: 32rpx;
+    color: #fff;
+    line-height: 50rpx;
+}
+.bro-spare .number-big {
+    display: block;
+    margin: 0;
+    font-size: 80rpx;
+    color: #fff;
+    text-shadow: 1px 2px 0 rgb(28,95,151);
+}
+
+.bro-spare .field-2 {
+    margin: 20rpx 0 30rpx 0;
+    font-size: 28rpx;
+    color: #fff;
+}
+.wx_bar_tit {
+    line-height: 72rpx;
+    padding-left: 20rpx;
+    font-size: 32rpx;
+    color: #666;
+}
+.address_new {
+    font-size: 26rpx;
+    position: relative;
+    padding: 20rpx;
+    border-top: 1px solid #e4e4e4;
+}
+.address_new .p {
+    border-bottom: 1px solid #cbcbcb;
+    padding: 20rpx 40rpx 20rpx 200rpx;
+    position: relative;
+}
+.address_new .p {
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+}
+.address_new .input {
+    background-color: #fff;
+    box-sizing: border-box;
+    color: #333;
+    line-height: 50rpx;
+    padding: 0 10rpx;
+    vertical-align: top;
+    z-index: 1;
+}
+.address_new .input, .address_new select {
+    border: 1px solid #ddd;
+    font-size: 28rpx;
+    height: 70rpx;
+    width: 100%;
+}
+.address_new .input {
+    border-radius: 2px;
+}
+.address_new .action {
+    border-bottom: 0 none;
+    padding: 30rpx 20rpx;
+}
+.address_new .button {
+    background-color: #3884ff;
+    text-align: center;
+    border: 0 none;
+    border-radius: 2px;
+    color: #fff;
+    display: block;
+    font-size: 32rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin-bottom: 20rpx;
+    width: 100%;
+}

@@ -1,0 +1,47 @@
+<view class="page_head">  
+   <view class="back_icon" id="back_btn" bindtap='go_back_goods'>
+		<image src="https://mall.shiziyu888.com/Common/images/idid_ie3wmnbvgftginzsmizdambqgayde_35x52.png" mode="widthFix"></image>
+   </view> 
+   <view class="right_btn a" bindtap='go_index'>首页</view> 
+   <view class="title">
+		<view class="a">评论</view>
+   </view>
+</view>
+
+<view class="detail-rate">
+	<view class="rate-list waterfall-container" id="tuan_list">
+		
+		<view class="item waterfall-frame-0 waterfall-box waterfall-optimise-show" wx:for="{{goods}}"> 
+			<view class="face"> 
+				<view class="a">
+					<image mode="widthFix" src="{{item.avatar}}"></image>
+				</view> 
+			</view> 
+			<view class="content"> 
+				<view class="user-info clearfix"> 
+					 <view class="fl"> 
+						<view class="p"> 
+							<view class="name span">{{item.name}}</view> 
+						</view> 
+					 </view> 
+				</view> 
+				<view class="desc p">{{item.content}}</view> 
+				<view class="attr p">
+					<view class="time span">{{item.addtime}}</view> 
+					<view class="style span">{{item.option_str}} </view> 
+				</view> 
+				<view class="show-img"> 
+					<view class="ul"> 
+						<view class="small-img li" wx:for="{{item.images}}" wx:for-item="goods_img">
+							<image width="100%" height="100%" src="{{goods_img}}" mode="widthFix"></image>
+						</view> 		
+					</view> 
+				</view> 
+		   </view> 
+		</view>
+	</view>
+	<view class="pullUp" id="center_pullup" status="loading" style="{{isHideLoadMore ? 'display: none;' : ''}} "> 
+     <view></view>
+     <view></view>
+    </view>
+</view>
