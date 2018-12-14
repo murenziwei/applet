@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<view class="container">
+  <radio-group class="content-body" bindchange="radioFn" data-index="radiovalue">
+      <block wx:for="{{arrtest}}" wx:key="arrKey">
+        <label class="itemkey" >
+          <radio class="ik-checkbox" value="{{item}}" data-index="{{index}}"></radio>
+          <view class="childI" data-index="{{index}}" bindtap="getchange">{{item}}</view>
+        </label>
+      </block>
+  </radio-group>
+  <view class="edit">
+      <button class="push" type="primary" bindtap="pushFn">push</button>
+      <button class="unshift" type="primary" bindtap="unshiftFn">unshift</button>
+      <button class="pop" type="warn" bindtap="popFn">pop</button>
+      <button class="shift" type="warn" bindtap="shiftFn">shift</button>
+      <button class="indexof" bindtap="indexofFn">indexOf</button>
+      <button class="lastindexof" bindtap="lastindexofFn">lastIndexOf</button>
+      <button class="slice" type="primary" bindtap="sliceFn">slice</button>
+      <picker range="{{splicearr}}" bindchange="splicechange" class="splicepicker"><button class="splice" type="warn">splice</button></picker>
+  </view>
+  <radio-group class="content-body" bindchange="radioFn"  data-index="splicevalue" value="{{spI}}">
+      <block wx:for="{{slicearr}}" wx:key="arrKey">
+        <label class="itemkey" >
+          <radio class="ik-checkbox" value="{{item}}" data-index="{{index}}"></radio>
+          <view class="childI" data-index="{{index}}" bindtap="getchange">{{item}}</view>
+        </label>
+      </block>
+  </radio-group>
+</view>
+<modal wx:if="{{!arrHidden}}" title="{{arrtitle}}"  bindconfirm="arrConfirm" bindcancel="arrCancel" >
+  <input bindinput="changeinput" value="{{inputvalue}}" class="iv" bindconfirm="arrConfirm"></input>
+</modal>
