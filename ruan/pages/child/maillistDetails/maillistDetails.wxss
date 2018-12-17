@@ -1,0 +1,91 @@
+/* pages/child/maillistDetails/maillistDetails.wxss */
+
+
+.wrap{
+  padding: 20px;
+}
+
+.avatar-wrap{
+  width:150rpx;
+  height:150rpx;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.avatar-wrap > image{
+  border-radius: 50%;
+}
+
+image{
+  width: 100%;
+  height: 100%;
+}
+
+.text-top{
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.text-top > text{
+  display: block;
+}
+
+.text-top .name{
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.introduce{
+  font-size: 24rpx;
+}
+
+
+.view1{
+  width: 70%;
+  margin: 0 auto;
+  text-align: left;
+  margin-top: 20px;
+  /* margin-left: 10px; */
+}
+
+.row{
+  width: 100%;
+  font-size:30rpx;
+  display: block;
+  margin-top: 15px;
+  line-height: 1.5;
+  word-wrap:break-word;
+}
+
+.hl{
+  color: #9B9B9B;
+  display: inline-block;
+  padding-right:12px;
+}
+
+.card .right-text{
+  
+  /* height: 50%;
+  float: right;
+  box-sizing: border-box;
+  margin-bottom: 30px; */
+}
+.text{
+  width:100%;
+  font-size:30rpx;
+  margin-top:15px;
+  line-height:1.5;
+  word-wrap:break-word;
+  display: flex;
+}
+
+.text .h1{
+  color:#9B9B9B;
+  display:inline-block;
+  padding-right:12px;
+}
+
+.text .h2{
+  flex: 2;
+}

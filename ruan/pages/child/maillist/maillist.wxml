@@ -1,0 +1,82 @@
+<view class="wx-body {{openFrom?'wx-body-style':''}}">
+ 
+  <view class="tz-btn">
+     <button class="weui-btn mini-btn button-hover" wx:if="{{isShowQuan}}" type="primary" bindtap="showQuan">群发 </button>
+     <view class="text-info">
+     提示：<text class="ti-green">操作可向左滑动</text>
+     </view>
+  </view>
+  <view>
+     
+    <scroll-view  wx:for="{{cs.issueObj}}" wx:key="ioKey" scroll-x="true" class="cell-scroll" >
+      <view class="weui-cells weui-cells_after-title" data-id="{{item.id}}">
+            <view class="weui-cell">
+                <view class="weui-cell__hd">
+                    <image src="{{item.img_self}}" style="margin-right: 5px;vertical-align: middle;width:84rpx; height: 84rpx;border-radius:50%;" lazy-load='true' binderror="imgerrorFn" data-index="{{index}}"></image>
+                </view>
+                <view class="weui-cell__bd">
+                  <view class="wc_b-name">{{item.real_name}}<text class="wc_f-gender">({{item.sex}},{{item.real}})</text></view>
+                </view>
+            </view>
+        </view>
+        <view class="cell_end" data-isedit="{{item.is_edit}}">
+          <view class="c_e_detail" bindtap="gateTo" data-id="{{item.id}}">详情</view>
+        </view>
+    </scroll-view>
+  
+  </view>
+  <view class="lw-loadmore">
+      <view class="lw-loading" hidden="{{shload}}"></view>
+      <text class="lw-loadtext"><text hidden="{{shload}}">加载更多</text><text hidden="{{!shload}}">已经到底了…</text></text>
+  </view>
+
+ <view class='mass_wrap' wx:if="{{showQuan}}">
+  <checkbox-group bindchange="checkboxChange" class="quan">
+      <label class="checkbox">
+        <checkbox  value="全选" checked="{{quan}}"/>全选
+      </label>
+      <button type="primary" bindtap="ssss">确认</button>
+     <icon bindtap="closeMass" type="clear" size="30" style='float:right;magin-top:10px;'/>
+  </checkbox-group>
+  <view class='mass' wx:for="{{cs.issueObj}}" wx:for-index="index" wx:for-item="item" wx:key="ioKey">
+    <view class="weui-cells weui-cells_after-title" data-id="{{item.id}}">
+            <view class="weui-cell">
+                <checkbox-group  bindchange="oneboxChange" data-val="{{item.id}}">
+                  <label class="checkbox">
+                   <checkbox value="{{item.id}}" checked="{{quanXuan}}"/>
+                  </label>
+                </checkbox-group>
+                <view class="weui-cell__hd">
+                    <image src="{{item.img_self}}" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;border-radius:50%;" lazy-load="true"></image>
+                </view>
+                <view class="weui-cell__bd">
+                  <view class="wc_b-name">{{item.real_name}}<text class="wc_f-gender"  hidden="{{!item.details}}">({{item.details}})</text></view>
+                </view>
+            </view>
+        </view>
+        <view class="cell_end" data-isedit="{{item.is_edit}}">
+          <view class="c_e_detail" bindtap="gateTo" data-id="{{item.id}}">详情</view>
+        </view>
+
+  </view>
+ </view>
+
+
+<view class='form-wrap' wx:if="{{openFrom}}">
+  <view class='mak' catchtap='closeFrom'></view>
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class="section">
+        <input placeholder-style="text-align:center" style="text-align:center" name="input" placeholder="输入标题" adjust-position bindinput="titleCon"/>
+      </view>
+      <view>
+        <textarea class="ss_textare" value="" bindinput="sstFn" bindfocus="taFn" bindblur="taFn" placeholder="输入内容" auto-height show-confirm-bar adjust-position bindinput="textCon"></textarea>
+      </view>
+      <view class="btn-area">
+        <button form-type="submit" bindtap="fasong" type="primary">发送</button>
+      </view>
+    </form>
+  </view> 
+</view>
+<view hidden="{{!loadshow}}">
+     <loading>正在加载</loading>
+</view>

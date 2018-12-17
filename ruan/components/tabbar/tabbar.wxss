@@ -1,0 +1,42 @@
+/*图标样式开始*/
+@import "../../public/wxss/iconfont.wxss";
+/*图标样式结束*/
+/* components/tabbar/tabbar.wxss */
+.tabBar_box{
+  display:flex;
+  align-items:center;
+  height:110rpx;
+  justify-content:space-around;
+
+}
+.tb-i-nav{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+}
+.tb-img{
+  height:40rpx;
+  width:40rpx;
+}
+.tb-text{
+  font-size:36rpx;
+}
+.tab-fixed{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  width:100%;
+  z-index:1000;
+}
+.tb-icon{
+  font-size:40rpx;
+}
+.active{
+  background-image:-webkit-linear-gradient(left, #CDDC39 0%, #8BC34A 25%, #FFEB3B 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  font-weight:bold;
+}

@@ -1,0 +1,112 @@
+/* pages/child/helpdata/helpdata.wxss *//*修改weui.wxss的样式开始*/
+.wx-body .weui-cell__ft{
+  display:flex;
+  font-size:35rpx;
+}
+/*修改weui.wxss的样式结束*/
+/* pages/child/myIssue/myIssue.wxss */
+
+.cell-scroll{
+  position:relative;
+  height: 104rpx;
+}
+.cell-scroll >view{
+  height: 100%;
+}
+.cell_end{
+  position:absolute;
+  height:98rpx;
+  top:0;
+  bottom:0;
+  border-top:1px solid #ccc;
+  border-bottom:1px solid #ccc;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+}
+.cell_end>view{
+  font-size:30rpx;
+  width:120rpx;
+  height:100%;
+  line-height:44px;
+  text-align:center;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+.c_e_detail{
+  background-color:green;
+  color:#fff;
+}
+.c_e_change{
+  background:#ececec;
+  color:#7c7c7c;
+}
+.c_e_delete{
+  background:#f6a623;
+  color:#fff;
+}
+.wc_b-title{
+  font-size:10px;
+}
+.wc_b-content{
+  font-size:7px;
+}
+.wc_f-text{
+  font-size:12px;
+  opacity:0.7;
+  display:flex;
+  align-items:center;
+}
+.wc_b-name{
+  font-size:35rpx;
+  font-weight:bold;
+}
+.wc_f-gender{
+  opacity:0.5;
+}
+.tz-btn{
+  text-align:right;
+  display:flex;
+  align-items:center;
+  border-bottom:1px solid #ccc;
+  justify-content:space-between;
+}
+.tz-btn>.weui-btn{
+  margin:10px;
+  width:200rpx;
+  font-size:30rpx;
+  color:#fff;
+}
+.text-info{
+  display:inline-block;
+  float:right;
+  font-size:30rpx;
+  opacity:0.5;
+  padding:10px;
+}
+.ti-green{
+  color:green;
+}
+.wx-status-no{
+  color:black;
+}
+.wx-status-yes{
+  color:green;
+}
+.wx-status-info{
+  color:yellowgreen;
+}
+.wx-status-danger{
+  color:red;
+}
+.wx-status-warn{
+  color:orange;
+}
+.weui-cell{
+  padding:0 15px;
+  height:103rpx;
+}
+.weui-cell_img{
+  margin-right: 5px;vertical-align: middle;width:70rpx; height: 70rpx;border-radius:50%;
+}

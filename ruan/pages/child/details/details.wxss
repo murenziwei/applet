@@ -1,0 +1,181 @@
+.wx-body{
+  width: 100%;
+  height:100%;
+
+}
+
+.wx-body .info{
+  filter: blur(10px);
+  opacity: .6;
+  transform: translateZ(0);
+}
+.bg text{
+  z-index: 20;
+  color: #fff;
+}
+.bg-container{
+  width:100%;
+  padding:10px;
+  box-sizing: border-box;
+}
+.bg{
+  width: 100%;
+  /* height: 760px; */
+  position: relative;
+  box-sizing:border-box;
+  z-index:12;
+  overflow: hidden;
+  border-radius:5rpx;
+  
+}
+
+.info , .mask{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background:rgba(0, 0, 0, .2);
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/* .bg:after{
+    content: "";
+    width:100%;
+    height:100%;
+    position: absolute;
+    left:0;
+    top:0;
+    background: inherit; 
+    z-index: 2;
+} */
+
+.top{
+  margin-left:50rpx;
+  display:flex;
+  flex-direction:column;
+}
+.top text{
+  margin-top:28rpx;
+  font-size:33rpx;
+
+}
+
+.tx{
+  position: absolute;
+  right:30rpx;
+  top:30rpx;
+  width:150rpx;
+  height:150rpx;
+  z-index: 100;
+  border:4rpx solid rgba(255,255,255,0.7);
+  border-radius:15rpx;
+}
+
+.line{
+  width: 100%;
+  height: 3rpx;
+  background-color: #fff;
+  z-index: 20;
+}
+
+.bottom{
+  margin-left: 50rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom text{
+  margin-top: 15rpx;
+  font-size: 33rpx;
+}
+
+.bottom .dz{
+ display: flex;
+}
+
+.bottom .dz .addr_d{
+ flex: 2;
+ margin-bottom: 20rpx;
+}
+
+.box{
+  background-color: #DCDCDC;
+  height: 80rpx;
+  margin-top: 6px;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+}
+
+.box view{
+ flex: 1;
+ font-size: 30rpx;
+ line-height: 2.5;
+ text-align: center;
+ display: flex;
+ align-items:center;
+ justify-content:center;
+
+}
+
+.box image{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.introduction{
+  margin: 30px 20px;
+  font-size: 40rpx;
+  min-height: 300rpx;
+}
+
+.introduction view{
+   text-indent:80rpx;
+}
+
+Page {
+  background-color:#f5f3f0;
+}
+
+.bigImg{
+  background: rgba(0, 0, 0, .5);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  display:flex;                   
+  justify-content: center;
+  align-items:center;
+}
+
+.bigImg image{
+  width:600rpx;
+  height:600rpx;
+}
+
+
+.wx-body.noscoll {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.idno_img{
+  margin-top:10rpx;
+  margin-left:15rpx;
+  margin-right:15rpx;
+  display: flex;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content : space-between
+}
+
+.idno_img{
+  flex:1;
+}
+.introduction-text{
+  color:#ccc;
+  font-size:30rpx;
+}

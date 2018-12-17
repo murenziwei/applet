@@ -1,0 +1,136 @@
+.w-b-dm,.wx-body{
+  background-color:rgba(0,0,0,0.1);
+}
+.w-b-dm{
+  box-shadow:0 0 1px #ccc;
+}
+.w-b-dm>view{
+  margin-bottom:1px;
+}
+.wx-body>.w-b-dm{
+  margin-bottom:10px;
+}
+.bg-white{
+  background-color:#fff;
+}
+.data-modift{
+  display:flex;
+  align-items:center;
+  
+  width:100%;
+  box-sizing:border-box;
+  padding:5px;
+}
+.dm-left{
+  display:flex;
+  align-items:center;
+  flex:1;
+}
+.important::after{
+  content: "*";
+  color: #C00;
+  font-size: 40rpx;
+  vertical-align: middle;
+  display: inline-block;
+  text-indent: 10rpx;
+}
+.dm-imgFlex{
+  justify-content:space-between;
+}
+.dl-img{
+  width:70rpx;
+  height:70rpx;
+  border-radius:100%;
+}
+.dm-right.iconfont{
+  font-size:50rpx;
+  padding-left:10px;
+}
+.dm-left{
+  font-size:40rpx;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+/* .dl-name{
+   width: 30%;
+} */
+.dm-r-name{
+  opacity:0.5;
+  font-size:30rpx;
+  max-width: 60%;
+  overflow: hidden;
+}
+.my-row{
+  font-size:25px;
+  margin:5px 0;
+}
+.my-input{
+  box-shadow:0 0 1px black;
+  padding:3px;
+  margin:2px 0;
+  font-size:16px;
+}
+.w-b-dm>picker{
+  margin-bottom:1px;
+}
+.show_self{
+  padding:5px;
+  font-size:40rpx;
+}
+.ss_textarea{
+  font-size:30rpx;
+  padding:5px;
+  border:1px solid transparent;
+  transition:all .2s;
+  opacity:0.8;
+  font-weight:bold;
+  width:100%;
+  box-sizing:border-box;
+}
+.ss_textarea.active{
+  border-color: #66afe9;
+}
+/*照片墙开始*/
+.mhc-frame{
+  padding:5px;
+  background-color:#fff;
+}
+.m-h-camera{
+  display:flex;
+  justify-content:space-between;
+  font-size:40rpx;
+  padding:5px 0 10px 0;
+}
+.mhc-upload{
+  color:rgb(35, 35, 211);
+}
+.mhi-pic{
+  width:33.33%;
+  height:150rpx;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  box-sizing:border-box;
+  border:1px solid rgba(0,0,0,0.1);
+  background-color:#fff;
+}
+.mhi-p-img{
+  width:95%;
+  box-sizing:border-box;
+  height:130rpx;
+}
+.ss_body{
+  position:relative;
+}
+.ss_b_count{
+  text-align:right;
+  color:#ccc;
+}
+.ss_b_active{
+  color:red;
+}
+/*照片墙结束*/
+/*保存按钮样式开始*/
+.snBtn{
+  font-size:30rpx;
+}
+/*保存按钮样式结束*/

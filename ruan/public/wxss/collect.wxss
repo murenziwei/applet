@@ -1,0 +1,63 @@
+/* bootstrap的form-control */
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.form-control:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+.form-control:-moz-placeholder {
+  color: #999;
+}
+.form-control::-moz-placeholder {
+  color: #999;
+  opacity: 1;
+}
+.form-control:-ms-input-placeholder {
+  color: #999;
+}
+.form-control::-webkit-input-placeholder {
+  color: #999;
+}
+/*侧边栏的*/
+
+.kongjian{
+  position:fixed;
+  right:40rpx;
+  bottom:100rpx;
+  z-index:999;
+}
+.shape_image{
+  background-color:#fff;
+  display:flex;
+  width:70rpx;
+  height:70rpx;
+  justify-content:center;
+  align-items:center;
+  box-shadow:-2rpx 2rpx #ccc;
+  border-radius:50%;
+  padding:0;
+  margin:10px 0;
+
+}
+.si_img{
+  width:40rpx;
+  height:40rpx;
+  align-self:center;
+}

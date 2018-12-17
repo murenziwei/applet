@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText":"资料修改",
+  "usingComponents":{
+    "my-input":"../../../components/input/input"
+  }
+}

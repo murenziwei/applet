@@ -1,0 +1,58 @@
+<view class="wx-body">
+  <!-- <view>
+    <swiper class="personal-swiper" indicator-dots="true" autoplay="true" circular="true">
+      <block wx:for="{{ps.data}}" wx:key="psdKey" wx:for-item="psdItem">
+        <swiper-item>
+            <image bindtap='gourl' data-url="{{psdItem.url}}" src="{{psdItem.img}}" class="ps-img" lazy-load='true'></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view>
+      <view class="personal-news">
+          <text class="pn-icon iconfont {{pn.icon}}"></text>
+          <view class="pn-content">
+            <swiper class="ff-swiper" duration="{{lwf.duration}}" autoplay="{{lwf.autoplay}}" vertical="{{lwf.vertical}}" interval="{{lwf.interval}}" circular="{{lwf.circular}}">
+             <block wx:for="{{lwf.obj}}" wx:key="poKey">
+                <swiper-item class="ff-s-item">
+                       【{{item.add_time}}】{{item.content}}
+                </swiper-item>
+             </block>
+            </swiper>
+          </view>
+      </view>
+  </view> -->
+  <view>
+      <navigator url="/pages/child/dataModifit/dataModifit?idonImgNone=1" class="personal-user">
+         <view class="pu-userImg">
+           <image class="pu-u-bg" src="{{pu.avatarUrl}}" binderror="imgerrorfn" />
+         </view>
+         <view class="pu-userRight">
+            <view class="pu-u-name">姓名：{{pu.nickName}}</view>
+            <!-- <view class="pu-u-info">{{pu.show_self!='null'?pu.show_self:'本人懒，不介绍'}}</view> -->
+            <view class="pu-u-dj">等级：魏晋名士</view>
+         </view>
+         <view class="pu-userIcon">
+            <text class="iconfont icon-jiantou"></text>
+         </view>
+      </navigator>
+      <view class="personal-type">
+          <block wx:for="{{pt.typeObj}}" wx:key="toKey" wx:for-item="toItem">
+              <view class="to-item" data-url="{{toItem.href}}" catchtap="navDetail" wx:if='{{toItem.isShow == 1}}' data-isShowMail='{{userinfo.is_show_mail}}'>
+                   <view class="to-i-img">
+                      <image class="toii-pic" src="{{toItem.imgSrc}}" lazy-load='true'></image>
+                   </view>
+                   <view class="to-i-text">{{toItem.text}}</view>
+              </view>
+          </block>
+      </view>
+  </view>
+</view>
+<!-- <view wx:if="{{loadshow}}">
+     <loading>正在加载</loading>
+</view> -->
+<view class="kongjian">
+  <navigator url='/mine/mine' class="shape_image" open-type="reLaunch">
+      <image src='/image/icon7.png' class="si_img"></image>
+  </navigator>
+</view>

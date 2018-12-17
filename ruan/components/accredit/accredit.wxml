@@ -1,0 +1,15 @@
+<view class="warranty" wx:if="{{showModalStatus}}" animation="{{warnAni}}" bindtap="closePlug">
+   <view class="warn-dialog" animation="{{aniData}}" catchtap="openPlug" >
+     <view class="warn-title">
+       {{navtitle}}
+     </view>
+     <view class="warn-content" wx:if="{{navcontent!=''&&navcontent!='null'&&navcontent!='undefined'}}">
+       {{navcontent}}
+     </view>
+     <view class="warn-footer">
+         <button class="btn-cancel" catchtap="warnCancel">取消</button>
+         <button class="btn-ok" 
+         open-type="getUserInfo" catchgetuserinfo="getUserInfo">确认</button>
+     </view>
+   </view>
+</view>

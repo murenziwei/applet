@@ -1,0 +1,174 @@
+<view class="wx-body">
+  <view class="w-b-dm">
+    <view class="data-modift bg-white" bindtap="modifyPic">
+       <view class="dm-left dm-imgFlex">
+          <view class="dl-img-name important">个人头像</view>
+          <image class="dl-img" src="{{userO.img_self}}" lazy-load='true' binderror="imgerrorfn"></image>
+       </view>
+       <view class="dm-right iconfont icon-jiantou">
+       </view>
+    </view>
+   <view class="data-modift bg-white" bindtap="showinputmodelFn" data-name="真实姓名" data-index="real_name" data-inputtype="text" data-inputlength="20" >
+       <view class="dm-left">
+          <view class="dl-name important">真实姓名</view>
+       </view>
+       <view class="dm-right dm-r-name">
+       {{userO.real_name}}
+       </view>
+   </view>
+   <view class="data-modift bg-white" bindtap="showinputmodelFn" data-name="身份证" data-index="idno" data-inputtype="idcard" data-inputlength="18" >
+       <view class="dm-left dm-imgFlex">
+          <view class="dl-name important">身份证</view>
+          <view class="dm-r-name">{{userO.idno}}</view>
+       </view>
+       <view class="dm-right iconfont icon-jiantou"></view>
+   </view>
+   <view class="data-modift bg-white" bindtap="showinputmodelFn" data-name="民族" data-index="nation" data-inputtype="text" data-inputlength="100" >
+       <view class="dm-left dm-imgFlex">
+          <view class="dl-name important">民族</view>
+          <view class="dm-r-name">{{userO.nation}}</view>
+       </view>
+       <view class="dm-right iconfont icon-jiantou"></view>
+   </view>
+   <view class="data-modift bg-white" bindtap="showinputmodelFn" data-name="公司名称" data-index="company_name" data-inputtype="text" data-inputlength="100" >
+       <view class="dm-left dm-imgFlex">
+          <view class="dl-name">公司名称</view>
+          <view class="dm-r-name">{{userO.enterprise_info.company_name||''}}</view>
+       </view>
+       <view class="dm-right iconfont icon-jiantou"></view>
+   </view>
+   <view class="data-modift bg-white" bindtap="showinputmodelFn" data-name="法人代表" data-index="legal_rep" data-inputtype="text" data-inputlength="100" >
+       <view class="dm-left dm-imgFlex">
+          <view class="dl-name">法人代表</view>
+          <view class="dm-r-name">{{userO.enterprise_info.legal_rep||''}}</view>
+       </view>
+       <view class="dm-right iconfont icon-jiantou"></view>
+   </view>
+   <view class="data-modift bg-white" bindtap="showinputmodelFn" data-name="宗亲会职务（职位）" data-index="work_position" data-inputtype="text" data-inputlength="100" >
+       <view class="dm-left dm-imgFlex">
+          <view class="dl-name">宗亲会职务（职位）</view>
+          <view class="dm-r-name">{{userO.work_position=="null"?"":userO.work_position}}</view>
+       </view>
+       <view class="dm-right iconfont icon-jiantou"></view>
+   </view>
+   <picker range="{{sexarr}}" value="{{userO.sex==1?0:(userO.sex==2?1:'')}}" bindchange="sexChange">
+      <view class="data-modift bg-white">
+       <view class="dm-left dm-imgFlex">
+          <view class="dl-name important">性别</view>
+          <view class="dm-r-name">{{userO.sex==1?'男':(userO.sex==2?'女':'')}}</view>
+       </view>
+       <view class="dm-right iconfont icon-jiantou"></view>
+      </view>
+   </picker>
+   <picker mode="date" bindchange="dateChange" value="{{userO.birthday}}">
+     <view class="data-modift bg-white">
+       <view class="dm-left dm-imgFlex">
+          <view class="dl-name important">生日</view>
+          <view class="dm-r-name">{{userO.birthday}}</view>
+       </view>
+       <view class="dm-right iconfont icon-jiantou"></view>
+     </view>
+   </picker>
+   <view class="data-modift bg-white" bindtap="showinputmodelFn" data-name="qq" data-index="qq" data-inputtype="number" data-inputlength="100">
+       <view class="dm-left dm-imgFlex">
+          <view class="dl-name">qq</view>
+          <view class="dm-r-name">{{userO.qq}}</view>
+       </view>
+       <view class="dm-right iconfont icon-jiantou"></view>
+   </view>
+   <view class="data-modift bg-white" bindtap="showinputmodelFn" data-name="微信" data-index="wx" data-inputtype="text" data-inputlength="100">
+       <view class="dm-left dm-imgFlex">
+          <view class="dl-name">微信</view>
+          <view class="dm-r-name">{{userO.wx}}</view>
+       </view>
+       <view class="dm-right iconfont icon-jiantou"></view>
+   </view>
+   <view class="data-modift bg-white" bindtap="showinputmodelFn" data-name="邮件" data-index="email"  data-inputtype="text" data-inputlength="100">
+       <view class="dm-left dm-imgFlex">
+          <view class="dl-name">邮件</view>
+          <view class="dm-r-name">{{userO.email}}</view>
+       </view>
+       <view class="dm-right iconfont icon-jiantou"></view>
+   </view>
+   <view class="data-modift bg-white"  bindtap="showinputmodelFn" data-name="手机" data-index="mobile" data-inputtype="number" data-inputlength="11">
+       <view class="dm-left dm-imgFlex">
+          <view class="dl-name important">手机</view>
+          <view class="dm-r-name">{{userO.mobile}}</view>
+       </view>
+       <view class="dm-right iconfont icon-jiantou"></view>
+   </view>
+   <picker mode="region" bindchange="ancestorsFn">
+      <view class="data-modift bg-white">
+       <view class="dm-left dm-imgFlex">
+          <view class="dl-name important">祖籍</view>
+          <view class="dm-r-name">{{userO.ancestors_previous}}-{{userO.ancestors_city}}-{{userO.ancestors_town}}</view>
+       </view>
+       <view class="dm-right iconfont icon-jiantou"></view>
+      </view>
+   </picker>
+   <picker mode="region" bindchange="originFn">
+      <view class="data-modift bg-white">
+       <view class="dm-left dm-imgFlex">
+          <view class="dl-name important">原籍</view>
+          <view class="dm-r-name">{{userO.origin_previous}}-{{userO.origin_city}}-{{userO.origin_town}}</view>
+       </view>
+       <view class="dm-right iconfont icon-jiantou"></view>
+      </view>
+   </picker>
+   <view class="data-modift bg-white" bindtap="siteFn">
+       <view class="dm-left dm-imgFlex">
+          <view class="dl-name important">常住地</view>
+          <view class="dm-r-name">{{userO.now_previous}}-{{userO.now_city}}-{{userO.now_town}}-{{userO.now_address}}</view>
+       </view>
+       <view class="dm-right iconfont icon-jiantou"></view>
+   </view>
+   <view class="show_self bg-white">
+       <view class="ss_topname">
+          <view class="dl-name">个人介绍</view>
+       </view>
+       <view class="ss_body">
+          <textarea class="ss_textarea {{textarea_active?'active':''}}" value="{{userO.show_self!='null'?userO.show_self:'本人懒，不介绍'}}" bindinput="sstFn" bindfocus="taFn" bindblur="taFn"  maxlength='{{showSelf.max}}'></textarea>
+          <view class="ss_b_count">
+            <text class="">
+              <text class="{{showSelf.len>showSelf.max?'ss_b_active':''}}">{{showSelf.len}}</text>/{{showSelf.max}}
+            </text>
+          </view>
+       </view>
+   </view>
+  </view>
+  <view class="mhc-frame" wx:if='{{options.idonImgNone != 1}}'>
+    <view class="m-h-camera">
+      <view class="mhc-pic important">身份证件的正面</view>
+      <view class="mhc-upload" bindtap="mhcUploadFn" data-index="0">上传照片</view>
+    </view>
+    <view class="m-h-item">
+         <view class="mhi-pic"><image  class="mhi-p-img" src="{{wImg.tempFiles[0]}}" data-imgsrc="{{item}}" data-index="{{index}}" bindtap="previewI" bindlongpress="delImg"></image></view>
+    </view>
+  </view>
+  <view class="mhc-frame" wx:if='{{options.idonImgNone != 1}}'>
+    <view class="m-h-camera">
+      <view class="mhc-pic important">身份证件的反面</view>
+      <view class="mhc-upload" bindtap="mhcUploadFn" data-index="1">上传照片</view>
+    </view>
+    <view class="m-h-item">
+       <view class="mhi-pic"><image  class="mhi-p-img" src="{{wImg.tempFiles[1]}}" data-imgsrc="{{item}}" data-index="{{index}}" bindtap="previewI" bindlongpress="delImg"></image></view>
+    </view>
+  </view>
+  <view class="saveNext">
+     <button type="primary" class="snBtn" bindtap="saveNextFn">保存并进行下一步</button>
+  </view>
+</view>
+<my-input wx:if="{{hiddenmodel}}" bind:cancelemit="cancelFn" titlestr="{{parentstr}}" valuestr="{{parentvalue}}" valueindex="{{indexstr}}" typestr="{{parenttype?parenttype:''}}" lengthstr="{{parentlength?parentlength:''}}" bind:inputemit="closeinputFn" />
+<modal wx:if="{{!imgHidden}}" title="实名认证"  bindconfirm="imgConfirm" bindcancel="imgCancel" >
+    <view class="mi-modal">
+       <view class="my-row">
+         <text class="my-text">姓名</text><input auto-focus="true" class="my-input" value="{{autonym.name}}" bindinput="autonymNameFn" bindconfirm="imgConfirm" placeholder="必须'阮'字开头"></input>
+       </view>
+       <view class="my-row">
+       <text class="my-text">身份证</text><input class="my-input" value="{{autonym.identity}}" bindinput="autonymIdentityFn" maxlength="18" focus="true" type="idcard" bindconfirm="imgConfirm" placeholder="必须18位数"></input>
+       </view>
+    </view>
+</modal>
+<view wx:if="{{loadshow}}">
+     <loading>正在加载</loading>
+</view>

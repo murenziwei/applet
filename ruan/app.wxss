@@ -1,0 +1,12 @@
+/*weui基础样式库开始*/
+@import "./public/wxss/weui.wxss";
+/*weui基础样式库结束*/
+/*loading加载标记*/
+@import "./public/wxss/load.wxss";
+/*loading结束*/
+/*图标样式开始*/
+@import "./public/wxss/iconfont.wxss";
+/*图标样式结束*/
+/*从别处搜集过来的样式开始*/
+@import "./public/wxss/collect.wxss";
+/* 从别处搜集过来的样式结束 */

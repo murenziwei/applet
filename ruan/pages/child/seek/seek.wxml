@@ -1,0 +1,18 @@
+<!--seek.wxml-->
+<view class="container">
+  <view class="container-in">
+    <view class="h1">{{ci.topic}}</view>
+    <block class="" wx:for="{{ci.content}}" wx:key="cicKey">
+       <rich-text nodes="{{item}}" class="p"></rich-text>
+    </block>
+    
+    
+  </view>
+  <navigator url="../../../total/total">
+           <button class="pact-btn">本人已阅读，进入寻亲</button>
+  </navigator>
+  <!-- <view class="container-bottom">
+    <view class="container-bottom-title">{{ci.help.name}}</view>
+    <view class="ad"></view>
+  </view> -->
+</view>

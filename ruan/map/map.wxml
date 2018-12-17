@@ -1,0 +1,37 @@
+<view class="page-body">
+  <view class="page-section page-section-gap">
+    <!-- bindmarkertap  点击标记点触发，可以返回marker的id -->
+    <!-- bindregionchange 视野发生变化时触发 -->
+    <map
+      id="myMap"     
+      bindregionchange="regionchangeFn"
+      bindmarkertap="markerFn"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      markers="{{markers}}"
+      circles="{{circles}}"
+      scale="{{scale}}"
+      show-location="true"
+      show-compass="true"
+    >
+       <cover-view class="btn-address b-a-parent">
+          <cover-view bindtap="ancestralFn" class="b-a-ancestral ba-item">原籍</cover-view>
+          <cover-view bindtap="originalFn" class="b-a-original ba-item">祖籍</cover-view>
+          <cover-view bindtap="obodeFn" class="b-a-obode ba-item">常住地</cover-view>
+       </cover-view>
+       <cover-view class="btn-scale">
+          <cover-image class="bs-item btn-scale-add" bindtap="scaleFn" data-scale="add" src="/image/scale_add.png"></cover-image>
+          <cover-image class="bs-item btn-scale-less" bindtap="scaleFn" data-scale="less" src="/image/scale_less.png"></cover-image>
+       </cover-view>
+       <cover-view class="btn-moveto" bindtap="movetoFn">
+          <cover-image src="/image/location_m_two.png" class="btn-moveto-myself"></cover-image>
+       </cover-view>
+       <cover-view class="Seekingrelatives" bindtap="seekingrelativesFn">
+          
+            <cover-image src="/image/love.png" class="SeekingrelativesImg"></cover-image>
+            <cover-view class="SeekingrelativesText">寻亲</cover-view>
+       </cover-view>
+    </map>
+  </view>
+  
+</view>

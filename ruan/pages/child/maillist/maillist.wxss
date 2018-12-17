@@ -1,0 +1,163 @@
+/* pages/child/maillist/maillist.wxss */
+/*修改weui.wxss的样式开始*/
+
+.weui-cells {
+line-height:2.41176471;
+}
+
+/*修改weui.wxss的样式结束*/
+.wx-body-style{
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.cell-scroll{
+  position:relative;
+  height:104rpx;
+}
+.cell_end{
+  position:absolute;
+  height:104rpx;
+  top:0;
+  bottom: 0;
+  right: 0;
+  transform: translatex(100%);
+  border-top:1px solid #ccc;
+  border-bottom:1px solid #ccc;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+}
+.cell_end>view{
+  font-size:30rpx;
+  width:120rpx;
+  height:100%;
+  text-align:center;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+.c_e_detail{
+  background-color:green;
+  color:#fff;
+}
+.c_e_delete{
+  background:#f6a623;
+  color:#fff;
+}
+.wc_b-title{
+  font-size:10px;
+}
+.wc_b-content{
+  font-size:7px;
+}
+.wc_f-text{
+  font-size:12px;
+  opacity:0.7;
+}
+.wc_b-name{
+  font-size:35rpx;
+  font-weight:bold;
+}
+.wc_f-gender{
+  opacity:0.5;
+}
+.tz-btn{
+  text-align:right;
+  display:flex;
+  align-items:center;
+  border-bottom:1px solid #ccc;
+  justify-content:space-between;
+}
+.tz-btn>.weui-btn{
+  margin:10px;
+  width:90px;
+  font-size:30rpx;
+  color:#fff;
+}
+.text-info{
+  display:inline-block;
+  float:right;
+  font-size:30rpx;
+  opacity:0.5;
+  padding:10px;
+}
+.ti-green{
+  color:green;
+}
+.wx-status-no{
+  color:black;
+}
+.wx-status-yes{
+  color:green;
+}
+.wx-status-info{
+  color:yellowgreen;
+}
+.wx-status-danger{
+  color:red;
+}
+.wx-status-warn{
+  color:orange;
+}
+
+.mass_wrap{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width:100%;
+}
+
+.quan{
+  position:sticky;
+  top: 0;
+  left: 0;
+  background-color:#FFFFFF;
+  line-height:2.41176471;
+  font-size:17px;
+  padding:10px 15px;
+  display: flex;
+  z-index: 9999;
+}
+
+.mak{
+ width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.form-wrap{
+ 
+}
+
+.form-wrap form{
+  width: 95%;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0 10px;
+}
+
+.form-wrap form view{
+  margin-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.ss_textare{
+  width: 100%;
+  min-height: 300px;
+  border-top: 1px solid #ccc;
+}
+
+.quan button {
+  width:90px;
+  line-height:2.41176471;
+  font-size:17px;
+  color:#fff;
+}

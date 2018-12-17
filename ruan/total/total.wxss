@@ -1,0 +1,280 @@
+.wx-body{
+  padding-bottom:50px;
+}
+.wx-search{
+  display:flex;
+  align-items:center;
+  background-color:rgba(0,0,0,0.1);
+  border-radius:5rpx;
+  margin:20rpx 20rpx 0 20rpx;
+}
+.wx-nav{
+  position: absolute;
+  left: 20rpx;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+}
+.pbl-icon{
+  font-size:30rpx;
+}
+.wx-noa{
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  opacity:0.5;
+  padding:60rpx 0;
+  border-bottom:1px solid #ccc;
+}
+.wx-address{
+  display:flex;
+  align-items:center;
+  font-size:30rpx;
+  letter-spacing:3px;
+  height:27px;
+  padding:7px;
+  background-color:#1afa29;
+  color:#fff;
+}
+.wx-search{
+  font-size:28rpx;
+  padding:10rpx 20rpx;
+}
+.wx-nav{
+  font-size:35rpx;
+}
+.wx-nav .n-node{
+  padding:20rpx;
+}
+.luku{
+  position: absolute;
+  right:110rpx;
+}
+
+.wx-noa .showCity{
+  position: absolute;
+  right: 20rpx;
+}
+
+.luku:before{
+  content:"|";
+  font-size:30rpx;
+  display:flex;
+  align-items:center;
+}
+.a-img{
+  width:30rpx;
+  height:30rpx;
+  display:inline-block;
+}
+.s-search{
+  padding-right:10rpx;
+}
+.search-input{
+  flex:1;
+  width:30rpx;
+}
+
+.ws-search{
+  width:30rpx;
+  height:30rpx;
+}
+.n-node{
+  cursor:pointer;
+}
+.n-node.active{
+  font-weight:bold;
+  color:red;
+}
+
+.pd-item{
+  height:550rpx;
+  border-radius:10rpx;
+  box-shadow:0 0 5rpx rgba(0,0,0,0.3);
+  margin:20rpx 0;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  align-items:center;
+  padding:0 10px
+}
+.pd-item>view{
+  width:100%;
+}
+.pd-top{
+  display:flex;
+  justify-content:space-around;
+  height:400rpx;
+}
+.p-t-left{
+  width:35%;
+  border:2rpx solid #ccc;
+  border-radius:12rpx;
+  overflow:hidden;
+  
+}
+.p-t-left:active{
+  opacity:0.8;
+}
+.p-t-right{
+  font-size:30rpx;
+  width:60%;
+}
+/* .p-t-right>view{
+  margin-bottom: 20px;
+} */
+.ptr-flex{
+  padding-left:10px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.pd-bottom{
+  height:100rpx;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:30rpx;
+}
+.pbl-num{
+  color:#1afa29;
+}
+.pbr-btn{
+  background-color:#1afa29;
+  color:#fff;
+  font-size:30rpx;
+  width:199rpx;
+  height:60rpx;
+  line-height:60rpx;
+}
+.ptl-img{
+  height:396rpx;
+  width:100%;
+}
+.p-b-left{
+  display:flex;
+  align-items:center;
+}
+.pbl-icon{
+  margin-right:5rpx;
+}
+.ptr-title{
+  font-weight:bold;
+  font-size:35rpx;
+}
+.wx-content{
+  padding:20rpx;
+}
+.warranty{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  width:100%;
+  height:100%;
+  z-index:999;
+  background-color:rgba(0,0,0,0.3);
+}
+.warn-dialog{
+  width:90%;
+  margin:0% auto 15px;
+  background-color:#fff;
+  box-shadow: 0 0 3px rgba(0,0,0,0.3);
+  border-radius:4px;
+}
+
+.warn-footer{
+  display:flex;
+  justify-content:flex-end;
+}
+.btn-cancel{
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+.btn-ok{
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+.warn-footer>button{
+  font-size:13px;
+  margin:5px;
+}
+.warn-title{
+  padding:10px;
+  text-align:center;
+}
+.warn-content{
+  padding:10px;
+  
+}
+
+/*底部菜单查询*/
+/* components/date/date.wxss */
+.date-parent{
+  text-align:center;
+  position:fixed;
+  width:100%;
+  height:200px;
+  left:0;
+  right:0;
+  bottom:-200px;
+  transition:all 0.5s;
+  z-index:500;
+  box-shadow:0 0 1px #ccc;
+}
+.dateShow.date-parent{
+  bottom:0;
+  opacity:1;
+  background-color:#FFF;
+  z-index:9999;
+}
+.sd-ui{
+  color:blue;
+}
+.sd-ui:active{
+  color:red;
+}
+.huiping{
+  position:absolute;
+  z-index:2;
+  left:0;
+  right:0;
+  bottom:0;
+  top:0;
+  background-color:rgba(0,0,0,0.5);
+}
+.csImg{
+  width:60rpx;
+  height:60rpx;
+  margin: 0 16rpx;
+  vertical-align:middle;
+}
+.siCity{
+  font-size:30rpx;
+  /* margin-right: 25rpx; */
+}
+
+my-tabbar{
+  display: block;
+  clear: both;
+  height: 100rpx;
+}
+.search-close{
+  font-size:33rpx;
+}
+
+input {
+  width: 100%;
+  height:30rpx;
+}
+
+.nomore{
+  text-align: center;
+}
+.nomore-text{
+  font-size:30rpx;
+  color:#CCC;
+}

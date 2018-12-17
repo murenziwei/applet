@@ -1,0 +1,30 @@
+<view class="wx-body">
+   <view class="my-header">
+      <view class="my-top">
+           <view class="mt-user" style="background-image:url({{mt.avatarUrl}})">
+               
+           </view>
+           <text class="mt-nameUser">{{mt.nickName}}</text>
+      </view>
+   </view>
+   <view>
+       <view class="my-userThing">
+           <block wx:for="{{mut.thingList}}" wx:key="tlKey">
+              <view class="m-ut-item" data-href="{{item.navHref}}"  bindtap="{{item.navHref=='pay'?'pay':'navFn'}}">
+                  <view class='icon-wrap'>
+                    <image src='{{item.icon}}'></image>
+                    <!-- <icon class="iconfont {{item.icon}}"></icon> -->
+                  </view>
+                  <view>
+                    <text class="m-ut-text">{{item.text}}</text>
+                  </view>
+              </view>
+           </block>
+       </view>
+   </view>
+</view>
+<my-tabbar tabbar-index="1" />
+<my-accredit navurl="{{componenturl}}" navtitle="{{userinfoTitle}}" navcontent="{{userinfoContent}}" />
+<view hidden="{{!loadshow}}">
+     <loading>正在加载</loading>
+</view>

@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "total/total",
+    "mine/mine",
+    "map/map",
+    "personal/personal",
+    "pages/child/details/details",
+    "pages/child/maillistDetails/maillistDetails",
+    "pages/child/helpdata/helpdata",
+    "pages/child/myIssue/myIssue",
+    "pages/child/seek/seek"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#f8f8f8",
+    "backgroundColor": "#f8f8f8",
+    "navigationBarTitleText": "阮",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  }
+}

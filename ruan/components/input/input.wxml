@@ -1,0 +1,12 @@
+<view class="component-body">
+    <view class="cb-topic">
+      {{titlestr}}
+    </view>
+    <view class="cb-center">
+       <input auto-focus="true" value="{{valuestr}}" class="cb-c-input" bindinput="inputFn" type="{{typestr?typestr:'text'}}" maxlength="{{lengthstr?lengthstr:''}}" bindconfirm="saveFn"></input>
+    </view>
+    <view class="cb-save">
+        <button type="warn" class="cb-s-btn" bindtap="saveFn">确定</button>
+        <button class="cb-s-btn" bindtap="cancelFn">取消</button>
+    </view>
+</view>

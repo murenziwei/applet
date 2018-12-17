@@ -1,0 +1,35 @@
+/* components/input/input.wxss */
+.component-body{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  width:100%;
+  height:100%;
+  background-color:#fff;
+  z-index:999;
+}
+.cb-topic{
+  text-align:center;
+  padding:10px 0;
+}
+.cb-center{
+  padding:3px 7px;
+  margin:10px;
+  border:2px solid orange;
+  border-top-color:transparent;
+  -moz-border-top-colors: transparent;
+  padding-top:0;
+}
+.cb-c-input{
+  font-size:30rpx;
+  margin-top:-2px;
+}
+.cb-save{
+  padding:10px;
+}
+.cb-s-btn{
+  font-size:30rpx;
+  margin:10px 0;
+}

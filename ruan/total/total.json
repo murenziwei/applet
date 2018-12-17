@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText":"寻亲",
+  "usingComponents": {
+    "my-tabbar": "../components/tabbar/tabbar",
+    "my-citys": "../components/citys/citys"
+  }
+}

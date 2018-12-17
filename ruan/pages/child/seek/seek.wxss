@@ -1,0 +1,98 @@
+/**index.wxss**/
+page{
+  background: #F4F9FC;
+}
+
+.container {
+  width: 100%;
+  /* height: 1170rpx; */
+}
+
+.container .container-in{
+  padding: 0 45rpx 45rpx 45rpx;
+  height: 100%;
+  text-align: center;
+  background: #fff;
+}
+.pact-btn{
+  background-color:#1afa29;
+  font-size:30rpx;
+  color:#fff;
+}
+
+.container .container-in .h1{
+  font-size: 40px;
+  background: linear-gradient(to right ,#C7EC13, #6EC739);
+  -webkit-background-clip: text;
+  color: transparent;
+  display: block;
+}
+
+
+.container .container-in .p{
+  line-height: 50rpx;
+  display: inline-block;
+  font-size: 30rpx;
+  padding-top: 20px;
+  text-align: left
+}
+
+.container .container-in .button{
+  width: 100%;
+  height: 100rpx;
+  background: #2CCD25;
+  margin-top: 30px;
+  line-height: 100rpx;
+  color: #fff;
+  font-size: 40rpx;
+  border-radius: 2px;
+  font-weight: 400;
+}
+
+
+.container .container-bottom{
+  padding: 0 45rpx;
+  text-align: center;
+  /* background: red; */
+  margin-top: 7px;
+  background: #fff;
+}
+
+.container .container-bottom .container-bottom-title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  color: #000;
+  font-weight: bold;
+  padding-top: 20px;
+}
+
+.container .container-bottom .container-bottom-title::after,
+.container .container-bottom .container-bottom-title::before
+{
+  display: block;
+  content: "";
+  width: 50rpx;
+  height: 2px;
+  background-color: #999;
+  margin-top: 2px;
+}
+
+.container .container-bottom .container-bottom-title::after{
+  margin-left: 28rpx;
+  
+}
+
+.container .container-bottom .container-bottom-title::before
+{
+  margin-right: 28rpx;
+}
+
+
+.container-bottom .ad{
+  width: 100%;
+  height: 280rpx;
+  margin: 20px 0 10px 0;
+  border: 1px solid #ccc;
+}

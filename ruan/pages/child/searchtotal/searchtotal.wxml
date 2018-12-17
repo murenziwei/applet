@@ -1,0 +1,28 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="i-sticky-demo-des">
+    <view class='search-box'>
+      <image class='search-img' src='../../../image/search_icon.png'></image>
+      <input placeholder="请输入被寻找人姓名"  value='{{inputValue}}' auto-focus/>
+    </view>
+  </view>
+   <scroll-view scroll-y style="height:{{height}}px;" bindscrolltolower='lower'>
+    <view class='card' wx:for="{{information}}" wx:key="{{index}}">
+      <view class='left-img'>
+        <image lazy-load src='{{item.img}}'></image>
+      </view>
+      <view class='right-text'>
+        <text class='title'>{{item.title}}</text>
+        <text>失踪人:{{item.name}}</text>
+        <text>年龄:{{item.details.age}}</text>
+        <text>失踪日期:{{item.date_missing}}</text>
+        <text>失踪地址:{{item.ad_lost_detail}}{{item.ad_lost_detail}}</text>
+      </view>
+      <view class='bottom'>
+        <image class='icon' src='../../img/heart.jpg'></image>
+        <text><text class='hl'>{{item.forward_num}}</text>人正在一起寻找</text>
+        <button size="mini" bindtap="totalFn" data-index="{{item.id}}"> 帮我回家 </button>
+      </view>
+    </view>
+   </scroll-view>
+</view>

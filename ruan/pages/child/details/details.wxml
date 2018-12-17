@@ -1,0 +1,76 @@
+<view class="wx-body {{showImg ? 'noscoll':'' }}">
+   <view class="bg-container">
+     <view class='bg'>
+    <image class='info' src='{{info.img_self}}' binderror="imgerrorfn"></image>
+    <view class='mask'></view>
+    <view class='top'>
+        <text class='name'>姓名：{{info.real_name}}</text>
+        <text class='position'>职务：{{info.work_position ? info.work_position : ''}}</text>
+        <text class='company'>公司名：{{info.enterprise_info.company_name}}</text>
+        <!-- <text class='ein' wx:if="{{info.is_show_corp_info!=0}}">法人代表：{{info.enterprise_info.legal_rep}}</text> -->
+        <!-- <text class='idno' wx:if="{{info.is_show_corp_info!=0}}">身份证：{{info.idno}}</text> -->
+        <!-- <text class='nation'>民族：{{info.nation}}</text>
+        <text class='sex'>性别：{{info.sex==1?'男':'女'}}</text> -->
+        <image class='tx' bindtap='previewI' data-src="{{info.img_self}}" src='{{info.img_self}}'></image>
+      </view>
+
+      <view class='line'></view>
+      <view class='bottom'>
+        <!-- <text wx:if="{{info.is_show_corp_info!=0}}" class='birthday'>生日：{{info.birthday}}</text>   -->
+        <text class='phone'>电话：{{info.mobile}}</text>
+        <text class='weixin'>微信：{{info.wx}}</text>
+        <!-- <text class='qq'>QQ：{{info.qq}}</text> -->
+        <text class='email'>邮箱：{{info.email}}</text>
+        <view class='dz'>
+          <text class='addr'>地址：</text>
+          <text class='addr_d'>{{info.now_previous}}{{info.now_city}}{{info.now_town}}{{info.now_address}}</text>
+        </view>
+        <view class='dz'>
+          <text class='addr'>祖籍：</text>
+          <text class='addr_d'>{{info.ancestors_previous}}{{info.ancestors_city}}{{info.ancestors_town}}{{info.now_address}}</text>
+        </view>
+        <view class='dz'>
+          <text class='addr'>原籍：</text>
+          <text class='addr_d'>{{info.origin_previous}}{{info.origin_city}}{{info.origin_town}}{{info.now_address}}</text>
+        </view>
+      </view>
+   </view>
+   </view>
+   
+    <view class='box'>
+      <view>
+        <image src='../../../image/fenxiang.png'></image>
+        分享值：{{info.forward_num}}
+      </view>
+      <view bindtap='sc'>
+        <image src='{{star==1? "../../../image/star__easyico.png" : (star==0?"../../../image/shoucang.png":"")}}'></image>
+        收藏：{{info.collect_num}}
+      </view>
+    </view>
+
+    <!-- <view class='idno_img' wx:if="{{info.is_show_corp_info!=0}}">
+     <block wx:for="{{info.id_img_self}}" wx:key='idcard'>
+       <image bindtap='previewI'  data-src='{{item}}' src='{{item}}'></image>
+     </block>  
+    </view> -->
+
+    <view class='introduction'>
+      <view class="introduction-text">
+        {{info.show_self}}
+      </view>
+    </view>
+
+    <view bindtap='closeImg' class='bigImg' wx:if='{{showImg}}'>
+      <image src='{{imgSelf}}'></image>
+    </view>
+</view>
+<view class="kongjian">
+  <button class="shape_image" bindtap="getPosition" open-type="share">
+      <image src='../../../image/fenxiang.png' class="si_img"></image>
+  </button>
+  <navigator url='/mine/mine' class="shape_image" open-type="reLaunch">
+      <image src='/image/icon7.png' class="si_img"></image>
+  </navigator>
+</view>
+
+

@@ -1,0 +1,39 @@
+<view class="wx-body">
+ <scroll-view scroll-y="true" bindscrolltolower="lazyload" style="height:{{(size)*44+50}}px;">
+  <view class="tz-btn">
+     <button class="weui-btn mini-btn button-hover" type="warn" bindtap="tiaozhuan" wx:if="{{c_a_u==1}}">添加人员</button>
+     <view class="text-info">
+     提示：<text class="ti-green">操作可向左滑动</text>
+     </view>
+  </view>
+  <block wx:for="{{cs.issueObj}}" wx:key="ioKey">
+    <scroll-view scroll-x="true" class="cell-scroll" >
+      <view class="weui-cells weui-cells_after-title" data-id="{{item.id}}">
+            <view class="weui-cell">
+                <view class="weui-cell__hd">
+                    <image src="{{item.img_self}}" style="" binderror="imgerrfn" data-index="{{index}}" class="weui-cell_img"></image>
+                </view>
+                <view class="weui-cell__bd">
+                  <view class="wc_b-name">{{item.real_name}}<text class="wc_f-gender">({{item.sex}})</text></view>
+                </view>
+                <view class="weui-cell__ft">
+                  
+                  {{item.is_shiming}}
+                  
+              </view>
+            </view>
+        </view>
+        <view class="cell_end" style="width:{{(item.is_edit==0&&item.is_shiming=='未实名')?120*1:((item.is_edit==0||item.is_shiming=='未实名')?(120*2):(120*3))}}rpx;right:-{{(item.is_edit==0&&item.is_shiming=='未实名')?120*1:((item.is_edit==0||item.is_shiming=='未实名')?(120*2):(120*3))-3}}rpx" data-isedit="{{item.is_edit}}">
+          <view class="c_e_change" wx:if="{{item.is_edit=='1'}}" data-id="{{item.id}}" bindtap="navtar">修改</view>
+          <view class="c_e_delete" catchtap="delIssue" data-id="{{item.id}}" data-index="{{index}}" wx:if="{{item.is_shiming!='未实名'}}">删除</view>
+          <view class="c_e_detail" bindtap="gateTo" data-id="{{item.id}}">详情</view>
+        </view>
+
+    </scroll-view>
+  </block>
+  <view class="lw-loadmore">
+      <view class="lw-loading" hidden="{{!shload}}"></view>
+      <text class="lw-loadtext"><text hidden="{{!shload}}">加载更多</text><text hidden="{{shload}}">已经到底了…</text></text>
+  </view>
+ </scroll-view>
+</view>

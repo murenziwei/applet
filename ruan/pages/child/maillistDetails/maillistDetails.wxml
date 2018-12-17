@@ -1,0 +1,67 @@
+<view class="wrap">
+  <view class='avatar-wrap'>
+    <image class="avatar" src='{{userInfo.img_self}}' binderror="imgerrorfn"></image>
+  </view>
+  <view class='text-top'>
+    <text class='name'>{{userInfo.real_name?userInfo.real_name:'无'}}</text>
+    <text class='introduce'>{{userInfo.show_self=="undefined"||userInfo.show_self=="null"?'无':userInfo.show_self}}</text>
+  </view>
+  <view class='view1'>
+        <text class='row'>
+            <text class='hl'>真实姓名: </text>{{userInfo.real_name?userInfo.real_name:'无'}}
+          </text>
+        <text class='row' wx:if="{{userInfo.is_show_corp_info!=0}}">
+          <text class='hl'>身份证: </text>{{userInfo.idno?userInfo.idno:'无'}}
+        </text>
+
+        <text class='row'>
+          <text class='hl'>性别: </text>{{userInfo.sex?userInfo.sex:'无'}}
+        </text>
+
+        <view class='text'>
+          <view class='hl'>民族: </view>
+          <text class='h2'>{{userInfo.nation?userInfo.nation:'无'}}</text>
+        </view>
+
+        <text class='row' wx:if="{{userInfo.is_show_corp_info!=0}}">
+          <text class='hl'>生日: </text>{{userInfo.birthday?userInfo.birthday:'无'}}
+        </text>
+        <text class='row'>
+          <text class='hl'>手机: </text>{{userInfo.mobile?userInfo.mobile:'无'}}
+        </text>
+        <view class='text'>
+          <view class='hl'>祖籍: </view>
+          <text class='h2'>{{userInfo.ancestors_previous}}-{{userInfo.ancestors_city}}-{{userInfo.ancestors_town}}-{{userInfo.ancestors_addr}}</text>
+        </view>
+        <view class='text'>
+          <view class='hl'>原籍: </view>
+          <text class='h2'>{{userInfo.origin_previous}}-{{userInfo.origin_city}}-{{userInfo.origin_town}}-{{userInfo.origin_addr}}</text>
+        </view>
+        <view class='text'>
+          <view class='hl'>居住地: </view>
+          <text class='h2'>{{userInfo.now_previous}}{{userInfo.now_city}}{{userInfo.now_town}}{{userInfo.now_address}}</text>
+        </view>
+        <text class='row'>
+          <text class='hl'>QQ: </text>{{userInfo.qq?userInfo.qq:'无'}}
+        </text>
+      <text class='row'>
+        <text class='hl'>邮箱: </text>{{userInfo.email?userInfo.email:'无'}}
+      </text>
+      <text class='row'>
+        <text class='hl'>微信: </text>{{userInfo.wx?userInfo.wx:'无'}}
+      </text>
+
+      <text class='row'>
+        公司信息：
+        </text>
+        <text class='row'>
+          <text class='hl'>公司名称: </text>{{userInfo.enterprise_info.company_name}}
+        </text>
+        <!-- <text class='row' wx:if="{{userInfo.is_show_corp_info!=0}}">
+          <text class='hl'>法人代表: </text>{{userInfo.enterprise_info.legal_rep}}
+        </text> -->
+        <!-- <text class='row' wx:if="{{gshow}}">
+          <text class='hl'>税号: </text>{{userInfo.enterprise_info.ein}}
+        </text> -->
+  </view>
+</view>

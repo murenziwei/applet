@@ -1,0 +1,64 @@
+<view class="wx-body" hidden="{{showCity}}">
+   <view class="wx-search">
+     <image src="../image/search_icon.png" class="ws-search"></image>
+      <input confirm-type="search" placeholder="请输入常住地/原籍/祖籍"  value='{{inputValue}}' auto-focus bindconfirm="search" bindinput="setInpVal"/>
+      <text class='search-close iconfont icon-shanchu1' bindtap='clearInputEvent' data-v="{{inputValue.length}}" hidden="{{inputValue.length==0||inputValue==undefined}}"></text>
+   </view>
+   <view class="wx-pane">
+    <view class="wx-noa">
+      <view class="wx-nav">
+        <block wx:for="{{lwp.arrn}}" wx:key="arrnKey" >
+          <view class="n-node {{lwp.point===index?'active':''}}" bindtap="arrNfn" data-index="{{item.tk}}"  data-indexI="{{index}}">
+             {{item.name}}
+          </view>
+        </block>
+      </view>
+      <!-- <text class="luku"></text> -->
+      <view bindtap="showCityFn" class='showCity'>
+        <text class="siCity">{{chooseCity}}</text>
+        <image class="search-icon csImg" src="/image/location.png" bindtap="showCityFn" />
+      </view>
+    </view>
+    <view class="wx-content">
+        <scroll-view class="wx-p-datas">
+          <block wx:for="{{pm.arr}}" wx:key="pmKey">
+              <view class="pd-item">
+                   <view class="pd-top"  bindtap="totalFn" data-index="{{item.id}}">
+                       <view class="p-t-left" >
+                          <image src="{{item.img_self}}" class="ptl-img" />
+                       </view>
+                       <view class="p-t-right ptr-flex">
+                          <!-- <view class="ptr-title">{{item.title}}</view> -->
+                          <view class="ptr-name">姓名：{{item.real_name}}（{{item.sex==1?'男':item.sex==2?'女':''}}）</view>
+                          <view class="ptr-age">年龄：{{item.year}}</view>
+                          <!-- <view class="ptr-date">日期：{{item.date_missing}}</view> -->
+                          <view class="ptr-address">祖籍：{{item.ancestors_addr ? item.ancestors_addr : '---'}}</view>
+                          <view class="ptr-address">原籍：{{item.origin_addr ? item.origin_addr : '---'}}</view>
+                          <view class="ptr-address">常住地：{{item.now_previous}}{{item.now_city}}{{item.now_town}}{{item.now_address}}</view>
+                       </view>
+                   </view>
+                   <!-- <view class="pd-bottom">
+                      <view class="p-b-left">
+                         <text size="20" class="pbl-icon iconfont icon-love"></text>
+                            <text class="pbl-num">{{item.click_num}}</text>
+                            人查看
+                      </view>
+                      <view class="p-b-right">
+                          <button class="pbr-btn" bindtap="totalFn" data-index="{{item.id}}">进来瞧瞧</button>
+                      </view>
+                   </view> -->
+              </view>
+          </block>
+        </scroll-view>
+     </view>
+     <view class='nomore' wx:if='{{pm.arr.length<=0}}'>
+        <text class='nomore-text'>没有更多数据</text>
+     </view>
+   </view>
+</view>
+<my-citys wx:if="{{showCity}}" bind:cityemit="resultCityFn" />
+<my-tabbar tabbar-index="0" wx:if="{{!showCity}}" />
+
+<view wx:if="{{loadshow}}">
+     <loading>正在加载</loading>
+</view>

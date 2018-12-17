@@ -1,0 +1,23 @@
+<view class="wx-body">
+ <scroll-view scroll-y="true" bindscrolltolower="lazyload" style="height:{{wx.getSystemInfoSync().windowHeight}}px;">
+  <block wx:for="{{cs.issueObj}}" wx:key="ioKey">
+    <scroll-view scroll-x="true" class="cell-scroll" >
+      <view class="weui-cells weui-cells_after-title" data-id="{{item.id}}" bindtap="gateTo" >
+            <view class="weui-cell">
+                <view class="weui-cell__hd">
+                    <image src="{{item.img_self}}" class="weui-cell_img"  binderror="imgerrfn" data-index="{{index}}"></image>
+                </view>
+                <view class="weui-cell__bd">
+                  <view class="wc_b-name">{{item.real_name}}<text class="wc_f-gender">({{item.sex==1?'男':'女'}})</text></view>
+                </view>
+               
+            </view>
+        </view>
+    </scroll-view>
+  </block>
+  <view class="lw-loadmore" id="lw-load">
+      <view class="lw-loading" hidden="{{!shload}}"></view>
+      <text class="lw-loadtext"><text hidden="{{!shload}}">加载更多</text><text hidden="{{shload}}">已经到底了…</text></text>
+  </view>
+ </scroll-view>
+</view>
