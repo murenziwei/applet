@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商机成交</title>
+    <!--rem单位依赖g.tbcdn.cn文件-->
+    <script src="../../js/g.tbcdn.cn.js"></script>
+    <link rel="stylesheet" href="../../css/BLcssInit.css">
+    <link rel="stylesheet" href="../../css/public.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="BLdeal.css">
+    <script src="../../js/vue.js"></script>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="wrap" id="page">
+        <div class="sel">
+            <img src="../../img/weiyou.png" class="sel-img" />
+            <div class="sel-search">
+                <input type="text" name="key" placeholder="输入关键字" class="s-s-input">
+                <span class="lw-btn glyphicon glyphicon-search s-s-icon"></span>
+            </div>
+        </div>
+        <div class="tab">
+            <span class="act">全部</span>
+            <span>我的商机</span>
+        </div>
+        <div class="deal-list">
+            <ul>
+                <li @click="infornav">
+                    【晒合同】恭喜王经理成交34万：3台5吨的行车
+                </li>
+                <li @click="infornav">
+                    【重要】接单后，隐藏在机械超人的实用功能★★★
+                </li>
+                <li @click="infornav">
+                    【解决方案】收不到商机提醒怎么办？
+                </li>
+
+            </ul>
+            <span>下一页</span>
+        </div>
+        <!--底部导航-->
+        <my-tabbar  tabactive="2"></my-tabbar>
+		<!--实名弹窗-->
+		<name-conponent></name-conponent>
+    </div>
+	<script src="../../js/lw.component.js"></script>
+    <script type="text/javascript" src="bldeal.js"></script>
+</body>
+</html>

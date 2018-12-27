@@ -1,0 +1,355 @@
+/*html*/
+html{
+	/*font-size:80px !important;*/
+}
+/*底部导航*/
+.tabbar-fixed{
+	position:fixed;
+	bottom:0;
+	left:0;
+	right:0;
+}
+.tabbar{
+	display:flex;
+	display:-webkit-flex;
+	align-items:center;
+	justify-content:space-around;
+	height:1.5rem;
+	border-top:1px solid #ccc;
+	background-color:#fff;
+}
+.tabbar-item{
+	text-align:center;
+	font-size:0.4rem;
+	color:#000000;
+}
+.tabbar-item.active{
+	color:green;
+}
+
+/*底部消息*/
+.tn-t-collapse{
+	cursor:pointer;
+}
+.b-s-nav:active{
+	color:red;
+}
+.tabbar-info{
+	background-color:#ccc;
+	font-size:0.4rem;
+	padding:0.1rem 0;
+	text-align:center;
+	display:flex;
+	justify-content:center;
+}
+.t-i-icon{
+	font-size:0.5rem;
+}
+/*底部按钮*/
+.f-b-frame {
+    padding: 0.1rem 0.2rem;
+    width: 100%;
+}
+.form-btn {
+    width: 100%;
+    height: 1.111111111111111rem;
+    line-height: 1.111111111111111rem;
+    background-color: #19AD17;
+    font-weight: bold;
+    font-size: 0.5rem;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
+}
+/*实名通知弹窗*/
+
+body .modal{
+	z-index:9999;
+}
+body .modal-dialog{
+	width:8rem;
+	position:fixed;
+	top:0;
+	right:0;
+	left:0;
+	bottom:0;
+	margin:auto;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+body .modal-content{
+	flex:1;
+	text-align:center;
+}
+body .modal-title{
+	font-size:0.5rem;
+}
+body .modal-body{
+	font-size:0.45rem;
+}
+body .modal-footer .lw-btn{
+	width:100%;
+	font-size:0.5rem;
+}
+body .mf-img{
+	width:3rem;
+	height:1rem;
+}
+/*底部设置*/
+
+.weui-btn_primary:not(.weui-btn_disabled):visited {
+    color: #FFFFFF;
+}
+
+.weui-btn_primary {
+    background-color: #1AAD19;
+}
+.weui-btn {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.14rem;
+    padding-right: 0.14rem;
+    box-sizing: border-box;
+    font-size: 0.18rem;
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    line-height: 2.55555556;
+    border-radius: 5px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    overflow: hidden;
+}
+.bottom-setting{
+	font-size:0.4rem;
+	text-align:center;
+	background-color:#fff;
+	position:fixed;
+	bottom:0;
+	left:0;
+	right:0;
+	z-index:1000;
+	padding:0.4rem;
+}
+.b-s-btn{
+	width:100%;
+	font-size:0.4rem;
+	border-radius:5px;
+}
+.bottom-fixed{
+	
+}
+.modal-hp{
+	background-color:rgba(0,0,0,0.6);
+	z-index:999;
+	position:fixed;
+	left:0;
+	right:0;
+	bottom:0;
+	top:0;
+}
+.fixedtop{
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	z-index:1000;
+	background-color:#fff;
+}
+/*侧边栏城市*/
+.s-c-fixed{
+	position:fixed;
+	right:0;
+	top:0;
+	bottom:0;
+	left:1rem;
+	z-index:1000;
+	background-color:#fff;
+	font-size:0.3rem;
+}
+.scf-row{
+	padding:0.3rem;
+}
+.scf-top{
+	background-color:#ccc;
+	height:1.2rem;
+	display:flex;
+	justify-content:space-between;
+	color:#000000;
+	align-items:center;
+	opacity:0.8;
+	padding:0 0.3rem;
+	font-size:0.45rem;
+}
+.filtrate-right{
+	font-size:0.4rem;
+}
+.filtrate-right:active{
+	color:red;
+}
+.sr-title{
+	font-weight:bold;
+	font-size:0.45rem;
+	padding-bottom:0.2rem;
+}
+.sr-s-input{
+	background-color:#ccc;
+	color:#000000;
+	opacity:0.8;
+	font-size:0.4rem;
+	border-radius:5px;
+	border:1px solid #ccc;
+	height:1rem;
+	width:100%;
+	padding:0.2rem;
+	outline:none;
+}
+.sr-select{
+	display:flex;
+	align-items:center;
+	justify-content: space-between;
+	height:1rem;
+	border:1px solid #ccc;
+	font-size:0.5rem;
+	padding:0 0.2rem;
+}
+.ss-icon{
+	font-size:0.5rem;
+	color:#ccc;
+	opacity:0.8;
+}
+.sr-o-area{
+	background-color:#ccc;
+	display:flex;
+	flex-wrap:wrap;
+	border:1px solid #ccc;
+	border-top:none;
+	border-top-width:0;
+}
+.soa-item{
+	font-size:0.4rem;
+	padding:0.3rem 0.5rem;
+	/*border:1px solid rgba(0,0,0,0.3);*/
+	cursor:pointer;
+}
+.soa-item.active{
+	background-color:#fff;
+	color:#000000;
+}
+.soa-item:active{
+	opacity:0.7;
+}
+.scf-position{
+	position:absolute;
+	bottom:0;
+	left:0;
+	right:0;
+	display:flex;
+}
+body .sp-btn{
+	flex:1;
+	padding:0.3rem 0;
+	text-align:center;
+	outline-color:transparent;
+	outline:none;
+	margin:0;
+	font-size:0.45rem;
+	border-radius:0;
+}
+.soa-i-frame{
+	padding:0.3rem 0.3rem 1.3rem 0.3rem;
+	font-size:0.4rem;
+	max-height: 10rem;
+    overflow: auto;
+}
+.soa-i-f-child{
+	padding:0.2rem 0.3rem;
+	display:inline-block;
+	margin-right:0.2rem;
+	margin-bottom:0.2rem;
+}
+.ss-value{
+	font-size:0.43rem;
+	color:#000;
+	font-weight:bold;
+	opacity:0.3;
+}
+.addr.active,.ss-value.active{
+	background-color:#ccc
+	color:#fff;
+}
+.sr-option{
+	border:1px solid #ccc;
+	border-top:none;
+	border-top-width:0;
+	position:absolute;
+	/*z-index:999;*/
+	background-color:#fff;
+	width:100%;
+}
+.bg-danger.sp-btn{
+	border-color:#f2dede;
+}
+.soa-i-f-child.active{
+	background-color:#31708f;
+	color:#fff;
+}
+.sr-s-value{
+	display:flex;
+}
+/*提示弹窗*/
+.lw-modal>.modal-backdrop.in{
+	opacity:0.5!important;
+}
+.alertInfo{
+	
+	z-index:9999;
+	font-size:0.4rem;
+}
+.ai-screen{
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index:999;
+	width:100%;
+	height:100%;
+}
+.ad-frame{
+	z-index:1000;
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	width:100%;
+	padding:0.3rem;
+}
+/*改变bootstrap.css的模态框*/
+.modal-backdrop.in {
+	opacity:1 !important;
+}
+
+/*身份认证弹窗*/
+.idcard-header{
+	border-bottom:none;
+}
+.idcard-footer{
+	border-top:none;
+	padding:0;
+}
+.idcard-btn{
+	color:#19AD17;
+	padding:0.4rem 0;
+	width:100%;
+	text-align:center;
+	font-size:0.5rem;
+	display:block;
+}
+.idcard-btn:active{
+	opacity:0.8;
+	text-decoration:none;
+	color:red;
+}

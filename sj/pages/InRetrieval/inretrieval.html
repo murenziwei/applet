@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>商机列表2</title>
+		<!--rem单位依赖g.tbcdn.cn文件-->
+        <script src="../../js/g.tbcdn.cn.js"></script>
+		<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../../css/public.css" />
+		<link rel="stylesheet" href="inretrieval.css" />
+		<script src="../../js/vue.js"></script>
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="page" id="page">
+			
+			<!--顶部-->
+			<div v-bind:class="{topnav:iftrue,fixedtop:bsdata.show}">
+				<div class="tn-tar">
+					<img src="../../img/weiyou.png" alt="" class="tn-t-logo" />
+					<div class="tn-t-search">
+						<input type="text" class="tn-t-s-input" placeholder="输入关键词" />
+						<div class="tn-t-s-search">
+							<i class="glyphicon glyphicon-search"></i>
+						</div>
+						
+					</div>
+					<div class="tn-t-dropdown dropdown">
+						  <div class="tn-t-collapse dropdown-toggle" v-on:click="areafn">
+						  	<i class="glyphicon glyphicon-menu-hamburger tn-t-c-icon"></i>
+						  </div>
+					</div>
+				</div>
+			</div>
+			<!--身体部分-->
+			<div class="wx-body">
+				<div class="wb-frame">
+				  <template v-for="(item,index) in informationArr">
+				  	<div class="wb-f-item" @click="infornav(index)">
+						<div class="wfi-frame">
+							<span class="s-f-prop text-info">[{{item.prop}}]</span>
+							<span class="s-f-title">{{item.title}}</span>
+						</div>
+						<div class="wfi-row-flex">
+							<div class="wfi-r-address">{{item.province}}</div>
+							<div class="wfi-r-time">{{item.time}}</div>
+						</div>
+
+					</div>
+				  </template>
+					
+				</div>
+			</div>
+			<!--底部导航-->
+			<my-tabbar tabac="1">
+				<div class="tabbar-info">
+				  	<span>新消息提醒剩余：</span>
+				  	<span class="text-success t-i-count">20</span>
+				  	<span>次</span>
+				  	<i class="glyphicon glyphicon-apple t-i-icon text-warning"></i>
+				</div>
+			</my-tabbar>
+			
+			<!--底部弹窗设置-->
+			<div class="bottom-fixed" v-if="bsdata.show">
+				<!--灰屏-->
+				<div class="modal-hp" v-on:click="closebottom"></div>
+				<div class="bottom-setting">
+					<p class="b-s-row">你还没有设置销售地区</p>
+					<p class="b-s-row">设置销售地区，给你最激昂混的商机</p>
+					<div class="b-s-nav text-info" v-on:click="closebottom">先看看，等会再设置</div>
+					<button class="weui-btn weui-btn_primary b-s-btn">立即设置</button>
+				</div>
+			</div>
+		    <!--侧边栏城市-->
+		    <div class="slide-citys" v-if="slidecitys.show">
+		    	<!--灰屏-->
+				<div class="modal-hp"></div>
+				<div class="s-c-fixed">
+					<div class="scf-top">
+						<div class="filtrate-left">条件筛选</div>
+						<div class="filtrate-right" v-on:click="areafn">收起</div>
+					</div>
+					<div class="scf-row">
+						<div class="sr-title">关键字搜索</div>
+						<div class="sr-search">
+							<input type="text" placeholder="输入关键字" class="sr-s-input" />
+						</div>
+					</div>
+					<div class="scf-row">
+						<div class="sr-title">地区选择</div>
+						<div class="sr-select-frame">
+							<div class="sr-select">
+								<div class="sr-s-value">
+								  <div class="ss-value" v-if="!areaobj[0]">点击从下拉面板中选择省份</div>
+								  <template v-for="(item,index) in areaobj">
+								  	<div v-bind:class="{'ss-value':iftrue,active:(index==coCount)}" v-if="item" @click="optionfn(index)"><i v-if="index!=0">/</i>{{item}}</div>
+								  </template>
+								</div>
+								<div class="ss-icon glyphicon glyphicon-menu-up" @click="togglearea"></div>
+							</div>
+							<div class="sr-option" id="areachoose" style="display:none;">
+								<div class="sr-o-area">
+									<div v-for="(item,indexii) in areaArr" v-on:click="postsites(item,indexii)"  v-bind:class="{'soa-item':iftrue,'active':indexii==coCount}" >{{item}}</div>
+								</div>
+								<div class="soa-i-frame">
+									<div v-for="(item,indexii) in cityObj[coCount]" v-bind:class="{'soa-i-f-child':iftrue,'active':(indexii==selectCount[coCount])}" v-on:click="searchareafn(indexii,item.name)">{{item.name}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="scf-position">
+						<button class="btn btn-default bg-default sp-btn"  v-on:click="areafn">取消</button>
+						<button class="btn btn-danger bg-danger sp-btn">确定</button>
+					</div>
+				</div>
+		    </div>
+		    <!--实名弹窗-->
+		    <name-conponent></name-conponent>
+		    <!--身份证弹窗-->
+		    <idcard-conponent />
+		</div>
+		<script src="../../js/lw.component.js"></script>
+	    <script src="inretrieval.js"></script>
+	</body>
+</html>

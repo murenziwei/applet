@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>完善个人信息</title>
+    <!--rem单位依赖g.tbcdn.cn文件-->
+    <script src="../../js/g.tbcdn.cn.js"></script>
+    <link rel="stylesheet" href="../../css/BLcssInit.css">
+	<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../css/public.css" />
+	<link rel="stylesheet" href="idcard.css" />
+	<script src="../../js/vue.js"></script>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="page" id="page">
+        <div class="nav-topic">
+        	<span class="nt-back glyphicon glyphicon-menu-left" onclick="window.history.back();"></span>
+        	<h4 class="nt-title">{{html.title}}</h4>
+        </div>
+        <form autocomplete="on">
+            <div class="idcard-row ir-hp">
+            	<span class="ir-progress">{{idcard.progress.name}}：</span>
+            	<span class="ir-value">{{idcard.progress.val}}</span>
+            </div>
+            <div class="idcard-row ir-flex">
+            	<div class="idcard-top">
+            		<div class="i-t-left">
+            			<span class="itl-name">{{idcard.idcpic.name}}</span>
+            			<span class="itl-info">{{idcard.idcpic.info}}</span>
+            		</div>
+            		<div class="i-t-count">
+            			<span>{{idcard.imgs.length}}</span>
+            			<i>/</i>
+            			<span>{{idcard.max}}</span>
+            		</div>
+            	</div>
+            	<ul class="idcard-ul">
+	                <li v-if="idcard.imgs.length>0" v-for='(item ,index ) in idcard.imgs' class="iu-item">
+	                    <img :src="item" class="iul-img">
+	                </li>
+	                <li style="position:relative" v-if="idcard.imgs.length>=3 ? false : true" class="iu-img">
+	                    <img src="../../img/add_img.png" class="add-img"><input class="upload" @change='add_img'  type="file">
+	                </li>
+				</ul>
+				
+            </div>
+            <div class="idcard-row">
+            	<span class="ir-value">{{idcard.notice}}</span>
+            </div>
+            <!--底部导航-->
+            <my-tabbar tabac="-1">
+            	<div class="f-b-frame">
+	        	  	<div class="form-btn" @click.stop="savefn">提交保存</div>
+	        	</div>
+            </my-tabbar>
+        </form>
+        <!--<span class="formBtn">提交保存</span>-->
+        
+    </div>
+    <script src="../../js/lw.component.js"></script>
+    <script src="idcard.js"></script>
+</body>
+</html>

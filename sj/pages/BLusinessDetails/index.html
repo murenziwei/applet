@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商机详情</title>
+    <!--rem单位依赖g.tbcdn.cn文件-->
+    <script src="../../js/g.tbcdn.cn.js"></script>
+    <link rel="stylesheet" href="../../css/BLcssInit.css">
+    <link rel="stylesheet" href="BLusinessDetails.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../css/public.css" />
+    <script src="../../js/vue.js"></script>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="wrap noRoll" id="page">
+        <div class="goods">
+            <div class="top">
+                <div class="title">
+                    【2万多米】采购两波的波型护栏，乡村公路使用
+                </div>
+
+                <div class="time">2018-12-13 13:06</div>
+            </div>
+            <div class="bottom">
+                <div>
+                    <span class="bgccc">采购人：</span>王经理
+                </div>
+                <div>
+                    <span class="bgccc">联系方式：</span><span class="bgcred">137********</span>
+                </div>
+                <div>
+                    <span class="bgccc">商机价格：</span><span class="bgcskyblue">99元/条</span>
+                </div>
+                <div class="fujian">
+                    <span>附件下载：</span>
+                    <span class="bgcblue">
+                        <a href="javascript:">附件.jpg</a>
+                    </span>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="bar-wrap">
+            <div class="bar">
+                <div class="bgcgreen"></div>
+            </div>
+            <span>(0/4)</span>
+        </div>
+
+
+        <div class="receipt">
+            <div class="text">剩余4次接单机会；接单后可见联系方式</div>
+            <div class="receipt-botton">
+                <span class="left">买断商机</span>
+                <span class="right">立即接单</span>
+            </div>
+        </div>
+
+        <div class="describe">
+            <div class="title">
+                我们这里需要采购一批两波的波型护栏，一段一段加起来有2万多米，之前是让别人进的货，这次我们自己找厂家采购，浙江这边有没有办事处，我们在上
+            </div>
+        </div>
+
+        <div class="order-record">
+            <span class="title">接单记录</span>
+            <table class="order-tab">
+                <tr>
+                    <th>接单人</th>
+                    <th>接单时间</th>
+                    <th>接单条数</th>
+                </tr>
+                <tr>
+                    <td>A****</td>
+                    <td>12/12 09:02</td>
+                    <td>4(买断商机)</td>
+                </tr>
+            </table>
+            <div class="noOrder">
+                还没被人抢先呢
+            </div>
+        </div>
+
+        <div class="new-record">
+            <span class="title">最新可接单询盘</span>
+            <div class="det-wrap">
+               <div class="det-top">
+                   <div class="title">【2万多米】采购两波的波型护栏，乡村公路</div>
+                   <div class="time">13:06</div>
+               </div>
+                <div class="bottom">
+                    <div class="addr">浙江省/绍兴市/上虞区</div>
+                    <div class="num">0/4</div>
+                </div>
+            </div>
+        </div>
+        <!--底部导航-->
+        <my-tabbar tabac="hide">
+        	<div class="tabbar-info"><span>新消息提醒剩余：</span> <span class="text-success t-i-count">20</span> <span>次</span> <i class="glyphicon glyphicon-apple t-i-icon text-warning"></i></div>
+        </my-tabbar>
+        
+		<!--底部弹窗设置-->
+		<div class="bottom-fixed" v-if="bsdata.show">
+			<!--灰屏-->
+			<div class="modal-hp" v-on:click="closebottom"></div>
+			<div class="bottom-setting">
+				<p class="b-s-row">你还没有设置销售地区</p>
+				<p class="b-s-row">设置销售地区，给你最激昂混的商机</p>
+				<div class="b-s-nav text-info" v-on:click="closebottom">先看看，等会再设置</div>
+				<button class="weui-btn weui-btn_primary b-s-btn">立即设置</button>
+			</div>
+		</div>
+		<!--实名弹窗-->
+		<name-conponent></name-conponent>
+    </div>
+	<script src="../../js/lw.component.js"></script>
+    <script src="blusinessdetails.js"></script>
+</body>
+</html>

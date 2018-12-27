@@ -1,0 +1,92 @@
+/*头部提示和倒回*/
+.nav-topic{
+	height:1.5rem;
+	background-color:#fff;
+}
+.nt-title{
+	margin:0;
+	width:100%;
+	font-size:0.5rem;
+	height:1.5rem;
+	text-align:center;
+	line-height:1.5rem;
+	position:absolute;
+}
+.nt-back{
+	font-size:0.6rem;
+	float:left;
+	line-height:1.5rem;
+	opacity:0.8;
+	padding:0 0.2rem;
+	z-index:2;
+}
+
+/*表单部分*/
+.ir-hp{
+	background-color:#eee;
+	font-size:0.4rem;
+}
+.ir-progress{
+	
+}
+.ir-value{
+	color:#cc8813;
+	font-size:0.4rem;
+}
+.idcard-top{
+	display:flex;
+	justify-content:space-between;
+	font-size:0.5rem;
+}
+.itl-name{
+	font-weight:bold;
+}
+.itl-info{
+	color:#049e18;
+	font-size:0.4rem;
+}
+.i-t-count{
+	opacity:0.5;
+}
+.idcard-ul{
+	display:flex;
+}
+.iu-item,.iu-img{
+	width:2.5rem;
+	height:2.5rem;
+	border:1px solid #000;
+	display:inline-flex;
+	align-items:center;
+	position:relative;
+	justify-content:center;
+
+	border-radius:0.1rem;
+	margin:0.2rem 0.2rem 0.2rem 0;
+}
+.iu-img{
+	opacity:0.5;
+}
+.add-img{
+	width:1rem;
+	height:1rem;
+}
+.upload{
+	position:absolute;
+	left:0;
+	right:0;
+	bottom:0;
+	top:0;
+	width:100%;
+	height:100%;
+	margin:0;
+	padding:0;
+	z-index:999;
+	opacity:0;
+}
+.idcard-row{
+	padding:0.3rem;
+}
+.ir-flex{
+	background-color:#fff;
+	border-bottom:1px solid #eee;
+}

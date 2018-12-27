@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>完善个人信息</title>
+    <!--rem单位依赖g.tbcdn.cn文件-->
+    <script src="../../js/g.tbcdn.cn.js"></script>
+    <link rel="stylesheet" href="../../css/BLcssInit.css">
+	<link rel="stylesheet" href="../../css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../css/public.css" />
+	<link rel="stylesheet" href="BLcssregister.css" />
+	<script src="../../js/vue.js"></script>
+	<script src="../../js/jquery.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+</head>
+<body class="lw-modal">
+    <div class="wrap" id="page">
+        
+        <div class="msg">
+            *信息资料均为必填项
+        </div>
+        
+        <form autocomplete="on">
+            <div class="name inpclass must">
+            <span class="bgccc">
+                真实姓名：
+            </span>
+                <input required type="text" name="name" placeholder="输入真实姓名" v-model="formobj.tname.val" @input="icfn" @keyup.enter="savefn">
+            </div>
+            <div class="inpclass phone must">
+            <span class="bgccc">
+                手机号：
+            </span>
+                <input type="phone" maxlength="11" name="phone" placeholder="输入手机号" v-model="formobj.tphone.val" @input="icfn" @keyup.enter="savefn" required>
+                <span class="getcode p-span" @click="codefn" v-if="codeshow.show">{{codeshow.val}}</span>
+                <span class="waitcode p-span" v-if="!codeshow.show">{{second}}s</span>
+            </div>
+            <div class="inpclass code must">
+            <span class="bgccc">
+                验证码：
+            </span>
+                <input type="text" name="code" placeholder="输入手机验证码" v-model="formobj.tcode.val" @input="icfn" @keyup.enter="savefn" required>
+            </div>
+            <div class="lw-d" @click.stop >
+            	<div class="inpclass region must">
+		            <span class="bgccc">
+		                常驻地区：
+		            </span>
+		            <span class="addr lw-addr" v-if="!areaobj[0]">点击从下拉面板中选择省份</span>
+					  <template v-for="(item,index) in areaobj">
+					  	<span v-bind:class="{'addr':iftrue,active:(index==coCount)}" v-if="item" @click.stop="optionfn(index)"><i v-if="index!=0">/</i>{{item}}</span>
+					  </template>
+					<i class="lw-icon-down glyphicon glyphicon-menu-up" @click.stop="togglearea"></i>
+	                <!--<img src="../../img/bottom.jpg" height="102" width="66"/>-->
+	            </div>
+	            <div class="sr-option" id="areachoose" style="display:none;">
+					<div class="sr-o-area">
+						<div v-for="(item,indexii) in areaArr" v-on:click="postsites(item,indexii)"  v-bind:class="{'soa-item':iftrue,'active':indexii==coCount}" >{{item}}</div>
+					</div>
+					<div class="soa-i-frame">
+						<div v-for="(item,indexii) in cityObj[coCount]" v-bind:class="{'soa-i-f-child':iftrue,'active':(indexii==selectCount[coCount])}" v-on:click="searchareafn(indexii,item.name)">{{item.name}}</div>
+					</div>
+				</div>
+            </div>
+           
+            <div class="inpclass addr">
+            <span class="bgccc">
+                常驻地址：
+            </span>
+                <input type="text" name="addr" placeholder="请填写常驻地址"  v-model="formobj.taddress.val" @input="icfn" @keyup.enter="savefn" required>
+            </div>
+            <div class="inpclass brand must">
+            <span class="bgccc">
+                销售品牌：
+            </span>
+                <input type="text" name="brand" placeholder="品牌名称/厂家名称"  v-model="formobj.tbrand.val" @input="icfn" @keyup.enter="savefn" required>
+            </div>
+            <div class="inpclass product must">
+            <span class="bgccc">
+                主营产品：
+            </span>
+            </div>
+            <div class="product-det-box">
+                <textarea name="product" minlength="20" maxlength="200" v-model="formobj.treferral.val"></textarea>
+                <span class="product-msg">
+                不少于20字，多产品以空格或逗号分隔，<span class="bgcred" v-bind:style="{color:(formobj.treferral.val.length>200||formobj.treferral.val.length<20)?'red':''}">{{formobj.treferral.val.length}}</span>/200字
+            </span>
+
+            </div>
+            <div class="inpclass sales must">
+            <span class="bgccc">
+                销售地区： <span class="bgcred">接收一下地区的商机</span>
+            </span>
+            </div>
+            <div class="sales-box">
+            	<ul class="ga-list" id="areaCheck">
+                    <li class="ga-l-row">
+                        <div class="ga-name">东莞</div>
+                        <div class="ga-label">
+                            <input type="checkbox" class="ga-lr-checkbox" name="dongguan"/>
+                            <div class="ga-lr-shape"></div>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+            <!--底部导航-->
+            <my-tabbar tabac="-1">
+            	<div class="f-b-frame">
+	        	  	<div class="form-btn" @click.stop="savefn">提交保存</div>
+	        	</div>
+            </my-tabbar>
+        </form>
+        <!--<span class="formBtn">提交保存</span>-->
+        <!--提示内容-->
+        
+    	<!--<div class="alertInfo" v-if="alertinfo.show" @click.stop >
+    		<div class="ai-screen" @click="closealert"></div>
+	        <div class="alert alert-danger ad-frame" v-if="alertinfo.val">
+				<a href="#" class="close" @click="closealert">
+					&times;
+				</a>
+				<strong>警告！</strong>{{alertinfo.val}}
+			</div>
+		</div>-->
+        
+    	<!--提示弹窗-->
+    	<alert-conponent :infodatas="alertinfo"></alert-conponent>
+        
+    </div>
+    <script src="../../js/lw.component.js"></script>
+    <script src="blregister.js"></script>
+</body>
+</html>
